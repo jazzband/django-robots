@@ -3,27 +3,28 @@ Robots exclusion application for Django
 =======================================
 
 This is a basic Django application to manage robots.txt files following the
-`robots exclusion standard`_, complementing the Sitemap contrib application.
+`robots exclusion standard`_, complementing the Django `Sitemap contrib app`_.
 
 .. _robots exclusion standard: http://www.robotstxt.org/
+.. _Sitemap contrib app: http://www.djangoproject.com/documentation/sitemaps/
 
 How to use it in your own django application
 ============================================
 
-0. Get the source from the application site at:
+0. Get the source from the application site at::
 
         http://code.google.com/p/django-robots/
 
 1. Follow the instructions in the INSTALL.txt file
 
-2. Edit the settings.py of your Django project:
+2. Edit the settings.py of your Django project::
 
-    # Add ``robots`` to the ``INSTALLED_APPS`` of your django project
+    # Add ``robots`` to the ``INSTALLED_APPS`` of your Django project
 
     # Check if ``django.contrib.sites`` and ``django.contrib.admin`` are in
       ``INSTALLED_APPS`` and add if necessary
       
-      It should look something like this:
+      It should look something like this::
       
         INSTALLED_APPS = (
             'django.contrib.auth',
@@ -39,7 +40,7 @@ How to use it in your own django application
     # Check if ``django.template.loaders.app_directories.load_template_source``
       is in the ``TEMPLATE_LOADERS`` list.
 
-      It should look something like this:
+      It should look something like this::
 
         TEMPLATE_LOADERS = (
             'django.template.loaders.filesystem.load_template_source',
@@ -50,9 +51,9 @@ How to use it in your own django application
 
         (r'^robots.txt$', include('robots.urls')),
 
-4. Sync your database via shell (``manage.py syncdb`` within project dir).
+4. Sync your database via shell (``manage.py syncdb`` in your project dir).
 
-5. Create Rule and URL objects in the admin interface. See ``usage``
+5. Create ``Rule`` and ``Url`` objects in the admin interface.
 
 6. Go to /robots.txt under the URL of your Django site to see the results.
 
@@ -63,8 +64,8 @@ The application consists of two database models which are tied together with a
 m2m relationship::
 
     1. ``Rule`` - contains a User Agent field and multiple URL patters to
-       define a abstract disallowance rule. Create one and add one or more URL
-       pattern to it.
+       define a abstract disallowance rule. Each rule will be rendered with
+       all of its related URLs in a simple and plain text file.
 
        Please have a look at the `database of web robots`_ for a full list of
        existing web robots user agent strings.
@@ -73,11 +74,14 @@ m2m relationship::
        together with an user agent string to disallow the access for web robots.
 
 You can set ``SITEMAP_URL`` in your projects settings.py file to the URL of your
-sitemap.xml file, for example:
+sitemap.xml file, for example::
 
     SITEMAP_URL = "http://www.djangoproject.com/sitemap.xml"
 
-This is added to the resulting robots.txt file as a "Sitemap:" statement.
+This is added to the resulting robots.txt file as a "Sitemap:" statement - very
+useful especially in combination with the Django Sitemaps contrib app.
+
+If no rule exists it automatically allows every web robot access to every URL.
 
 .. _database of web robots: http://www.robotstxt.org/wc/active/html/index.html
 
