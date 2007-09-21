@@ -1,0 +1,7 @@
+{% if object_list %}{% for rule in object_list %}User-agent: {{ rule.user_agent }}
+{% for url in rule.urls.all %}Disallow: {{ url.pattern }}
+{% endfor %}
+{% endfor %}{% else %}User-agent: *
+Disallow:
+{% endif %}{% if sitemap_url %}Sitemap: {{ sitemap_url }}
+{% endif %}
