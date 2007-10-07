@@ -1,7 +1,9 @@
-{% if object_list %}{% for rule in object_list %}User-agent: {{ rule.user_agent }}
-{% for url in rule.urls.all %}Disallow: {{ url.pattern }}
-{% endfor %}
-{% endfor %}{% else %}User-agent: *
+{% if rules %}{% for rule in rules %}{% ifchanged rule.robot %}{% if not forloop.first %}
+{% endif %}User-agent: {{ rule.robot }}{% endifchanged %}
+{% for url in rule.allowed.all %}Allowed: {{ url.pattern }}
+{% endfor %}{% for url in rule.disallowed.all %}Disallow: {{ url.pattern }}
+{% endfor %}{% if rule.crawl_delay %}Crawl-delay: {{ rule.crawl_delay }}
+{% endif %}{% endfor %}{% else %}User-agent: *
 Disallow:
-{% endif %}{% if sitemap_url %}Sitemap: {{ sitemap_url }}
 {% endif %}
+{% if sitemap_url %}Sitemap: {{ sitemap_url }}{% endif %}
