@@ -13,9 +13,9 @@ for scheme in INSTALL_SCHEMES.values():
 # Dynamically calculate the version based on app_name.VERSION.
 version_tuple = __import__(app_name).VERSION
 if version_tuple[2] is not None:
-    version = "%d.%d%s" % version_tuple
+    version = "%d.%s%s" % version_tuple
 else:
-    version = "%d.%d" % version_tuple[:2]
+    version = "%d.%s" % version_tuple[:2]
 
 # Compile the list of packages available, because distutils doesn't have
 # an easy way to do this.
