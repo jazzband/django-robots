@@ -1,6 +1,5 @@
 from django.db import models
 from django.core import validators
-from django.contrib.admin.views.doc import simplify_regex
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
@@ -10,6 +9,11 @@ try:
     from django.db.models import DecimalField as FloatField
 except ImportError:
     from django.db.models import FloatField 
+
+try:
+    from django.contrib.admin.views.doc import simplify_regex
+except ImportError:
+    from django.contrib.admindocs.views import simplify_regex
 
 class Url(models.Model):
     """
@@ -70,3 +74,24 @@ class Rule(models.Model):
     def disallowed_urls(self):
         return get_text_list(list(self.disallowed.all()), _('and'))
     disallowed_urls.short_description = _('disallowed')
+
+try:
+    from django.contrib import admin
+
+    class UrlAdmin(admin.ModelAdmin):
+        pass
+
+    class RuleAdmin(admin.ModelAdmin):
+        fieldsets = (
+            (None, {'fields': ('robot', 'sites')}),
+            (_('URL patterns'), {'fields': ('allowed', 'disallowed')}),
+            (_('Advanced options'), {'classes': ('collapse',), 'fields': ('crawl_delay',)}),
+        )
+        list_filter = ('sites',)
+        list_display = ('robot', 'allowed_urls', 'disallowed_urls')
+        search_fields = ('robot','urls')
+
+    admin.site.register(Url, UrlAdmin)
+    admin.site.register(Rule, RuleAdmin)
+except:
+    pass
