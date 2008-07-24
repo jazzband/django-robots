@@ -6,15 +6,13 @@ from django.conf import settings
 
 from robots.models import Rule
 
-CRAWL_DELAY = getattr(settings, 'ROBOTS_CRAWL_DELAY', False)
 USE_SITEMAP = getattr(settings, 'ROBOTS_USE_SITEMAP', True)
 
 def rules_list(request, template_name='robots/rule_list.html', 
         mimetype='text/plain', status_code=200):
     """
     Returns a generated robots.txt file with correct mimetype (text/plain),
-    status code (200 or 404), sitemap url (automatically) and crawl delay 
-    (if settings.ROBOTS_CRAWL_DELAY is given).
+    status code (200 or 404), sitemap url (automatically).
     """
     scheme = request.is_secure() and 'https' or 'http'
     current_site = Site.objects.get_current()
@@ -34,6 +32,5 @@ def rules_list(request, template_name='robots/rule_list.html',
     c = RequestContext(request, {
         'rules': rules,
         'sitemap_url': sitemap_url,
-        'crawl_delay': CRAWL_DELAY,
     })
     return HttpResponse(t.render(c), status=status_code, mimetype=mimetype)
