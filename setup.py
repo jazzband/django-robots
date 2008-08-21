@@ -10,13 +10,6 @@ app_name = 'robots'
 for scheme in INSTALL_SCHEMES.values():
     scheme['data'] = scheme['purelib']
 
-# Dynamically calculate the version based on app_name.VERSION.
-version_tuple = __import__(app_name).VERSION
-if version_tuple[2] is not None:
-    version = "%d.%s%s" % version_tuple
-else:
-    version = "%d.%s" % version_tuple[:2]
-
 # Compile the list of packages available, because distutils doesn't have
 # an easy way to do this.
 packages, data_files = [], []
@@ -39,7 +32,7 @@ for dirpath, dirnames, filenames in os.walk(app_name):
             data_files.append(os.path.join(prefix, f))
 
 setup(name=app_name,
-      version=version,
+      version='0.4.1',
       description='Robots exclusion application for Django, complementing Sitemaps.',
       author='Jannis Leidel',
       author_email='jannis@leidel.info',
