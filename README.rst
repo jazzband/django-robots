@@ -10,6 +10,6 @@ directory; for instructions on how to use this application, and on
 what it provides, see the file "overview.txt" in the "docs/"
 directory.
 
-.. _robots exclusion protocol: http://www.robotstxt.org/wc/exclusion.html
+.. _robots exclusion protocol: http://www.robotstxt.org/robotstxt.html
 .. _Django: http://www.djangoproject.com/
 .. _Sitemap contrib app: http://www.djangoproject.com/documentation/sitemaps/
