@@ -1,5 +1,4 @@
 from django.db import models
-from django.core import validators
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
@@ -48,12 +47,10 @@ class Rule(models.Model):
                              "'> database of Web Robots</a>."))
 
     allowed = models.ManyToManyField(Url, blank=True, related_name="allowed",
-                                     validator_list=[validators.RequiredIfOtherFieldNotGiven('disallowed')],
                                      help_text=_("The URLs which are allowed "
                                                  "to be accessed by bots."))
 
     disallowed = models.ManyToManyField(Url, blank=True, related_name="disallowed",
-                                        validator_list=[validators.RequiredIfOtherFieldNotGiven('allowed')],
                                         help_text=_("The URLs which are not "
                                                     "allowed to be accessed "
                                                     "by bots."))
