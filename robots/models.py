@@ -8,17 +8,13 @@ class Url(models.Model):
     Defines a URL pattern for use with a robot exclusion rule. It's 
     case-sensitive and exact, e.g., "/admin" and "/admin/" are different URLs.
     """
-    pattern = models.CharField(_('pattern'), max_length=255, core=True,
-                               help_text=_("Case-sensitive. A missing "
-                                           "trailing slash does also match "
-                                           "to files which start with the "
-                                           "name of the pattern, e.g., "
-                                           "'/admin' matches /admin.html "
-                                           "too. Some major search engines "
-                                           "allow an asterisk (*) as a "
-                                           "wildcard and a dollar sign ($) "
-                                           "to match the end of the URL, "
-                                           "e.g., '/*.jpg$'."))
+    pattern = models.CharField(_('pattern'), max_length=255, help_text=_(
+                               "Case-sensitive. A missing trailing slash does al"
+                               "so match to files which start with the name of "
+                               "the pattern, e.g., '/admin' matches /admin.html "
+                               "too. Some major search engines allow an asterisk"  
+                               " (*) as a wildcard and a dollar sign ($) to "
+                               "match the end of the URL, e.g., '/*.jpg$'."))
     class Meta:
         verbose_name = _('url')
         verbose_name_plural = _('url')
