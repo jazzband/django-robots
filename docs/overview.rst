@@ -8,12 +8,10 @@ This is a basic Django application to manage robots.txt files following the
 The robots exclusion application consists of two database models which are
 tied together with a m2m relationship:
 
-    * Rules_
-    * URLs_
+* Rules_
+* URLs_
 
-.. _robots exclusion protocol: http://www.robotstxt.org/wc/exclusion.html
 .. _Django: http://www.djangoproject.com/
-.. _Sitemap contrib app: http://www.djangoproject.com/documentation/sitemaps/
 
 Installation
 ============
@@ -24,16 +22,16 @@ Get the source from the application site at::
 
 To install the sitemap app, follow these steps:
 
-    1. Follow the instructions in the INSTALL.txt file
-    2. Add ``'robots'`` to your INSTALLED_APPS_ setting.
-    3. Make sure ``'django.template.loaders.app_directories.load_template_source'``
-       is in your TEMPLATE_LOADERS_ setting. It's in there by default, so
-       you'll only need to change this if you've changed that setting.
-    4. Make sure you've installed the `sites framework`_.
+1. Follow the instructions in the INSTALL.txt file
+2. Add ``'robots'`` to your INSTALLED_APPS_ setting.
+3. Make sure ``'django.template.loaders.app_directories.load_template_source'``
+   is in your TEMPLATE_LOADERS_ setting. It's in there by default, so
+   you'll only need to change this if you've changed that setting.
+4. Make sure you've installed the `sites framework`_.
 
-.. _INSTALLED_APPS: http://www.djangoproject.com/documentation/settings/#installed-apps
-.. _TEMPLATE_LOADERS: http://www.djangoproject.com/documentation/settings/#template-loaders
-.. _sites framework: http://www.djangoproject.com/documentation/sites/
+.. _INSTALLED_APPS: http://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
+.. _TEMPLATE_LOADERS: http://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+.. _sites framework: http://docs.djangoproject.com/en/dev/ref/contrib/sites/
 
 Sitemaps
 --------
@@ -48,13 +46,13 @@ change the ``ROBOTS_USE_SITEMAP`` setting in your Django settings file to::
 
     ROBOTS_USE_SITEMAP = False
 
-.. _Sitemap contrib app: http://www.djangoproject.com/documentation/sitemaps/
+.. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
 
 Initialization
 ==============
 
 To activate robots.txt generation on your Django site, add this line to your
-URLconf_:
+URLconf_::
 
     (r'^robots.txt$', include('robots.urls')),
 
@@ -62,8 +60,8 @@ This tells Django to build a robots.txt when a robot accesses ``/robots.txt``.
 Then, please sync your database to create the necessary tables and create
 ``Rule`` objects in the admin interface or via the shell.
 
-.. _URLconf: http://www.djangoproject.com/documentation/url_dispatch/
-.. _sync your database: http://www.djangoproject.com/documentation/django-admin/#syncdb
+.. _URLconf: http://docs.djangoproject.com/en/dev/topics/http/urls/
+.. _sync your database: http://docs.djangoproject.com/en/dev/ref/django-admin/#syncdb
 
 Rules
 =====
@@ -88,9 +86,9 @@ If no rule exists it automatically allows every web robot access to every URL.
 Please have a look at the `database of web robots`_ for a full list of
 existing web robots user agent strings.
 
-.. _robots exclusion protocol: http://www.robotstxt.org/wc/exclusion.html
+.. _robots exclusion protocol: http://www.robotstxt.org/robotstxt.html
 .. _'sites' framework: http://www.djangoproject.com/documentation/sites/
-.. _database of web robots: http://www.robotstxt.org/wc/active/html/index.html
+.. _database of web robots: http://www.robotstxt.org/db.html
 
 URLs
 ====
@@ -99,11 +97,11 @@ URLs
 allow or disallow the access for web robots. Case-sensitive.
 
 A missing trailing slash does also match files which start with the name of
-the given pattern, e.g., '/admin' matches /admin.html too.
+the given pattern, e.g., ``'/admin'`` matches ``/admin.html`` too.
 
-Some major search engines allow an asterisk (\\*) as a wildcard to match any
-sequence of characters and a dollar sign (\\$) to match the end of the URL,
-e.g., '/\*.jpg$' can be used to match all jpeg files.
+Some major search engines allow an asterisk (``*``) as a wildcard to match any
+sequence of characters and a dollar sign (``$``) to match the end of the URL,
+e.g., ``'/*.jpg$'`` can be used to match all jpeg files.
 
 Support
 =======
