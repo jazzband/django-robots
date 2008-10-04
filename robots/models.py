@@ -22,10 +22,10 @@ class Url(models.Model):
     def __unicode__(self):
         return u"%s" % self.pattern
 
-    def save(self, force_insert=False, force_update=False):
+    def save(self, *args, **kwargs):
         if not self.pattern.startswith('/'):
             self.pattern = '/' + self.pattern
-        super(Url, self).save(force_insert, force_update)
+        super(Url, self).save(*args, **kwargs)
 
 class Rule(models.Model):
     """
