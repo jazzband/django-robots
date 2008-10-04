@@ -32,7 +32,7 @@ for dirpath, dirnames, filenames in os.walk(app_name):
             data_files.append(os.path.join(prefix, f))
 
 setup(name='django-'+app_name,
-      version='0.5.2',
+      version='0.5.3',
       description='Robots exclusion application for Django, complementing Sitemaps.',
       long_description=open('docs/overview.rst').read(),
       author='Jannis Leidel',
