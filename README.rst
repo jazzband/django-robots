@@ -12,4 +12,4 @@ directory.
 
 .. _robots exclusion protocol: http://www.robotstxt.org/robotstxt.html
 .. _Django: http://www.djangoproject.com/
-.. _Sitemap contrib app: http://www.djangoproject.com/documentation/sitemaps/
+.. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
