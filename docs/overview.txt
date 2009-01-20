@@ -103,6 +103,15 @@ Some major search engines allow an asterisk (``*``) as a wildcard to match any
 sequence of characters and a dollar sign (``$``) to match the end of the URL,
 e.g., ``'/*.jpg$'`` can be used to match all jpeg files.
 
+Caching
+=======
+
+You can optionally cache the generation of the ``robots.txt``. Add or change the ``ROBOTS_CACHE_TIMEOUT`` setting with a value in seconds in your Django settings file::
+
+    ROBOTS_CACHE_TIMEOUT = 60*60*24
+
+This tells Django to cache the ``robots.txt`` for 24 hours (86400 seconds). The default value is ``None`` (no caching).
+
 Support
 =======
 
