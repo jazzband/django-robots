@@ -8,7 +8,6 @@ setup(
     author='Jannis Leidel',
     author_email='jannis@leidel.info',
     url='http://code.google.com/p/django-robots/',
-    download_url='http://github.com/jezdez/django-dbtemplates/zipball/0.5.4',
     packages=['robots'],
     package_dir={'dbtemplates': 'dbtemplates'},
     classifiers=[
