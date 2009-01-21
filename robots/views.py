@@ -3,6 +3,7 @@ from django.template import loader, RequestContext
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.conf import settings
+from django.views.decorators.cache import cache_page
 
 from robots.models import Rule
 
@@ -34,3 +35,7 @@ def rules_list(request, template_name='robots/rule_list.html',
         'sitemap_url': sitemap_url,
     })
     return HttpResponse(t.render(c), status=status_code, mimetype=mimetype)
+
+ROBOTS_CACHE_TIMEOUT = getattr(settings, 'ROBOTS_CACHE_TIMEOUT', None)
+if ROBOTS_CACHE_TIMEOUT:
+    rules_list = cache_page(rules_list, ROBOTS_CACHE_TIMEOUT)
