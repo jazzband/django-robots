@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name='django-robots',
@@ -8,8 +8,15 @@ setup(
     author='Jannis Leidel',
     author_email='jannis@leidel.info',
     url='http://code.google.com/p/django-robots/',
-    packages=['robots'],
-    package_dir={'dbtemplates': 'dbtemplates'},
+    packages=find_packages(),
+    zip_safe=False,
+    package_dir={'robots': 'robots'},
+    package_data = {
+        'robots': [
+            'locale/*/LC_MESSAGES/*',
+            'templates/robots/*.html',
+        ],
+    },
     classifiers=[
       'Development Status :: 4 - Beta',
       'Environment :: Web Environment',
