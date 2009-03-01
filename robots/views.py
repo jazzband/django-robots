@@ -8,7 +8,7 @@ from django.views.decorators.cache import cache_page
 from robots.models import Rule
 
 USE_SITEMAP = getattr(settings, 'ROBOTS_USE_SITEMAP', True)
-SITEMAP_URL = getattr(settings,'ROBOTS_SITEMAP_URL', False)
+SITEMAP_URL = getattr(settings,'ROBOTS_SITEMAP_URL', None)
 
 def rules_list(request, template_name='robots/rule_list.html', 
         mimetype='text/plain', status_code=200):
