@@ -46,6 +46,11 @@ change the ``ROBOTS_USE_SITEMAP`` setting in your Django settings file to::
 
     ROBOTS_USE_SITEMAP = False
 
+In case you want to use a specific sitemap URL instead of the one that is
+automatically discovered, change the ``ROBOTS_SITEMAP_URL`` setting to::
+
+    ROBOTS_SITEMAP_URL = http://www.example.com/sitemap.xml
+
 .. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
 
 Initialization

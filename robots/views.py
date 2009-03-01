@@ -8,6 +8,7 @@ from django.views.decorators.cache import cache_page
 from robots.models import Rule
 
 USE_SITEMAP = getattr(settings, 'ROBOTS_USE_SITEMAP', True)
+SITEMAP_URL = getattr(settings,'ROBOTS_SITEMAP_URL', False)
 
 def rules_list(request, template_name='robots/rule_list.html', 
         mimetype='text/plain', status_code=200):
@@ -17,13 +18,16 @@ def rules_list(request, template_name='robots/rule_list.html',
     """
     scheme = request.is_secure() and 'https' or 'http'
     current_site = Site.objects.get_current()
-    try:
-        sitemap_url = reverse('django.contrib.sitemaps.views.index')
-    except NoReverseMatch:
+    if SITEMAP_URL:
+        sitemap_url = SITEMAP_URL
+    else:
         try:
-            sitemap_url = reverse('django.contrib.sitemaps.views.sitemap')
+            sitemap_url = reverse('django.contrib.sitemaps.views.index')
         except NoReverseMatch:
-            sitemap_url = None
+            try:
+                sitemap_url = reverse('django.contrib.sitemaps.views.sitemap')
+            except NoReverseMatch:
+                sitemap_url = None
     if sitemap_url is not None and USE_SITEMAP:
         sitemap_url = "%s://%s%s" % (scheme, current_site.domain, sitemap_url)
     rules = Rule.objects.filter(sites=current_site)
