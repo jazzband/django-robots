@@ -53,7 +53,7 @@ class Rule(models.Model):
     sites = models.ManyToManyField(Site)
 
     crawl_delay = models.DecimalField(_('crawl delay'), blank=True, null=True,
-                                      max_digits=3, decimal_places=1, help_text=(
+                                      max_digits=3, decimal_places=1, help_text=_(
                                       "Between 0.1 and 99.0. This field is "
                                       "supported by some search engines and "
                                       "defines the delay between successive "
