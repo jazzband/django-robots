@@ -18,7 +18,7 @@ Installation
 
 Get the source from the application site at::
 
-    http://code.google.com/p/django-robots/
+    http://bitbucket.org/jezdez/django-robots/
 
 To install the sitemap app, follow these steps:
 
@@ -123,7 +123,7 @@ The default value is ``None`` (no caching).
 Support
 =======
 
-Please leave your `questions and problems`_ on the `designated Google Code site`_.
+Please leave your `questions and problems`_ on the `designated Bitbucket site`_.
 
-.. _designated Google Code site: http://code.google.com/p/django-robots/
-.. _questions and problems: http://code.google.com/p/django-robots/issues/list
+.. _designated Bitbucket site: http://bitbucket.org/jezdez/django-robots/
+.. _questions and problems: http://bitbucket.org/jezdez/django-robots/issues/

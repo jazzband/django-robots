@@ -12,4 +12,4 @@ Subversion checkout of Django. You can obtain Python from
 http://www.python.org/ and Django from http://www.djangoproject.com/.
 
 This install notice was bluntly stolen from James Bennett's registration
-package, http://code.google.com/p/django-registration/
+package.

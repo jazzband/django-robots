@@ -7,7 +7,7 @@ setup(
     long_description=open('docs/overview.txt').read(),
     author='Jannis Leidel',
     author_email='jannis@leidel.info',
-    url='http://code.google.com/p/django-robots/',
+    url='http://bitbucket.org/jezdez/django-robots/',
     packages=find_packages(),
     zip_safe=False,
     package_dir={'robots': 'robots'},
