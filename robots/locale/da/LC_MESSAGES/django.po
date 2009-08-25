@@ -1,0 +1,114 @@
+# django-robots in Danish.
+# django-robots på Dansk.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Michael Lind Mortensen <illio@cs.au.dk>, 2009.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-22 19:04+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:11
+msgid "URL patterns"
+msgstr "URL mønstre"
+
+#: admin.py:12
+msgid "Advanced options"
+msgstr "Avancerede indstillinger"
+
+#: forms.py:12
+msgid "Please specify at least one allowed or dissallowed URL."
+msgstr "Venligst specificer mindst én tilladt eller ikke tilladt URL."
+
+#: models.py:11
+msgid "pattern"
+msgstr "mønster"
+
+#: models.py:12
+msgid ""
+"Case-sensitive. A missing trailing slash does also match to files which "
+"start with the name of the pattern, e.g., '/admin' matches /admin.html too. "
+"Some major search engines allow an asterisk (*) as a wildcard and a dollar "
+"sign ($) to match the end of the URL, e.g., '/*.jpg$'."
+msgstr ""
+"Case-sensitive. En manglende slut-skråstreg matcher også filer der "
+"starter med navnet på mønstret, f.eks. '/admin' matcher også /admin.html. "
+"Nogle store søgemaskiner tillader brugen af asterisk (*) som et wildcard og et dollar "
+"tegn ($) til at mache slutningen af URL'en, f.eks., '/*.jpg$'."
+
+#: models.py:19 models.py:20
+msgid "url"
+msgstr "url"
+
+#: models.py:37
+msgid "robot"
+msgstr "robot"
+
+#: models.py:38
+msgid ""
+"This should be a user agent string like 'Googlebot'. Enter an asterisk (*) "
+"for all user agents. For a full list look at the <a target=_blank "
+"href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
+msgstr ""
+"Dette bør være en user agent streng ligesom 'Googlebot'. Skriv en asterisk (*) "
+"for at indikere alle user agents. For en komplet liste, kig på <a target=_blank "
+"href='http://www.robotstxt.org/db.html'> databasen af Web Robotter</a>."
+
+#: models.py:46
+msgid "The URLs which are allowed to be accessed by bots."
+msgstr "URL'erne der er tilladt at tilgå af bots."
+
+#: models.py:50
+msgid "The URLs which are not allowed to be accessed by bots."
+msgstr "URL'erne der ikke er tilladt at tilgå af bots."
+
+#: models.py:55
+msgid "crawl delay"
+msgstr "crawl-delay"
+
+#: models.py:57
+msgid ""
+"Between 0.1 and 99.0. This field is supported by some search engines and "
+"defines the delay between successive crawler accesses in seconds. If the "
+"crawler rate is a problem for your server, you can set the delay up to 5 or "
+"10 or a comfortable value for your server, but it's suggested to start with "
+"small values (0.5-1), and increase as needed to an acceptable value for your "
+"server. Larger delay values add more delay between successive crawl accesses "
+"and decrease the maximum crawl rate to your web server."
+msgstr ""
+"Mellem 0.1 og 99.0. Dette felt er understøttet af nogle søgemaskiner og "
+"definerer et delay imellem crawler-adgange i sekunder. Hvis "
+"crawler-raten er et problem for din server, så kan du sætte delayet op til 5 eller "
+"10 eller en anden behagelig værdi for din server. Men det anbefales at starte med "
+"lave værdier (0.5-1), og så hæve disse efter behov til et acceptabelt niveau for din "
+"server. Større delay-værdier tilføjer mere delay imellem crawl-adgange "
+"og mindsker den maksimale crawl-rate til din webserver."
+
+#: models.py:73
+msgid "rule"
+msgstr "regel"
+
+#: models.py:74
+msgid "rules"
+msgstr "regler"
+
+#: models.py:80 models.py:84
+msgid "and"
+msgstr "og"
+
+#: models.py:81
+msgid "allowed"
+msgstr "tilladt"
+
+#: models.py:85
+msgid "disallowed"
+msgstr "ikke tilladt"
