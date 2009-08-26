@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: robots\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-27 18:36+0200\n"
+"POT-Creation-Date: 2009-08-26 12:57+0200\n"
 "PO-Revision-Date: 2008-08-21 18:55+0200\n"
 "Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
 "Language-Team: Jannis Leidel <jannis@leidel.info>\n"
@@ -74,6 +74,17 @@ msgstr "Die URLs die von Robots nicht abgefragt werden dürfen."
 #: models.py:55
 msgid "crawl delay"
 msgstr "Abfrageabstand"
+
+#: models.py:57
+msgid ""
+"Between 0.1 and 99.0. This field is supported by some search engines and "
+"defines the delay between successive crawler accesses in seconds. If the "
+"crawler rate is a problem for your server, you can set the delay up to 5 or "
+"10 or a comfortable value for your server, but it's suggested to start with "
+"small values (0.5-1), and increase as needed to an acceptable value for your "
+"server. Larger delay values add more delay between successive crawl accesses "
+"and decrease the maximum crawl rate to your web server."
+msgstr ""
 
 #: models.py:73
 msgid "rule"

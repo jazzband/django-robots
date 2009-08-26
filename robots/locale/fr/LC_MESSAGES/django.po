@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: robots\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-04 11:54+0200\n"
+"POT-Creation-Date: 2009-08-26 12:57+0200\n"
 "PO-Revision-Date: 2008-08-09 22:45+0100\n"
 "Last-Translator: Roland Frédéric <frederic.roland@creativeconvergence.be>\n"
 "Language-Team: Frédéric Roland <frederic.roland@creativeconvergence.be>\n"
@@ -76,6 +76,17 @@ msgstr "Il n'est pas permis aux robots web d'accéder à ces URLs."
 #: models.py:55
 msgid "crawl delay"
 msgstr "délai de parcours du site"
+
+#: models.py:57
+msgid ""
+"Between 0.1 and 99.0. This field is supported by some search engines and "
+"defines the delay between successive crawler accesses in seconds. If the "
+"crawler rate is a problem for your server, you can set the delay up to 5 or "
+"10 or a comfortable value for your server, but it's suggested to start with "
+"small values (0.5-1), and increase as needed to an acceptable value for your "
+"server. Larger delay values add more delay between successive crawl accesses "
+"and decrease the maximum crawl rate to your web server."
+msgstr ""
 
 #: models.py:73
 msgid "rule"
