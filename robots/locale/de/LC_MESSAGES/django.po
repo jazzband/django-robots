@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: robots\n"
@@ -32,17 +32,8 @@ msgid "pattern"
 msgstr "Muster"
 
 #: models.py:12
-msgid ""
-"Case-sensitive. A missing trailing slash does also match to files which "
-"start with the name of the pattern, e.g., '/admin' matches /admin.html too. "
-"Some major search engines allow an asterisk (*) as a wildcard and a dollar "
-"sign ($) to match the end of the URL, e.g., '/*.jpg$'."
-msgstr ""
-"Groß-/Kleinschreibung beachten. Wenn der abschließende Schrägstrich fehlt, "
-"werden auch die Dateien erkannt, die mit dem Muster beginnen, also zum "
-"Beispiel '/admin' trifft auch auf /admin.html zu. Einige größere "
-"Suchmaschinen erlauben eine Asterisk (*) als Wildcard und ein Dollar-Zeichen "
-"($) um das Ende einer URL zu beschreiben, z.B. '/*.jpg$'."
+msgid "Case-sensitive. A missing trailing slash does also match to files which start with the name of the pattern, e.g., '/admin' matches /admin.html too. Some major search engines allow an asterisk (*) as a wildcard and a dollar sign ($) to match the end of the URL, e.g., '/*.jpg$'."
+msgstr "Groß-/Kleinschreibung beachten. Wenn der abschließende Schrägstrich fehlt, werden auch die Dateien erkannt, die mit dem Muster beginnen, also zum Beispiel '/admin' trifft auch auf /admin.html zu. Einige größere Suchmaschinen erlauben eine Asterisk (*) als Wildcard und ein Dollar-Zeichen ($) um das Ende einer URL zu beschreiben, z.B. '/*.jpg$'."
 
 #: models.py:19 models.py:20
 msgid "url"
@@ -53,15 +44,8 @@ msgid "robot"
 msgstr "Robot"
 
 #: models.py:38
-msgid ""
-"This should be a user agent string like 'Googlebot'. Enter an asterisk (*) "
-"for all user agents. For a full list look at the <a target=_blank "
-"href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
-msgstr ""
-"Das sollte ein User Agent sein wie 'Googlebot'. Ein Asterisk (*) sollte für "
-"alle User Agents eingegeben werden. Eine lange Liste mit User Agents ist die "
-"<a target=_blank href='http://www.robotstxt.org/wc/active/html/index."
-"html'>Database of Web Robots</a>."
+msgid "This should be a user agent string like 'Googlebot'. Enter an asterisk (*) for all user agents. For a full list look at the <a target=_blank href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
+msgstr "Das sollte ein User Agent sein wie 'Googlebot'. Ein Asterisk (*) sollte für alle User Agents eingegeben werden. Eine lange Liste mit User Agents ist die <a target=_blank href='http://www.robotstxt.org/wc/active/html/index.html'>Database of Web Robots</a>."
 
 #: models.py:46
 msgid "The URLs which are allowed to be accessed by bots."
@@ -74,17 +58,6 @@ msgstr "Die URLs die von Robots nicht abgefragt werden dürfen."
 #: models.py:55
 msgid "crawl delay"
 msgstr "Abfrageabstand"
-
-#: models.py:57
-msgid ""
-"Between 0.1 and 99.0. This field is supported by some search engines and "
-"defines the delay between successive crawler accesses in seconds. If the "
-"crawler rate is a problem for your server, you can set the delay up to 5 or "
-"10 or a comfortable value for your server, but it's suggested to start with "
-"small values (0.5-1), and increase as needed to an acceptable value for your "
-"server. Larger delay values add more delay between successive crawl accesses "
-"and decrease the maximum crawl rate to your web server."
-msgstr ""
 
 #: models.py:73
 msgid "rule"
@@ -105,3 +78,7 @@ msgstr "erlaubt"
 #: models.py:85
 msgid "disallowed"
 msgstr "nicht erlaubt"
+
+#: models.py:57
+msgid "Between 0.1 and 99.0. This field is supported by some search engines and defines the delay between successive crawler accesses in seconds. If the crawler rate is a problem for your server, you can set the delay up to 5 or 10 or a comfortable value for your server, but it's suggested to start with small values (0.5-1), and increase as needed to an acceptable value for your server. Larger delay values add more delay between successive crawl accesses and decrease the maximum crawl rate to your web server."
+msgstr "Zwischen 0.1 und 99.0. Dieses Feld wird von einigen Suchmaschinen unterstützt und definiert die Dauer der Verzögerung zwischen zwei aufeinanderfolgenden Anfragen des Crawlers. Sollte die Anzahl der Zugriffe durch Crawler ein Problem für Ihren Server darstellen, können Sie den Wert auf 5 oder 10, oder jeden anderen sinnvollen Wert heraufsetzen. Es ist allerdings empfohlen, mit kleinen Werten (0.5-1) anzufangen und dann langsam auf einen akzeptablen Wert zu erhöhen. Größere Abstände zwischen den Anfragen verringern die Anzahl der möglichen erfolgreichen Anfragen und damit die Anzahl aller Anfragen."
