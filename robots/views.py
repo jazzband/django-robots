@@ -29,7 +29,7 @@ def rules_list(request, template_name='robots/rule_list.html',
     if sitemap_url is not None and settings.USE_SITEMAP:
         sitemap_url = "%s://%s%s" % (scheme, current_site.domain, sitemap_url)
     rules = Rule.objects.filter(sites=current_site)
-    if not rules.count():
+    if not rules.count() and sitemap_url is None:
         status_code = 404
     t = loader.get_template(template_name)
     c = RequestContext(request, {
