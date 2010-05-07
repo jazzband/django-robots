@@ -10,7 +10,6 @@ setup(
     url='http://bitbucket.org/jezdez/django-robots/',
     packages=find_packages(),
     zip_safe=False,
-    package_dir={'robots': 'robots'},
     package_data = {
         'robots': [
             'locale/*/LC_MESSAGES/*',
