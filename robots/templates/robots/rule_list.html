@@ -6,4 +6,6 @@
 {% endif %}{% endfor %}{% else %}User-agent: *
 Disallow:
 {% endif %}
-{% if sitemap_url %}Sitemap: {{ sitemap_url }}{% endif %}
+
+{% for sitemap_url in sitemap_urls %}Sitemap: {{ sitemap_url }}
+{% endfor %}
