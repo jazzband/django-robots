@@ -17,6 +17,7 @@ def rules_list(request, template_name='robots/rule_list.html',
     scheme = request.is_secure() and 'https' or 'http'
     current_site = Site.objects.get_current()
 
+    sitemap_url = settings.SITEMAP_URL
     sitemap_urls = settings.SITEMAP_URLS
 
     if not sitemap_urls and settings.USE_SITEMAP:
@@ -31,7 +32,8 @@ def rules_list(request, template_name='robots/rule_list.html',
                 pass
 
         if sitemap_url is not None:
-            sitemap_urls.append("%s://%s%s" % (scheme, current_site.domain, sitemap_url))
+            sitemap_url = "%s://%s%s" % (scheme, current_site.domain, sitemap_url)
+            sitemap_urls.append(sitemap_url)
 
     rules = Rule.objects.filter(sites=current_site)
 
@@ -41,6 +43,7 @@ def rules_list(request, template_name='robots/rule_list.html',
     t = loader.get_template(template_name)
     c = RequestContext(request, {
         'rules': rules,
+        'sitemap_url': sitemap_url, # for old templates
         'sitemap_urls': sitemap_urls,
     })
     return HttpResponse(t.render(c), status=status_code, mimetype=mimetype)
