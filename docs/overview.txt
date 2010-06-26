@@ -46,10 +46,12 @@ change the ``ROBOTS_USE_SITEMAP`` setting in your Django settings file to::
 
     ROBOTS_USE_SITEMAP = False
 
-In case you want to use a specific sitemap URL instead of the one that is
-automatically discovered, change the ``ROBOTS_SITEMAP_URL`` setting to::
+In case you want to use specific sitemap URLs instead of the one that is
+automatically discovered, change the ``ROBOTS_SITEMAP_URLS`` setting to::
 
-    ROBOTS_SITEMAP_URL = http://www.example.com/sitemap.xml
+    ROBOTS_SITEMAP_URLS = [
+        http://www.example.com/sitemap.xml,
+    ]
 
 .. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
 
@@ -91,7 +93,7 @@ If no rule exists it automatically allows every web robot access to every URL.
 Please have a look at the `database of web robots`_ for a full list of
 existing web robots user agent strings.
 
-.. _robots exclusion protocol: http://www.robotstxt.org/robotstxt.html
+.. _robots exclusion protocol: http://en.wikipedia.org/wiki/Robots_exclusion_standard
 .. _'sites' framework: http://www.djangoproject.com/documentation/sites/
 .. _database of web robots: http://www.robotstxt.org/db.html
 
