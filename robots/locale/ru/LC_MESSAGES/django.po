@@ -1,25 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# alekam <alex@kamedov.ru>, 2011
+# Jannis Leidel <jannis@leidel.info>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: django-robots\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-20 17:29+0200\n"
-"PO-Revision-Date: 2011-02-08 11:12+0000\n"
-"Last-Translator: Jannis <jannis@leidel.info>\n"
+"PO-Revision-Date: 2011-03-22 15:24+0000\n"
+"Last-Translator: alekam <alex@kamedov.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: admin.py:11
 msgid "URL patterns"
-msgstr "Шаблон URL"
+msgstr "Шаблоны URL"
 
 #: admin.py:12
 msgid "Advanced options"
@@ -27,27 +28,42 @@ msgstr "Расширенные настройки"
 
 #: forms.py:12
 msgid "Please specify at least one allowed or dissallowed URL."
-msgstr "Укажите как минимум один URL (неважно разрешенный или нет)"
+msgstr "Укажите как минимум один URL-адрес (неважно разрешенный или нет)"
 
 #: models.py:11
 msgid "pattern"
 msgstr "шаблон"
 
 #: models.py:12
-msgid "Case-sensitive. A missing trailing slash does also match to files which start with the name of the pattern, e.g., '/admin' matches /admin.html too. Some major search engines allow an asterisk (*) as a wildcard and a dollar sign ($) to match the end of the URL, e.g., '/*.jpg$'."
-msgstr "Учитывается регистр. Если не указан символ конца строки, считается что под шаблон попадут все файлы, путь к которым начинается с таких же символов. Например: под шаблон \"/admin\" так же попадет \"/admin.html\"."
+msgid ""
+"Case-sensitive. A missing trailing slash does also match to files which "
+"start with the name of the pattern, e.g., '/admin' matches /admin.html too. "
+"Some major search engines allow an asterisk (*) as a wildcard and a dollar "
+"sign ($) to match the end of the URL, e.g., '/*.jpg$'."
+msgstr ""
+"Внимание: учитывается регистр!<br />Если в конце пропущен слэш, то под "
+"шаблон попадут все файлы, путь к которым начинается с таких же символов. "
+"Например: под шаблон \"/admin\" так же попадет \"/admin.html\".<br />Часть "
+"поисковых систем понимают звездочку (*) как произвольное количество любых "
+"символов и знак доллара ($) как символ конца URL. Например: \"/*.jpg$\""
 
 #: models.py:19 models.py:20
 msgid "url"
-msgstr ""
+msgstr "URL-адрес"
 
 #: models.py:37
 msgid "robot"
 msgstr "робот"
 
 #: models.py:38
-msgid "This should be a user agent string like 'Googlebot'. Enter an asterisk (*) for all user agents. For a full list look at the <a target=_blank href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
-msgstr "Название робота (User agent). Введите звездочку (*) для применения правил ко всем роботов. Полный список можно посмотреть в <a target=_blank href='http://www.robotstxt.org/db.html'>базе данных веб-ботов</a>."
+msgid ""
+"This should be a user agent string like 'Googlebot'. Enter an asterisk (*) "
+"for all user agents. For a full list look at the <a target=_blank "
+"href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
+msgstr ""
+"Название робота (User agent). Введите звездочку (*) для применения правил ко"
+" всем роботов. Полный список можно посмотреть в <a target=_blank "
+"href='http://www.robotstxt.org/db.html'>базе данных веб-ботов</a>."
 
 #: models.py:46
 msgid "The URLs which are allowed to be accessed by bots."
@@ -55,23 +71,38 @@ msgstr "URL адреса разрешенные для индексации по
 
 #: models.py:50
 msgid "The URLs which are not allowed to be accessed by bots."
-msgstr "URL адреса запрещенные для индексации поисковыми роботами."
+msgstr "URL-адреса запрещенные для индексации поисковыми роботами."
 
 #: models.py:55
 msgid "crawl delay"
 msgstr "частота обновления"
 
 #: models.py:57
-msgid "Between 0.1 and 99.0. This field is supported by some search engines and defines the delay between successive crawler accesses in seconds. If the crawler rate is a problem for your server, you can set the delay up to 5 or 10 or a comfortable value for your server, but it's suggested to start with small values (0.5-1), and increase as needed to an acceptable value for your server. Larger delay values add more delay between successive crawl accesses and decrease the maximum crawl rate to your web server."
-msgstr "Введите значение между 0.1 и 99.0. Этот параметр поддерживается некоторыми поисковыми системами и определяет задержку в секундах до следующего запроса робота. Если робот обнаруживает проблемы на вашем сервер, вы можите установить задержку от 5, 10 или более подходяще значение для вашего сервера, но лучше начинать с небольших значений (0.5-1), и постепенно увеличивать до достижения оптимальных значений для вашего сервера.  Большие значения увеличивают время выгрузки роботом вашего сайта и могут отрицательно влиять на ваш рейтинг в данной системе."
+msgid ""
+"Between 0.1 and 99.0. This field is supported by some search engines and "
+"defines the delay between successive crawler accesses in seconds. If the "
+"crawler rate is a problem for your server, you can set the delay up to 5 or "
+"10 or a comfortable value for your server, but it's suggested to start with "
+"small values (0.5-1), and increase as needed to an acceptable value for your"
+" server. Larger delay values add more delay between successive crawl "
+"accesses and decrease the maximum crawl rate to your web server."
+msgstr ""
+"Введите значение между 0.1 и 99.0. Этот параметр поддерживается некоторыми "
+"поисковыми системами и определяет задержку в секундах до следующего запроса "
+"робота. Если робот обнаруживает проблемы на вашем сервер, вы можите "
+"установить задержку от 5, 10 или более подходяще значение для вашего "
+"сервера, но лучше начинать с небольших значений (0.5-1), и постепенно "
+"увеличивать до достижения оптимальных значений для вашего сервера.  Большие "
+"значения увеличивают время выгрузки роботом вашего сайта и могут "
+"отрицательно влиять на ваш рейтинг в данной системе."
 
 #: models.py:73
 msgid "rule"
-msgstr "правило"
+msgstr "правило индексации"
 
 #: models.py:74
 msgid "rules"
-msgstr "правила"
+msgstr "правила индексации"
 
 #: models.py:80 models.py:84
 msgid "and"
@@ -79,8 +110,10 @@ msgstr "и"
 
 #: models.py:81
 msgid "allowed"
-msgstr "разрешено"
+msgstr "разрешенные URL"
 
 #: models.py:85
 msgid "disallowed"
-msgstr "запрещено"
+msgstr "запрещенные URL"
+
+
