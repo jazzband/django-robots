@@ -34,7 +34,7 @@ def rules_list(request, template_name='robots/rule_list.html',
         if sitemap_url is not None:
             sitemap_url = "%s://%s%s" % (scheme, current_site.domain, sitemap_url)
             sitemap_urls.append(sitemap_url)
-
+            
     rules = Rule.objects.filter(sites=current_site)
 
     if not rules.count() and not sitemap_urls:
@@ -45,6 +45,7 @@ def rules_list(request, template_name='robots/rule_list.html',
         'rules': rules,
         'sitemap_url': sitemap_url, # for old templates
         'sitemap_urls': sitemap_urls,
+        'host': current_site.domain if settings.USE_HOST else None,
     })
     return HttpResponse(t.render(c), status=status_code, mimetype=mimetype)
 
