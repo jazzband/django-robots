@@ -43,14 +43,16 @@ class Rule(models.Model):
                              "'> database of Web Robots</a>."))
 
     allowed = models.ManyToManyField(Url, blank=True, related_name="allowed",
+                                     verbose_name=_('allowed'),
                                      help_text=_("The URLs which are allowed "
                                                  "to be accessed by bots."))
 
     disallowed = models.ManyToManyField(Url, blank=True, related_name="disallowed",
+                                        verbose_name=_('disallowed'),
                                         help_text=_("The URLs which are not "
                                                     "allowed to be accessed "
                                                     "by bots."))
-    sites = models.ManyToManyField(Site)
+    sites = models.ManyToManyField(Site, verbose_name=_('sites'))
 
     crawl_delay = models.DecimalField(_('crawl delay'), blank=True, null=True,
                                       max_digits=3, decimal_places=1, help_text=_(

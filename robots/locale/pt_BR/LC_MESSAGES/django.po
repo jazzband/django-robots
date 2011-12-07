@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# tim <tim@tryphon.org>, 2011.
+#   <hersonls@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: django-robots\n"
@@ -15,24 +15,24 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: admin.py:11
 msgid "URL patterns"
-msgstr "formats d'URL"
+msgstr "Padrões de URL"
 
 #: admin.py:12
 msgid "Advanced options"
-msgstr "Options avancées"
+msgstr "Opções avançadas"
 
 #: forms.py:12
 msgid "Please specify at least one allowed or dissallowed URL."
-msgstr "Veuillez spécifier au moins une URL autorisée ou non."
+msgstr "Por favor, especifique pelo menos uma URL permitida ou não permitida."
 
 #: models.py:11
 msgid "pattern"
-msgstr "pattern"
+msgstr "padrão"
 
 #: models.py:12
 msgid ""
@@ -41,12 +41,11 @@ msgid ""
 "Some major search engines allow an asterisk (*) as a wildcard and a dollar "
 "sign ($) to match the end of the URL, e.g., '/*.jpg$'."
 msgstr ""
-"La casse est significative. Une barre oblique manquant en fin de chaine fera"
-" aussi correspondre les fichiers qui commencent avec le nom de la pattern, "
-"par exemple  '/admin' correspondra aussi à /admin.html. Certains moteurs de "
-"recherche important permettent aussi d'utiliser l'astérisque (*) en temps "
-"que joker et un signe dollar ($) pour correspondre à la fin de l'URL, par "
-"exemple, '/*.jpg$'."
+"Case-sensitive. A falta de uma barra também corresponde a arquivos que "
+"começam com o nome do padrão, por exemplo, '/admin' corresponde também a "
+"/admin.html. Alguns dos grandes sites de buscas permitem um asterisco (*) "
+"como curinga e um símbolo dólar ($) corresponder ao fim da URL, por exemplo,"
+" '/*.jpg$'."
 
 #: models.py:19 models.py:20
 msgid "url"
@@ -54,7 +53,7 @@ msgstr "url"
 
 #: models.py:37
 msgid "robot"
-msgstr "robot"
+msgstr "robô"
 
 #: models.py:38
 msgid ""
@@ -62,27 +61,26 @@ msgid ""
 "for all user agents. For a full list look at the <a target=_blank "
 "href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
 msgstr ""
-"Ceci doit être une chaine user agent comme par exemple 'Googlebot'. Entrez "
-"une astérisque (*) pour tout les user agents. Pour une liste complète "
-"réfèrez-vous à la <a target=_blank "
-"href='http://www.robotstxt.org/wc/active/html/index.html'>base de données "
-"des Web Robots</a>."
+"Este deve ser uma string com o agente de usuário, assim como 'Googlebot'. "
+"Insira um asterisco (*) para todos os agentes. Para uma lista completa "
+"consulte no <a target=_blank href='http://www.robotstxt.org/db.html'> banco "
+"de dados de Robôs Web."
 
 #: models.py:46 models.py:83
 msgid "allowed"
-msgstr "permis"
+msgstr "permitido"
 
 #: models.py:47
 msgid "The URLs which are allowed to be accessed by bots."
-msgstr "Il est permis aux robots web d'accéder à ces URLs."
+msgstr "As URLs que são permitidos para serem acessados ​​por robôs."
 
 #: models.py:51 models.py:87
 msgid "disallowed"
-msgstr "interdit"
+msgstr "não permitido"
 
 #: models.py:52
 msgid "The URLs which are not allowed to be accessed by bots."
-msgstr "Il n'est pas permis aux robots web d'accéder à ces URLs."
+msgstr "As URLs que não são permitidos para serem acessados ​​por robôs."
 
 #: models.py:55
 msgid "sites"
@@ -90,7 +88,7 @@ msgstr ""
 
 #: models.py:57
 msgid "crawl delay"
-msgstr "délai de parcours du site"
+msgstr "atraso de rastreio"
 
 #: models.py:59
 msgid ""
@@ -102,25 +100,25 @@ msgid ""
 " server. Larger delay values add more delay between successive crawl "
 "accesses and decrease the maximum crawl rate to your web server."
 msgstr ""
-"Entre 0.1 et 99.0. Ce champ est reconnu par certains moteur de recherche "
-"comme le délai entre 2 accès du robot. Si la vitesse d'exploration du robot "
-"est un problème pour vous, vous pouvez configurer cette valeur entre 5 ou "
-"10, ou toute autre valeur acceptable par votre serveur, mais il est suggéré "
-"que vous commenciez par une petite valeur (0.5 ou 1) et de l'augmenter si "
-"besoin. Un long délai entre chaque passage du robot augmente le délai entre "
-"chaque passage et diminue la vitesse d'exploration maximale du robot sur "
-"votre serveur web."
+"Entre 0.1 e 99.0. Este campo é suportado por alguns motores de busca e "
+"define o intervalo entre sucessivos acessos pelo rastreador em segundos. Se "
+"a taxa de rastreador é um problema para o seu servidor, você pode definir o "
+"atraso de até 5 ou 10 ou um valor confortável para o seu servidor, mas é "
+"sugerido começar com valores pequenos (0,5-1), e aumentar conforme "
+"necessário, para um valor aceitável para o seu servidor. Maiores valores de "
+"atraso adicionam mais demora entre sucessivos acessos de rastreamento e "
+"diminui a taxa máxima de rastreamento para o seu servidor web."
 
 #: models.py:75
 msgid "rule"
-msgstr "rêgle"
+msgstr "regra"
 
 #: models.py:76
 msgid "rules"
-msgstr "rêgles"
+msgstr "regras"
 
 #: models.py:82 models.py:86
 msgid "and"
-msgstr "et"
+msgstr "e"
 
 

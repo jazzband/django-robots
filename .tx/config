@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.net
+
+[django-robots.main]
+file_filter = robots/locale/<lang>/LC_MESSAGES/django.po
+source_file = robots/locale/en/LC_MESSAGES/django.po
+source_lang = en
+
