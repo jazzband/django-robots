@@ -97,6 +97,16 @@ existing web robots user agent strings.
 .. _'sites' framework: http://www.djangoproject.com/documentation/sites/
 .. _database of web robots: http://www.robotstxt.org/db.html
 
+Host directive
+=====
+By default a ``Host`` statement is automatically added to the resulting 
+robots.txt to avoid mirrors and select the main website properly. 
+
+To change the default behaviour to omit the inclusion of host directive,
+change the ``ROBOTS_USE_HOST`` setting in your Django settings file to::
+
+    ROBOTS_USE_HOST = False
+
 URLs
 ====
 
