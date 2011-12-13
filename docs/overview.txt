@@ -61,7 +61,7 @@ Initialization
 To activate robots.txt generation on your Django site, add this line to your
 URLconf_::
 
-    (r'^robots.txt$', include('robots.urls')),
+    (r'^robots\.txt$', include('robots.urls')),
 
 This tells Django to build a robots.txt when a robot accesses ``/robots.txt``.
 Then, please sync your database to create the necessary tables and create
@@ -125,7 +125,7 @@ The default value is ``None`` (no caching).
 Support
 =======
 
-Please leave your `questions and problems`_ on the `designated Bitbucket site`_.
+Please leave your `questions and problems`_ on the `designated Github site`_.
 
-.. _designated Bitbucket site: http://bitbucket.org/jezdez/django-robots/
-.. _questions and problems: http://bitbucket.org/jezdez/django-robots/issues/
+.. _designated Github site: https://github.com/jezdez/django-robots
+.. _questions and problems: https://github.com/jezdez/django-robots/issues
