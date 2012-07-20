@@ -18,7 +18,7 @@ Installation
 
 Get the source from the application site at::
 
-    http://bitbucket.org/jezdez/django-robots/
+    http://github.com/jezdez/django-robots/
 
 To install the sitemap app, follow these steps:
 
