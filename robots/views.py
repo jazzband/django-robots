@@ -37,9 +37,6 @@ def rules_list(request, template_name='robots/rule_list.html',
 
     rules = Rule.objects.filter(sites=current_site)
 
-    if not rules.count() and not sitemap_urls:
-        status_code = 404
-
     t = loader.get_template(template_name)
     c = RequestContext(request, {
         'rules': rules,
