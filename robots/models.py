@@ -3,18 +3,20 @@ from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
 
+
 class Url(models.Model):
     """
-    Defines a URL pattern for use with a robot exclusion rule. It's 
+    Defines a URL pattern for use with a robot exclusion rule. It's
     case-sensitive and exact, e.g., "/admin" and "/admin/" are different URLs.
     """
     pattern = models.CharField(_('pattern'), max_length=255, help_text=_(
                                "Case-sensitive. A missing trailing slash does al"
                                "so match to files which start with the name of "
                                "the pattern, e.g., '/admin' matches /admin.html "
-                               "too. Some major search engines allow an asterisk"  
+                               "too. Some major search engines allow an asterisk"
                                " (*) as a wildcard and a dollar sign ($) to "
                                "match the end of the URL, e.g., '/*.jpg$'."))
+
     class Meta:
         verbose_name = _('url')
         verbose_name_plural = _('url')
@@ -27,10 +29,11 @@ class Url(models.Model):
             self.pattern = '/' + self.pattern
         super(Url, self).save(*args, **kwargs)
 
+
 class Rule(models.Model):
     """
     Defines an abstract rule which is used to respond to crawling web robots,
-    using the robot exclusion standard, a.k.a. robots.txt. It allows or 
+    using the robot exclusion standard, a.k.a. robots.txt. It allows or
     disallows the robot identified by its user agent to access the given URLs.
     The Site contrib app is used to enable multiple robots.txt per instance.
     """
@@ -71,6 +74,7 @@ class Rule(models.Model):
                                       "successive crawl accesses and "
                                       "decrease the maximum crawl rate to "
                                       "your web server."))
+
     class Meta:
         verbose_name = _('rule')
         verbose_name_plural = _('rules')
