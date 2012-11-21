@@ -1,2 +1,2 @@
-VERSION = (0, 8, 2)
-__version__ = '.'.join(map(str, VERSION))
+# following PEP 386
+__version__ = "0.9"

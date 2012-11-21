@@ -1,16 +1,32 @@
+import re
+from os import path
 from setuptools import setup, find_packages
+
+
+def read(*parts):
+    return open(path.join(path.dirname(__file__), *parts)).read()
+
+
+def find_version(*file_paths):
+    version_file = read(*file_paths)
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                              version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError("Unable to find version string.")
+
 
 setup(
     name='django-robots',
-    version=__import__('robots').__version__,
+    long_description=read('docs', 'overview.txt'),
+    version=find_version('robots', '__init__.py'),
     description='Robots exclusion application for Django, complementing Sitemaps.',
-    long_description=open('docs/overview.txt').read(),
     author='Jannis Leidel',
     author_email='jannis@leidel.info',
-    url='http://github.com/jezdez/django-robots/',
+    url='https://github.com/jezdez/django-robots/',
     packages=find_packages(),
     zip_safe=False,
-    package_data = {
+    package_data={
         'robots': [
             'locale/*/LC_MESSAGES/*',
             'templates/robots/*.html',
