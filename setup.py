@@ -18,7 +18,7 @@ def find_version(*file_paths):
 
 setup(
     name='django-robots',
-    long_description=read('docs', 'overview.txt'),
+    long_description=read('docs', 'index.txt'),
     version=find_version('robots', '__init__.py'),
     description='Robots exclusion application for Django, complementing Sitemaps.',
     author='Jannis Leidel',
