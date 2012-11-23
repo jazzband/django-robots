@@ -125,6 +125,11 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
+0.9.1 (11/23/2012)
+------------------
+
+- Fixed argument signature in new class based view. Thanks, mkai.
+
 0.9 (11/21/2012)
 ----------------
 
