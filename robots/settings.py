@@ -5,6 +5,10 @@ from django.conf import settings
 SITEMAP_URLS = []
 SITEMAP_URLS.extend(getattr(settings, 'ROBOTS_SITEMAP_URLS', []))
 
+#: A list of one or more sitemaps views used to render sitemaps in the current project:
+SITEMAP_VIEWS = []
+SITEMAP_VIEWS.extend(getattr(settings, 'ROBOTS_SITEMAP_VIEWS', []))
+
 # For backwards-compatibility, we'll automatically add a single URL
 # to the list:
 SITEMAP_URL = getattr(settings, 'ROBOTS_SITEMAP_URL', None)
