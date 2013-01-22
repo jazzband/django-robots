@@ -24,5 +24,6 @@ setup(
       'Operating System :: OS Independent',
       'Programming Language :: Python',
       'Framework :: Django',
-    ]
+    ],
+    setup_requires = ['s3sourceuploader',],
 )
