@@ -23,10 +23,7 @@ def rules_list(request, template_name='robots/rule_list.html',
 
     if not sitemap_urls and settings.USE_SITEMAP:
         sitemap_url = None
-
-        if not sitemap_views:
-            sitemap_views = ['django.contrib.sitemaps.views.index', 'django.contrib.sitemaps.views.sitemap']
-
+        
         for sitemap_view in sitemap_views:
             try:
                 sitemap_url = reverse(sitemap_view)
