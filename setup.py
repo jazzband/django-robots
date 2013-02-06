@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='django-robots',
+    name='django-robots-pbs',
     version=__import__('robots').__version__,
     description='Robots exclusion application for Django, complementing Sitemaps.',
     long_description=open('docs/overview.txt').read(),
