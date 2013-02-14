@@ -18,7 +18,8 @@ def rules_list(request, template_name='robots/rule_list.html',
     current_site = Site.objects.get_current()
 
     sitemap_url = settings.SITEMAP_URL
-    sitemap_urls = settings.SITEMAP_URLS
+    # the shallow clone of the list ensures we don't alter the settings.SITEMAp_URLS
+    sitemap_urls = settings.SITEMAP_URLS[:]
     sitemap_views = settings.SITEMAP_VIEWS
 
     if not sitemap_urls and settings.USE_SITEMAP:
@@ -26,10 +27,9 @@ def rules_list(request, template_name='robots/rule_list.html',
         
         for sitemap_view in sitemap_views:
             try:
-                sitemap_url = reverse(sitemap_view)
-                if sitemap_url is not None:
-                    sitemap_url = "%s://%s%s" % (scheme, current_site.domain, sitemap_url)
-                    sitemap_urls.append(sitemap_url)
+                sitemap_slug = reverse(sitemap_view)
+                if sitemap_slug is not None:
+                    sitemap_urls.append("%s://%s%s" % (scheme, current_site.domain, sitemap_slug))
             except NoReverseMatch:
                 pass
 
