@@ -2,11 +2,14 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.template import loader, RequestContext
 from django.views.decorators.cache import cache_page
-
 from django.contrib.sites.models import Site
 
 from robots.models import Rule
 from robots import settings
+
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+
 
 def rules_list(request, template_name='robots/rule_list.html',
                mimetype='text/plain', status_code=200):
@@ -24,7 +27,7 @@ def rules_list(request, template_name='robots/rule_list.html',
 
     if not sitemap_urls and settings.USE_SITEMAP:
         sitemap_url = None
-        
+
         for sitemap_view in sitemap_views:
             try:
                 sitemap_slug = reverse(sitemap_view)
@@ -42,6 +45,28 @@ def rules_list(request, template_name='robots/rule_list.html',
         'sitemap_urls': sitemap_urls,
     })
     return HttpResponse(t.render(c), status=status_code, mimetype=mimetype)
+
+
+@login_required
+def site_patterns(request):
+    from robots.admin import get_choices
+    from django.forms import SelectMultiple
+    from django.utils.safestring import mark_safe
+
+    if not request.is_ajax():
+        return HttpResponseForbidden()
+    site_id = request.GET.get('site_id')
+    protocol = 'https' if request.is_secure() else 'http'
+    site = Site.objects.get(pk=site_id)
+    choices = get_choices(site, protocol)
+
+    widget = SelectMultiple()
+    rule = site.rule_set.all()
+    attrs = {'id': u'id_disallowed', 'class': 'selectfilter'}
+    value = rule[0].disallowed.values_list('id', flat=True) if rule else []
+    widget.choices = choices
+    output = [widget.render('disallowed', value, attrs=attrs, choices=())]
+    return HttpResponse(mark_safe(u''.join(output)))
 
 if settings.CACHE_TIMEOUT:
     rules_list = cache_page(rules_list, settings.CACHE_TIMEOUT)

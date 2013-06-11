@@ -3,16 +3,17 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
 
 from robots.models import Url, Rule
-from robots.forms import RuleAdminForm
-from django.forms import Select
-from django.contrib.admin.widgets import FilteredSelectMultiple
-#from django.utils.functional import wraps
+from robots.widgets import CustomSitesSelector, CustomDisallowsSelector
+from django.utils.functional import wraps
 from django import forms
+from django.forms.util import ErrorList
+from django.contrib.sites.models import Site
+
 
 ID_PREFIX = 'disallowed'
 
+
 class RuleAdmin(admin.ModelAdmin):
-#    form = RuleAdminForm
     fieldsets = (
         (None, {'fields': ('sites', )}),
         (_('URL patterns'), {
@@ -29,43 +30,6 @@ class RuleAdmin(admin.ModelAdmin):
     list_display_links = ('site_name', 'site_domain')
     search_fields = ('sites__name', 'sites__domain')
 
-    def get_form(self, request, obj=None, **kwargs):
-        form = super(RuleAdmin, self).get_form(request, obj)
-
-        def clean_disallowed(self):
-            if not self.cleaned_data.get("disallowed", False):
-                raise forms.ValidationError(
-                    _('Please specify at least one dissallowed URL.'))
-            return self.cleaned_data['disallowed']
-
-        def _clean_fields(self):
-            field = self.fields['disallowed']
-            selected_values = field.widget.value_from_datadict(self.data, self.files, self.add_prefix('disallowed'))
-
-            # As some of the ids in selected_values for disasalowed urls are not db ids (eg disallowed_2),
-            # I need to save in db the coresponding patterns in order to get real db ids.
-            # The fake ids in selected_values and field.choices will be replaced with the real ids.
-            if selected_values:
-                for i , f in enumerate(field.choices):
-                    if f[0] in selected_values and f[0].startswith(ID_PREFIX):
-                        url = Url.objects.get_or_create(pattern=f[1])
-                        selected_values[selected_values.index(f[0])] = str(url.id)
-                        field.choices[i][0] = str(url.id)
-
-            # Here all the ids for disallowed selected_values have real db ids,
-            # so calling super(..)._clean_fields(...) will not throw Validation error
-            # for the selected dosallowed patterns
-            super(self.__class__, self)._clean_fields()
-
-        form.clean_disallowed = clean_disallowed
-        form._clean_fields = _clean_fields
-
-        sites_field = form.base_fields['sites']
-        disallowed_field = form.base_fields['disallowed']
-        set_disallowed_choices(sites_field, disallowed_field, obj, 'https' if request.is_secure() else 'http')
-
-        return form
-
     def site_name(self, obj):
         return get_text_list([s.name for s in obj.sites.all()], _('and'))
     site_name.short_description = ('Site(s) (Display Name)')
@@ -74,36 +38,73 @@ class RuleAdmin(admin.ModelAdmin):
         return get_text_list([s.domain for s in obj.sites.all()], _('and'))
     site_domain.short_description = 'Site(s)'
 
+    def get_form(self, request, obj=None, **kwargs):
+        form = super(RuleAdmin, self).get_form(request, obj)
+
+        def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
+                     initial=None, error_class=ErrorList, label_suffix=':',
+                     empty_permitted=False, instance=None):
+            super(self.__class__, self).__init__(data, files, auto_id, prefix,\
+                                                 initial, error_class, \
+                                                 label_suffix, empty_permitted,\
+                                                 instance)
+
+            sites_field = self.fields['sites']
+            disallowed_field = self.fields['disallowed']
+            site_id = self.data.get('sites', sites_field.choices.queryset[0].id)
+            selected_site = Site.objects.get(pk=site_id)
+            protocol = 'https' if request.is_secure() else 'http'
+            disallowed_field.choices = get_choices(selected_site, protocol)
+
+        form.__init__ = __init__
+
+
+        def clean_disallowed(self):
+            if not self.cleaned_data.get("disallowed", False):
+                raise forms.ValidationError(
+                    _('Please specify at least one disallowed URL.'))
+            return self.cleaned_data['disallowed']
+        form.clean_disallowed = clean_disallowed
+
+        @wraps(form._clean_fields)
+        def _clean_fields(self):
+            field = self.fields['disallowed']
+
+            #this is a list of ids like ['1', '4', 'disallowed_2', 'disallowed_5', ...]
+            # !! Notice the fake ids like 'disallowed_2' and 'disallowed_5'
+            selected_values = field.widget.value_from_datadict(self.data, self.files, self.add_prefix('disallowed'))
+
+            # As some of the ids in selected_values for disasalowed urlsd
+            #  are not db ids (eg disallowed_2), I need to save in db the
+            #  coresponding patterns in order to get real db ids. The fake ids
+            #  in selected_values and field.choices will be replaced with the
+            #  real ids.
+            if selected_values:
+                for i, choice in enumerate(field.choices):
+                    # choice is a pair like ['id', '/pattern/']
+                    if choice[0] in selected_values and choice[0].startswith(ID_PREFIX):
+                        url = Url.objects.create(pattern=choice[1])
+                        selected_values[selected_values.index(choice[0])] = str(url.id)
+                        field.choices[i][0] = str(url.id)
+
+            # Here all the ids for disallowed selected_values have real db ids,
+            #  so calling super(...)._clean_fields() will not throw Validation
+            #  error for the selected disallowed patterns
+            super(self.__class__, self)._clean_fields()
+        form._clean_fields = _clean_fields
+
+        return form
+
     def formfield_for_manytomany(self, db_field, request, **kwargs):
-        ff = super(RuleAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
+        field = super(RuleAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
         if db_field.name == 'sites':
-            ff.widget = CustomSitesSelector()
+            #here the sites field will have the queryset attr
+            #  based on user (global)permissions
+            field.widget = CustomSitesSelector()
         elif db_field.name == 'disallowed':
-            ff.widget = CustomDisallowsSelector(verbose_name='Disallows',\
+            field.widget = CustomDisallowsSelector(verbose_name='Disallows',\
                                                 is_stacked=False)
-        return ff
-
-
-class CustomDisallowsSelector(FilteredSelectMultiple):
-
-    def __init__(self, verbose_name, is_stacked):
-        super(CustomDisallowsSelector, self).__init__(verbose_name=verbose_name, \
-                                                      is_stacked=is_stacked)
-
-
-class CustomSitesSelector(Select):
-
-    def value_from_datadict(self, data, files, name):
-        return (super(CustomSitesSelector, self).value_from_datadict(data, files, name), )
-
-    def render(self, name, value, attrs=None, choices=()):
-        value = value[0] if value else value
-        return super(CustomSitesSelector, self).render(name, value, attrs, self.choices)
-
-
-def set_disallowed_choices(sites_field, disallowed_field, obj, protocol):
-    selected_site = get_selected_site(obj, sites_field)
-    disallowed_field.choices = get_choices(selected_site, protocol)
+        return field
 
 
 def get_choices(site, protocol):
@@ -121,24 +122,28 @@ def get_choices(site, protocol):
     settings.__class__.SITE_ID.value = site.id
     admin = Url.objects.get_or_create(pattern='/admin/')[0]
 
+    #generate patterns from the sitemap
     urls = CMSSitemap().get_urls(site=site, protocol=protocol)
     all_patterns = map(lambda item: item['location'].replace("%s://%s" % (protocol, site.domain), ''), urls)
 
-    common_ids, common_patterns = zip(*Url.objects.filter(pattern__in=all_patterns).values_list('id', 'pattern'))
+    #some patterns are already present in the db and I need their real ids
+    db_ids, db_patterns = zip(*Url.objects.filter(pattern__in=all_patterns).values_list('id', 'pattern'))
 
-    remaining_patterns = [x for x in all_patterns if x not in common_patterns]
-    fake_ids = ['%s_%d' % (ID_PREFIX, i) for i in range(len(remaining_patterns))]
+    # Generate some fake ids for the patterns that were not
+    #  previously saved in the db
+    remaining_patterns = [x for x in all_patterns if x not in db_patterns]
+    fake_ids = map(lambda x: '%s_%d' % (ID_PREFIX, x), range(len(remaining_patterns)))
 
+    # Make sure that the '/admin/' pattern is allways present
+    #  in the choice list
     admin_pair = [[str(admin.id), admin.pattern]]
 
-    return admin_pair + map(lambda x: [x[0], x[1]], zip(common_ids, common_patterns)) +\
+    # returns a list of ['id', 'pattern'] pairs
+    return admin_pair + \
+        map(lambda x: [x[0], x[1]], zip(db_ids, db_patterns)) + \
         map(lambda x: [x[0], x[1]], zip(fake_ids, remaining_patterns))
 
 
-def get_selected_site(obj, sites_field):
-    if obj:
-        return obj.sites.all()[0]
-    return sites_field.choices.queryset[0]
 
 admin.site.register(Url)
 admin.site.register(Rule, RuleAdmin)
