@@ -5,14 +5,14 @@ from django.utils.text import get_text_list
 
 class Url(models.Model):
     """
-    Defines a URL pattern for use with a robot exclusion rule. It's 
+    Defines a URL pattern for use with a robot exclusion rule. It's
     case-sensitive and exact, e.g., "/admin" and "/admin/" are different URLs.
     """
     pattern = models.CharField(_('pattern'), max_length=255, help_text=_(
                                "Case-sensitive. A missing trailing slash does al"
                                "so match to files which start with the name of "
                                "the pattern, e.g., '/admin' matches /admin.html "
-                               "too. Some major search engines allow an asterisk"  
+                               "too. Some major search engines allow an asterisk"
                                " (*) as a wildcard and a dollar sign ($) to "
                                "match the end of the URL, e.g., '/*.jpg$'."))
     class Meta:
@@ -30,11 +30,11 @@ class Url(models.Model):
 class Rule(models.Model):
     """
     Defines an abstract rule which is used to respond to crawling web robots,
-    using the robot exclusion standard, a.k.a. robots.txt. It allows or 
+    using the robot exclusion standard, a.k.a. robots.txt. It allows or
     disallows the robot identified by its user agent to access the given URLs.
     The Site contrib app is used to enable multiple robots.txt per instance.
     """
-    robot = models.CharField(_('robot'), max_length=255, help_text=_(
+    robot = models.CharField(_('robot'), max_length=255, default='*', help_text=_(
                              "This should be a user agent string like "
                              "'Googlebot'. Enter an asterisk (*) for all "
                              "user agents. For a full list look at the "
@@ -55,6 +55,7 @@ class Rule(models.Model):
     sites = models.ManyToManyField(Site, verbose_name=_('sites'))
 
     crawl_delay = models.DecimalField(_('crawl delay'), blank=True, null=True,
+                                      default=5,
                                       max_digits=3, decimal_places=1, help_text=_(
                                       "Between 0.1 and 99.0. This field is "
                                       "supported by some search engines and "
@@ -85,3 +86,6 @@ class Rule(models.Model):
     def disallowed_urls(self):
         return get_text_list(list(self.disallowed.all()), _('and'))
     disallowed_urls.short_description = _('disallowed')
+
+    def sites_search(self):
+        return get_text_list(list(self.sites.all()), _('and'))
