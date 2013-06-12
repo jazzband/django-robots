@@ -48,12 +48,11 @@ class RuleAdmin(admin.ModelAdmin):
                                                  initial, error_class, \
                                                  label_suffix, empty_permitted,\
                                                  instance)
-
             sites_field = self.fields['sites']
-            disallowed_field = self.fields['disallowed']
-            site_id = self.data.get('sites', sites_field.choices.queryset[0].id)
+            site_id = self.data.get('sites', instance.sites.all()[0].id if instance else sites_field.choices.queryset[0].id)
             selected_site = Site.objects.get(pk=site_id)
             protocol = 'https' if request.is_secure() else 'http'
+            disallowed_field = self.fields['disallowed']
             disallowed_field.choices = get_choices(selected_site, protocol)
 
         form.__init__ = __init__
@@ -114,20 +113,22 @@ def get_choices(site, protocol):
     [['1', '/pattern1/'], ['2', '/pattern2/'], ['disallowed_3', '/pattern4/'], ...]
 
     The patterns are taken from the sitemap for the site param.
-    Some of the ids are real db ids, and others may be fake ones.
+    Some of the ids are real db ids, and others may be fake ones
+    (generated here).
     """
     from cms.sitemaps.cms_sitemap import CMSSitemap
     from django.conf import settings
 
     settings.__class__.SITE_ID.value = site.id
-    admin = Url.objects.get_or_create(pattern='/admin/')[0]
+    admin, _ = Url.objects.get_or_create(pattern='/admin/')
 
     #generate patterns from the sitemap
     urls = CMSSitemap().get_urls(site=site, protocol=protocol)
     all_patterns = map(lambda item: item['location'].replace("%s://%s" % (protocol, site.domain), ''), urls)
 
     #some patterns are already present in the db and I need their real ids
-    db_ids, db_patterns = zip(*Url.objects.filter(pattern__in=all_patterns).values_list('id', 'pattern'))
+    db_urls = Url.objects.filter(pattern__in=all_patterns).values_list('id', 'pattern')
+    db_ids, db_patterns = ([], []) if not db_urls.exists() else zip(*db_urls)
 
     # Generate some fake ids for the patterns that were not
     #  previously saved in the db

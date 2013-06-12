@@ -55,6 +55,7 @@ def site_patterns(request):
 
     if not request.is_ajax():
         return HttpResponseForbidden()
+
     site_id = request.GET.get('site_id')
     protocol = 'https' if request.is_secure() else 'http'
     site = Site.objects.get(pk=site_id)
