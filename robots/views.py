@@ -9,6 +9,7 @@ from robots import settings
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from robots.helpers import get_choices
 
 
 def rules_list(request, template_name='robots/rule_list.html',
@@ -49,7 +50,6 @@ def rules_list(request, template_name='robots/rule_list.html',
 
 @login_required
 def site_patterns(request):
-    from robots.admin import get_choices
     from django.forms import SelectMultiple
     from django.utils.safestring import mark_safe
 
