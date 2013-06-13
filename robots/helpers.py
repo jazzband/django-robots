@@ -20,7 +20,7 @@ def get_choices(site, protocol):
     [['1', '/pattern1/'], ['2', '/pattern2/'], ['disallowed_3', '/pattern4/'], ...]
 
     The patterns are taken from the sitemap for the site param.
-    Some of the ids are real db ids, and others may be fake ones
+    Some of the ids are real db ids, and others (like disallowed_3) are fake ones
     (generated here).
     """
     settings.__class__.SITE_ID.value = site.id
@@ -47,4 +47,3 @@ def get_choices(site, protocol):
     return admin_pair + \
         map(lambda x: [x[0], x[1]], zip(db_ids, db_patterns)) + \
         map(lambda x: [x[0], x[1]], zip(fake_ids, remaining_patterns))
-

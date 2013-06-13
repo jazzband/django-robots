@@ -2,6 +2,18 @@ from django.forms import Select
 from django.utils.safestring import mark_safe
 from django.template import loader, Context
 from django.conf import settings
+#from django.contrib.admin.widgets import FilteredSelectMultiple
+from robots.models import Url
+
+
+# class CustomDisallowedWidget(FilteredSelectMultiple):
+
+#     def render(self, name, value, attrs=None, choices=()):
+#         # value = value or []
+#         # admin, _ = Url.objects.get_or_create(pattern='/admin/')
+#         # if admin.id not in value:
+#         #     value.insert(0, admin.id)
+#         return super(CustomDisallowedWidget, self).render(name, value, attrs, choices)
 
 
 class CustomSitesSelector(Select):
@@ -19,4 +31,3 @@ class CustomSitesSelector(Select):
             'site_patterns_url': reverse('site_patterns')
         })
         return output + mark_safe(t.render(c))
-

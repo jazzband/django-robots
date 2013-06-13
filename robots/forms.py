@@ -11,31 +11,37 @@ class RuleAdminForm(forms.ModelForm):
     class Meta:
         model = Rule
 
-    ERR_NEW_RULE_EXISTING_SITE = _('Cannot assign rule to site %s. It already has a rule assigned.')
-    ERR_NEW_SITE_EXISTING_RULE = _('Cannot assign another site to existing rule. Please create a new rule for the site %s if it hasn\'t one.')
     ERR_EMPTY_DISALLOWED = _('Please specify at least one disallowed URL.')
     ERR_ADMIN_IN_DISALLOWED = _('/admin/ pattern is disallowed by default. Please select it in the chosen list.')
 
     def __init__(self, *args, **kwargs):
         super(RuleAdminForm, self).__init__(*args, **kwargs)
         site_id = get_site_id(self.data, self.instance, self.fields['sites'])
+        self._initialize_sites_field(site_id)
+        self._initialize_disallowed_field(site_id)
+
+    def _initialize_sites_field(self, site_id):
+        sites_field = self.fields['sites']
+        qs = sites_field.queryset
+        if self._is_new_rule():
+            # new rules can only be set for sites with rule=null
+            qs = qs.filter(rule__isnull=True)
+        else:
+            # The site for existing rules cannot be changed
+            qs = qs.filter(pk=site_id)
+        sites_field.queryset = qs
+
+    def _initialize_disallowed_field(self, site_id):
         selected_site = Site.objects.get(pk=site_id)
         disallowed_field = self.fields['disallowed']
         disallowed_field.choices = get_choices(selected_site, 'http')
+        if self._is_new_rule():
+            #/admin/ pattern is allways default
+            admin, _ = Url.objects.get_or_create(pattern='/admin/')
+            self.initial = {'disallowed': [admin.id]}
 
     def _is_new_rule(self):
         return self.instance and not self.instance.id
-
-    def _check_new_rule_existing_site(self, site):
-        if self._is_new_rule() and site.rule_set.all().exists():
-            raise forms.ValidationError(self.ERR_NEW_RULE_EXISTING_SITE % site.domain)
-
-    def _check_new_site_existing_rule(self, site):
-        if not self._is_new_rule():
-            rule_sites_q = self.instance.sites.all()
-            rule_site = rule_sites_q[0] if rule_sites_q.exists() else None
-            if site != rule_site:
-                raise forms.ValidationError(self.ERR_NEW_SITE_EXISTING_RULE % site.domain)
 
     def _check_admin_is_present(self):
         field = self.fields['disallowed']
@@ -43,16 +49,6 @@ class RuleAdminForm(forms.ModelForm):
         pattern_list = Url.objects.filter(id__in=selected_values).values_list('pattern', flat=True)
         if '/admin/' not in pattern_list:
             raise forms.ValidationError(self.ERR_ADMIN_IN_DISALLOWED)
-
-    def clean_sites(self):
-        site_id = self.cleaned_data.get("sites", False)
-        if site_id:
-            site = Site.objects.get(pk=site_id)
-            self._check_new_rule_existing_site(site)
-            self._check_new_site_existing_rule(site)
-        else:
-            raise forms.ValidationError(_('Request improperly configured.'))
-        return self.cleaned_data['sites']
 
     def clean_disallowed(self):
         if not self.cleaned_data.get("disallowed", False):

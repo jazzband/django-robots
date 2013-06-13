@@ -4,7 +4,7 @@ from django.template import loader, RequestContext
 from django.views.decorators.cache import cache_page
 from django.contrib.sites.models import Site
 
-from robots.models import Rule
+from robots.models import Rule, Url
 from robots import settings
 
 from django.contrib.auth.decorators import login_required
@@ -64,7 +64,10 @@ def site_patterns(request):
     widget = SelectMultiple()
     rule = site.rule_set.all()
     attrs = {'id': u'id_disallowed', 'class': 'selectfilter'}
-    value = rule[0].disallowed.values_list('id', flat=True) if rule else []
+    value = rule[0].disallowed.values_list('id', flat=True) if rule.exists() else []
+    admin, _ = Url.objects.get_or_create(pattern='/admin/')
+    if admin.id not in value:
+        value.insert(0, admin.id)
     widget.choices = choices
     output = [widget.render('disallowed', value, attrs=attrs, choices=())]
     return HttpResponse(mark_safe(u''.join(output)))

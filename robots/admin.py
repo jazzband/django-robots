@@ -39,11 +39,6 @@ class RuleAdmin(admin.ModelAdmin):
         return get_text_list([s.domain for s in obj.sites.all()], _('and'))
     site_domain.short_description = 'Site(s)'
 
-    def get_form(self, request, obj=None, **kwargs):
-        #import ipdb; ipdb.set_trace()
-        form = super(RuleAdmin, self).get_form(request, obj)
-        return form
-
     def formfield_for_manytomany(self, db_field, request, **kwargs):
         field = super(RuleAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
         if db_field.name == 'sites':
