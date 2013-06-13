@@ -23,11 +23,12 @@ def get_choices(site, protocol):
     Some of the ids are real db ids, and others (like disallowed_3) are fake ones
     (generated here).
     """
+    saved_site = settings.__class__.SITE_ID.value
     settings.__class__.SITE_ID.value = site.id
-
     #generate patterns from the sitemap
     urls = CMSSitemap().get_urls(site=site, protocol=protocol)
     all_patterns = map(lambda item: item['location'].replace("%s://%s" % (protocol, site.domain), ''), urls)
+    settings.__class__.SITE_ID.value = saved_site
 
     #some patterns are already present in the db and I need their real ids
     db_urls = Url.objects.filter(pattern__in=all_patterns).values_list('id', 'pattern')
