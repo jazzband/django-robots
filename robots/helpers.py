@@ -24,7 +24,6 @@ def get_choices(site, protocol):
     (generated here).
     """
     settings.__class__.SITE_ID.value = site.id
-    admin, _ = Url.objects.get_or_create(pattern='/admin/')
 
     #generate patterns from the sitemap
     urls = CMSSitemap().get_urls(site=site, protocol=protocol)
@@ -41,6 +40,7 @@ def get_choices(site, protocol):
 
     # Make sure that the '/admin/' pattern is allways present
     #  in the choice list
+    admin, _ = Url.objects.get_or_create(pattern='/admin/')
     admin_pair = [[str(admin.id), admin.pattern]]
 
     # returns a list of ['id', 'pattern'] pairs

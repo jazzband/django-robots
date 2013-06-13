@@ -4,12 +4,15 @@ from django.template import loader, RequestContext
 from django.views.decorators.cache import cache_page
 from django.contrib.sites.models import Site
 
-from robots.models import Rule, Url
+from robots.models import Rule
 from robots import settings
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+
 from robots.helpers import get_choices
+from django.forms import SelectMultiple
+from django.utils.safestring import mark_safe
 
 
 def rules_list(request, template_name='robots/rule_list.html',
@@ -50,27 +53,28 @@ def rules_list(request, template_name='robots/rule_list.html',
 
 @login_required
 def site_patterns(request):
-    from django.forms import SelectMultiple
-    from django.utils.safestring import mark_safe
-
     if not request.is_ajax():
         return HttpResponseForbidden()
 
-    site_id = request.GET.get('site_id')
-    protocol = 'https' if request.is_secure() else 'http'
-    site = Site.objects.get(pk=site_id)
-    choices = get_choices(site, protocol)
+    site_id = request.GET.get('site_id', '')
+    if site_id:
+        try:
+            site = Site.objects.get(pk=site_id)
+            protocol = 'https' if request.is_secure() else 'http'
 
-    widget = SelectMultiple()
-    rule = site.rule_set.all()
-    attrs = {'id': u'id_disallowed', 'class': 'selectfilter'}
-    value = rule[0].disallowed.values_list('id', flat=True) if rule.exists() else []
-    admin, _ = Url.objects.get_or_create(pattern='/admin/')
-    if admin.id not in value:
-        value.insert(0, admin.id)
-    widget.choices = choices
-    output = [widget.render('disallowed', value, attrs=attrs, choices=())]
-    return HttpResponse(mark_safe(u''.join(output)))
+            widget = SelectMultiple()
+            widget.choices = get_choices(site, protocol)
+
+            attrs = {'id': u'id_disallowed', 'class': 'selectfilter'}
+            value = next((c[0] for c in widget.choices if c[1] == '/admin/'))
+            output = [widget.render('disallowed', [value], attrs=attrs, choices=())]
+
+            return HttpResponse(mark_safe(u''.join(output)))
+
+        except Site.DoesNotExist:
+            pass
+    return HttpResponse('')
+
 
 if settings.CACHE_TIMEOUT:
     rules_list = cache_page(rules_list, settings.CACHE_TIMEOUT)
