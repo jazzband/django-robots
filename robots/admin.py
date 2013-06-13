@@ -4,11 +4,6 @@ from django.utils.text import get_text_list
 
 from robots.widgets import CustomSitesSelector
 from django.contrib.admin.widgets import FilteredSelectMultiple
-from django.utils.functional import wraps
-from django import forms
-from django.forms.util import ErrorList
-from django.contrib.sites.models import Site
-from cms.sitemaps.cms_sitemap import CMSSitemap
 from robots.forms import RuleAdminForm
 from robots.models import Rule, Url
 

@@ -2,8 +2,6 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from robots.models import Rule, Url
 from django.contrib.sites.models import Site
-from django.forms import Select
-from django.forms.widgets import HiddenInput
 from robots.helpers import ID_PREFIX, get_site_id, get_choices
 
 

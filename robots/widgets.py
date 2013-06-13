@@ -2,7 +2,6 @@ from django.forms import Select
 from django.utils.safestring import mark_safe
 from django.template import loader, Context
 from django.conf import settings
-from robots.models import Url
 from django.core.urlresolvers import reverse
 
 
