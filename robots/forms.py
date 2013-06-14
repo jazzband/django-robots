@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from robots.models import Rule, Url
 from django.contrib.sites.models import Site
 from robots.helpers import ID_PREFIX, get_site_id, get_choices
+from robots.settings import ADMIN
 
 
 class RuleAdminForm(forms.ModelForm):
@@ -39,7 +40,7 @@ class RuleAdminForm(forms.ModelForm):
             self.initial = {'disallowed': [admin_id]}
 
     def _get_admin_id(self, choices):
-        return next((c[0] for c in choices if c[1] == '/admin/'))
+        return next((c[0] for c in choices if c[1] == ADMIN), -1)
 
     def _is_new_rule(self):
         return self.instance and not self.instance.id
@@ -54,7 +55,7 @@ class RuleAdminForm(forms.ModelForm):
         field = self.fields['disallowed']
         selected_values = field.widget.value_from_datadict(self.data, self.files, self.add_prefix('disallowed'))
         admin_id = self._get_admin_id(field.choices)
-        if admin_id not in selected_values:
+        if str(admin_id) not in selected_values:
             raise forms.ValidationError(self.ERR_ADMIN_IN_DISALLOWED)
 
     def _clean_fields(self):

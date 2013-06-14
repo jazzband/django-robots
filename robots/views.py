@@ -66,8 +66,8 @@ def site_patterns(request):
             widget.choices = get_choices(site, protocol)
 
             attrs = {'id': u'id_disallowed', 'class': 'selectfilter'}
-            value = next((c[0] for c in widget.choices if c[1] == '/admin/'))
-            output = [widget.render('disallowed', [value], attrs=attrs, choices=())]
+            initial_selection = next((c[0] for c in widget.choices if c[1] == settings.ADMIN), '')
+            output = [widget.render('disallowed', [initial_selection], attrs=attrs, choices=())]
 
             return HttpResponse(mark_safe(u''.join(output)))
 

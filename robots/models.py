@@ -43,7 +43,7 @@ class Rule(models.Model):
                              "'> database of Web Robots</a>."))
 
     allowed = models.ManyToManyField(Url, blank=True, related_name="allowed",
-                                     verbose_name=_('allowed'),
+                                     verbose_name=_('allowed'), default='/*',
                                      help_text=_("The URLs which are allowed "
                                                  "to be accessed by bots."))
 

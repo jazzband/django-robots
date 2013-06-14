@@ -1,6 +1,8 @@
 from django.conf import settings
 from robots.models import Url
 from cms.sitemaps import CMSSitemap
+from robots.settings import ADMIN
+from django.db.models import Q
 
 ID_PREFIX = 'disallowed'
 
@@ -31,7 +33,13 @@ def get_choices(site, protocol):
     settings.__class__.SITE_ID.value = saved_site
 
     #some patterns are already present in the db and I need their real ids
-    db_urls = Url.objects.filter(pattern__in=all_patterns).values_list('id', 'pattern')
+    f = Q(pattern__in=all_patterns)
+    rule_q = site.rule_set.all()
+    rule = rule_q if rule_q.exists() else None
+    if rule:
+          f |= Q(disallowed__in=rule)
+
+    db_urls = Url.objects.filter(f).values_list('id', 'pattern').distinct()
     db_ids, db_patterns = ([], []) if not db_urls.exists() else zip(*db_urls)
 
     # Generate some fake ids for the patterns that were not
@@ -41,10 +49,9 @@ def get_choices(site, protocol):
 
     # Make sure that the '/admin/' pattern is allways present
     #  in the choice list
-    admin, _ = Url.objects.get_or_create(pattern='/admin/')
-    admin_pair = [[str(admin.id), admin.pattern]]
+    admin, _ = Url.objects.get_or_create(pattern=ADMIN)
+    admin_pair = [[str(admin.id), admin.pattern]]if not admin.id in db_ids else []
 
     # returns a list of ['id', 'pattern'] pairs
-    return admin_pair + \
-        map(lambda x: [x[0], x[1]], zip(db_ids, db_patterns)) + \
-        map(lambda x: [x[0], x[1]], zip(fake_ids, remaining_patterns))
+    return admin_pair + [[x[0], x[1]] for x in zip(db_ids, db_patterns)] + \
+        [[x[0], x[1]] for x in zip(fake_ids, remaining_patterns)]
