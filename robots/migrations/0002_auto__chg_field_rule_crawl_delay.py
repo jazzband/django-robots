@@ -6,6 +6,7 @@ from django.db import models
 from robots.models import Rule, Url
 from itertools import ifilter
 from robots.settings import ADMIN
+from robots.helpers import get_url
 
 
 def duplicate_rules_with_multiple_sites(rules):
@@ -19,13 +20,6 @@ def duplicate_rules_with_multiple_sites(rules):
         first_site = r.sites.all()[0]
         r.sites.clear()
         r.sites.add(first_site)
-
-
-def get_url(pattern):
-    try:
-        return Url.objects.get_or_create(pattern=pattern)
-    except Url.MultipleObjectsReturned:
-        return Url.objects.filter(pattern=pattern)[0]
 
 
 def add_default_disallowed(rules):

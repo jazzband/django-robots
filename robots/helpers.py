@@ -16,6 +16,13 @@ def get_site_id(data, instance, sites_field):
     return data.get('sites', id)
 
 
+def get_url(pattern):
+    try:
+        return Url.objects.get_or_create(pattern__exact=pattern)[0]
+    except Url.MultipleObjectsReturned:
+        return Url.objects.filter(pattern=pattern)[0]
+
+
 def get_choices(site, protocol):
     """
     Returns a list with the urls patterns for the site parameter
@@ -46,8 +53,8 @@ def get_choices(site, protocol):
 
     # Make sure that the '/admin/' pattern is allways present
     #  in the choice list
-    admin, _ = Url.objects.get_or_create(pattern=ADMIN)
-    admin_pair = [[str(admin.id), admin.pattern]]if not admin.id in db_ids else []
+    admin = get_url(ADMIN)
+    admin_pair = [[str(admin.id), admin.pattern]] if not admin.id in db_ids else []
 
     # returns a list of ['id', 'pattern'] pairs
     return map(lambda x: list(x), chain(admin_pair, db_urls, zip(fake_ids, remaining_patterns)))
