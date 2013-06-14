@@ -36,11 +36,11 @@ class RuleAdminForm(forms.ModelForm):
         disallowed_field.choices = get_choices(selected_site, 'http')
         if self._is_new_rule():
             #/admin/ pattern is allways default
-            admin_id = self._get_admin_id(disallowed_field.choices)
+            admin_id = self._get_admin_id(disallowed_field.choices) or ''
             self.initial = {'disallowed': [admin_id]}
 
     def _get_admin_id(self, choices):
-        return next((c[0] for c in choices if c[1] == ADMIN), -1)
+        return next((c[0] for c in choices if c[1] == ADMIN), None)
 
     def _is_new_rule(self):
         return self.instance and not self.instance.id
