@@ -7,6 +7,40 @@ from robots.models import Rule, Url
 from itertools import ifilter
 from robots.settings import ADMIN
 
+
+def duplicate_rules_with_multiple_sites(rules):
+    for r in ifilter(lambda x: x.sites.count() > 1, rules):
+        for site in r.sites.all()[1:]:
+            rule = Rule.objects.create(robot=r.robot, crawl_delay=r.crawl_delay)
+            rule.allowed = r.allowed.all()
+            rule.disallowed = r.disallowed.all()
+            rule.sites.add(site)
+            rule.save()
+        first_site = r.sites.all()[0]
+        r.sites.clear()
+        r.sites.add(first_site)
+
+
+def get_url(pattern):
+    try:
+        url = Url.objects.get_or_create(pattern=pattern)
+    except Url.MultipleObjectReturned:
+        url = Url.objects.filter(pattern=pattern)[0]
+    return url
+
+
+def add_default_disallowed(rules):
+    admin = get_url(ADMIN)
+    for r in rules.exclude(disallowed__in=[admin]):
+        rule.disallowed.add(admin)
+
+
+def add_default_allowed(rules):
+    allow_all = get_url('/*')
+    for r in rules.exclude(allowed__in=[allow_all]):
+        rule.allowed.add(allow_all)
+
+
 class Migration(SchemaMigration):
 
     no_dry_run = True
@@ -18,28 +52,13 @@ class Migration(SchemaMigration):
 
         rules = orm.models.get("robots.rule").objects\
                         .db_manager(router.db_for_write(Rule)).all()
-
-        for r in ifilter(lambda x: x.sites.count() > 1, rules):
-            for site in r.sites.all()[1:]:
-                rule = Rule.objects.create(robot=r.robot, crawl_delay=r.crawl_delay)
-                rule.allowed = r.allowed.all()
-                rule.disallowed = r.disallowed.all()
-                rule.sites.add(site)
-                rule.save()
-            first_site = r.sites.all()[0]
-            r.sites.clear()
-            r.sites.add(first_site)
+        duplicate_rules_with_multiple_sites(rules)
 
         rules = orm.models.get("robots.rule").objects\
                         .db_manager(router.db_for_write(Rule)).iterator()
 
-        admin = Url.objects.get_or_create(pattern=ADMIN)
-        for r in rules.exclude(disallowed__in=[admin]):
-            rule.disallowed.add(admin)
-
-        allow_all = Url.object.get_or_create(pattern='/*')
-        for r in rules.exclude(allowed__in=[allow_all]):
-            rule.allowed.add(allow_all)
+        add_default_disallowed(rules)
+        add_default_allowed(rules)
 
     def backwards(self, orm):
 
