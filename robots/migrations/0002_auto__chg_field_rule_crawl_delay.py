@@ -23,10 +23,9 @@ def duplicate_rules_with_multiple_sites(rules):
 
 def get_url(pattern):
     try:
-        url = Url.objects.get_or_create(pattern=pattern)
-    except Url.MultipleObjectReturned:
-        url = Url.objects.filter(pattern=pattern)[0]
-    return url
+        return Url.objects.get_or_create(pattern=pattern)
+    except Url.MultipleObjectsReturned:
+        return Url.objects.filter(pattern=pattern)[0]
 
 
 def add_default_disallowed(rules):
