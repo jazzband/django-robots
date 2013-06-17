@@ -63,6 +63,7 @@ class RuleAdminForm(forms.ModelForm):
 
         #this is a list of ids like ['1', '4', 'disallowed_2', 'disallowed_5', ...]
         # !! Notice the fake ids like 'disallowed_2' and 'disallowed_5'
+        # (see robots.helpers.get_choices(...))
         selected_values = field.widget.value_from_datadict(self.data, self.files, self.add_prefix('disallowed'))
 
         # As some of the ids in selected_values for disallowed urls

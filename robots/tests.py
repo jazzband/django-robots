@@ -3,7 +3,6 @@ from robots.helpers import get_choices
 from robots.models import Url, Rule
 from cms.api import create_page
 from django.contrib.sites.models import Site
-from django.conf import settings
 from django.contrib.auth.models import User
 
 
