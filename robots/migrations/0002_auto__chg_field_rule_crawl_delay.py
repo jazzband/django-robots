@@ -5,14 +5,27 @@ from south.v2 import SchemaMigration
 from django.db import models
 from robots.models import Rule, Url
 from itertools import ifilter
+from django.db import router
 from robots.settings import ADMIN
-from robots.helpers import get_url
+from django.db import transaction
 
 
-def duplicate_rules_with_multiple_sites(rules):
+@transaction.commit_manually
+def flush_transaction():
+    transaction.commit()
+
+
+def get_url(pattern, manager):
+    try:
+        return manager.get_or_create(pattern=pattern)[0]
+    except Url.MultipleObjectsReturned:
+        return manager.filter(pattern=pattern)[0]
+
+
+def duplicate_rules_with_multiple_sites(rules, manager):
     for r in ifilter(lambda x: x.sites.count() > 1, rules):
         for site in r.sites.all()[1:]:
-            rule = Rule.objects.create(robot=r.robot, crawl_delay=r.crawl_delay)
+            rule = manager.create(robot=r.robot, crawl_delay=r.crawl_delay)
             rule.allowed = r.allowed.all()
             rule.disallowed = r.disallowed.all()
             rule.sites.add(site)
@@ -22,16 +35,16 @@ def duplicate_rules_with_multiple_sites(rules):
         r.sites.add(first_site)
 
 
-def add_default_disallowed(rules):
-    admin = get_url(ADMIN)
+def add_default_disallowed(rules, manager):
+    admin = get_url(ADMIN, manager)
     for r in rules.exclude(disallowed__in=[admin]):
-        rule.disallowed.add(admin)
+        r.disallowed.add(admin)
 
 
-def add_default_allowed(rules):
-    allow_all = get_url('/*')
+def add_default_allowed(rules, manager):
+    allow_all = get_url('/*', manager)
     for r in rules.exclude(allowed__in=[allow_all]):
-        rule.allowed.add(allow_all)
+        r.allowed.add(allow_all)
 
 
 class Migration(SchemaMigration):
@@ -43,15 +56,20 @@ class Migration(SchemaMigration):
         # Changing field 'Rule.crawl_delay'
         db.alter_column('robots_rule', 'crawl_delay', self.gf('django.db.models.fields.DecimalField')(max_digits=3, decimal_places=1))
 
-        rules = orm.models.get("robots.rule").objects\
-                        .db_manager(router.db_for_write(Rule)).all()
-        duplicate_rules_with_multiple_sites(rules)
+        rules_manager = orm.models.get("robots.rule").objects\
+                        .db_manager(router.db_for_write(Rule))
 
-        rules = orm.models.get("robots.rule").objects\
-                        .db_manager(router.db_for_write(Rule)).iterator()
+        duplicate_rules_with_multiple_sites(rules_manager.all(), rules_manager)
 
-        add_default_disallowed(rules)
-        add_default_allowed(rules)
+        flush_transaction()
+
+        rules_manager = orm.models.get("robots.rule").objects\
+                        .db_manager(router.db_for_write(Rule))
+        url_manager = orm.models.get("robots.url").objects\
+                        .db_manager(router.db_for_write(Url))
+
+        add_default_disallowed(rules_manager.all(), url_manager)
+        add_default_allowed(rules_manager.all(), url_manager)
 
     def backwards(self, orm):
 
