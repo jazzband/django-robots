@@ -18,7 +18,7 @@ def get_site_id(data, instance, sites_field):
 
 def get_url(pattern):
     try:
-        return Url.objects.get_or_create(pattern__exact=pattern)[0]
+        return Url.objects.get_or_create(pattern=pattern)[0]
     except Url.MultipleObjectsReturned:
         return Url.objects.filter(pattern=pattern)[0]
 
