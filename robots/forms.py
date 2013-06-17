@@ -11,7 +11,7 @@ class RuleAdminForm(forms.ModelForm):
         model = Rule
 
     ERR_EMPTY_DISALLOWED = _('Please specify at least one disallowed URL.')
-    ERR_ADMIN_IN_DISALLOWED = _('/admin/ pattern is disallowed by default. Please select it in the chosen list.')
+    ERR_ADMIN_IN_DISALLOWED = _('/admin/ pattern must be disallowed by default. Please select it in the chosen list.')
 
     def __init__(self, *args, **kwargs):
         super(RuleAdminForm, self).__init__(*args, **kwargs)
