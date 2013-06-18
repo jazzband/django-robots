@@ -10,6 +10,7 @@ class RuleAdminForm(forms.ModelForm):
     class Meta:
         model = Rule
 
+    search_fields = ('sites')
     ERR_EMPTY_DISALLOWED = _('Please specify at least one disallowed URL.')
     ERR_ADMIN_IN_DISALLOWED = _('/admin/ pattern must be disallowed by default. Please select it in the chosen list.')
 
