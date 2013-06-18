@@ -21,7 +21,6 @@ class RuleAdmin(admin.ModelAdmin):
         }),
     )
 
-    list_filter = ('sites',)
     list_display = ('site_name', 'site_domain', 'allowed_urls', 'disallowed_urls')
     list_display_links = ('site_name', 'site_domain')
     search_fields = ('sites__name', 'sites__domain')
