@@ -35,6 +35,10 @@
                     window.SelectFilter.init("id_disallowed", "Disallows", 0, "/s/admin/");
                 }
             },
-        });
-});})(django.jQuery);
+        });});
+    SelectBox.init('id_sites');
+    $('#id_sites_input').keyup(function() {
+	SelectBox.filter('id_sites', this.value);
+    });
+})(django.jQuery);
 </script>

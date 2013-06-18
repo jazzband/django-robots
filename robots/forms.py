@@ -22,6 +22,8 @@ class RuleAdminForm(forms.ModelForm):
 
     def _initialize_sites_field(self, site_id):
         sites_field = self.fields['sites']
+        sites_field.help_text = ''
+        sites_field.widget.can_add_related = None
         qs = sites_field.queryset
         if self._is_new_rule():
             # new rules can only be set for sites with rule=null

@@ -19,4 +19,7 @@ class CustomSitesSelector(Select):
             'STATIC_URL': settings.STATIC_URL,
             'site_patterns_url': reverse('site_patterns')
         })
-        return output + mark_safe(t.render(c))
+        _filter = """<img src="/s/admin/img/selector-search.gif" class="help-tooltip" style="margin-bottom:10px;" alt="" title="Type into this box to filter down the list of available Sites.">
+        <input type="text" placeholder="Filter" id="id_sites_input" style="margin-bottom:10px; width: 180px">"""
+
+        return '<div style="float: left;">' + mark_safe(_filter) + '<br>' + output + mark_safe(t.render(c)) + '</div>'
