@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
 
 from robots.widgets import CustomSitesSelector
-from django.contrib.admin.widgets import FilteredSelectMultiple,
+from django.contrib.admin.widgets import FilteredSelectMultiple
 from robots.forms import RuleAdminForm
 from robots.models import Rule, Url
 from robots.helpers import get_url
