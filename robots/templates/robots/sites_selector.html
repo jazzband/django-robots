@@ -1,3 +1,11 @@
+<div style="float: left;">
+  <img src="/s/admin/img/selector-search.gif" class="help-tooltip" style="margin-bottom:10px;" alt="" title="Type into this box to filter down the list of available Sites.">
+        <input type="text" placeholder="Filter" id="id_sites_input" style="margin-bottom:10px; width: 188px">
+
+  <br>
+
+  {{ select_widget_output }}
+
 <script>
 (function ($) {
     function append_spinner(containerDiv, existingSelector, spinner){
@@ -42,3 +50,5 @@
     });
 })(django.jQuery);
 </script>
+
+</div>

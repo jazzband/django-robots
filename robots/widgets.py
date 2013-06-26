@@ -14,12 +14,11 @@ class CustomSitesSelector(Select):
 
     def render(self, name, value, attrs=None, choices=()):
         output = super(CustomSitesSelector, self).render(name, value, attrs=attrs, choices=choices)
-        t = loader.get_template("robots/reload_disallowed.js")
+
+        t = loader.get_template("robots/sites_selector.html")
         c = Context({
+            'select_widget_output' : output,
             'STATIC_URL': settings.STATIC_URL,
             'site_patterns_url': reverse('site_patterns')
         })
-        _filter = """<img src="/s/admin/img/selector-search.gif" class="help-tooltip" style="margin-bottom:10px;" alt="" title="Type into this box to filter down the list of available Sites.">
-        <input type="text" placeholder="Filter" id="id_sites_input" style="margin-bottom:10px; width: 188px">"""
-
-        return '<div style="float: left;">' + mark_safe(_filter) + '<br>' + output + mark_safe(t.render(c)) + '</div>'
+        return mark_safe(t.render(c))
