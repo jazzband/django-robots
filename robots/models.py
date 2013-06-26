@@ -54,7 +54,7 @@ class Rule(models.Model):
                                                     "by bots."))
     sites = models.ManyToManyField(Site, verbose_name=_('sites'))
 
-    crawl_delay = models.DecimalField(_('crawl delay'), default=5,
+    crawl_delay = models.DecimalField(_('crawl delay'), default=5.0,
                                       max_digits=3, decimal_places=1, help_text=_(
                                       "Between 0.1 and 99.0. This field is "
                                       "supported by some search engines and "

@@ -46,11 +46,13 @@ def add_default_allowed(rules, manager):
     for r in rules.exclude(allowed__in=[allow_all]):
         r.allowed.add(allow_all)
 
+
 class Migration(SchemaMigration):
 
     no_dry_run = True
 
     def forwards(self, orm):
+
         # Changing field 'Rule.crawl_delay'
         db.alter_column('robots_rule', 'crawl_delay', self.gf('django.db.models.fields.DecimalField')(max_digits=3, decimal_places=1))
 
@@ -69,6 +71,7 @@ class Migration(SchemaMigration):
         add_default_disallowed(rules_manager.all(), url_manager)
         add_default_allowed(rules_manager.all(), url_manager)
 
+
     def backwards(self, orm):
 
         # Changing field 'Rule.crawl_delay'
@@ -78,7 +81,7 @@ class Migration(SchemaMigration):
         'robots.rule': {
             'Meta': {'object_name': 'Rule'},
             'allowed': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'allowed'", 'blank': 'True', 'to': "orm['robots.Url']"}),
-            'crawl_delay': ('django.db.models.fields.DecimalField', [], {'default': '5', 'max_digits': '3', 'decimal_places': '1'}),
+            'crawl_delay': ('django.db.models.fields.DecimalField', [], {'default': '5.0', 'max_digits': '3', 'decimal_places': '1'}),
             'disallowed': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'disallowed'", 'blank': 'True', 'to': "orm['robots.Url']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'robot': ('django.db.models.fields.CharField', [], {'default': "'*'", 'max_length': '255'}),
