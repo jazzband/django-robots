@@ -15,10 +15,10 @@ class CustomSitesSelector(Select):
     def render(self, name, value, attrs=None, choices=()):
         output = super(CustomSitesSelector, self).render(name, value, attrs=attrs, choices=choices)
 
-        t = loader.get_template("robots/sites_selector.html")
-        c = Context({
+        template = loader.get_template("robots/sites_selector.html")
+        context = Context({
             'select_widget_output' : output,
             'STATIC_URL': settings.STATIC_URL,
             'site_patterns_url': reverse('site_patterns')
         })
-        return mark_safe(t.render(c))
+        return mark_safe(template.render(context))
