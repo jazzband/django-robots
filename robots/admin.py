@@ -2,8 +2,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
 
-from robots.widgets import CustomSitesSelector
-from django.contrib.admin.widgets import FilteredSelectMultiple
+from robots.widgets import CustomSitesSelector, CustomDisallowedWidget
 from robots.forms import RuleAdminForm
 from robots.models import Rule, Url
 from robots.helpers import get_url
@@ -41,7 +40,7 @@ class RuleAdmin(admin.ModelAdmin):
             #  based on user (global page)permissions
             field.widget = CustomSitesSelector()
         elif db_field.name == 'disallowed':
-            field.widget = FilteredSelectMultiple(verbose_name='Disallows',\
+            field.widget = CustomDisallowedWidget(verbose_name='Disallows',\
                                                 is_stacked=False)
         return field
 
@@ -49,7 +48,6 @@ class RuleAdmin(admin.ModelAdmin):
         super(RuleAdmin, self).save_model(request, obj, form, change)
         all_pattern = get_url('/*')
         obj.allowed.add(all_pattern)
-
 
 admin.site.register(Url)
 admin.site.register(Rule, RuleAdmin)
