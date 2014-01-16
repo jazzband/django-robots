@@ -16,18 +16,21 @@ tied together with a m2m relationship:
 Installation
 ============
 
-Get the source from the application site at::
+Use your favorite Python installer to install it from PyPI::
+
+    pip install django-robots
+
+Or get the source from the application site at::
 
     http://github.com/jezdez/django-robots/
 
-To install the sitemap app, follow these steps:
+To install the sitemap app, then follow these steps:
 
-1. Follow the instructions in the INSTALL.txt file
-2. Add ``'robots'`` to your INSTALLED_APPS_ setting.
-3. Make sure ``'django.template.loaders.app_directories.load_template_source'``
+1. Add ``'robots'`` to your INSTALLED_APPS_ setting.
+2. Make sure ``'django.template.loaders.app_directories.Loader'``
    is in your TEMPLATE_LOADERS_ setting. It's in there by default, so
    you'll only need to change this if you've changed that setting.
-4. Make sure you've installed the `sites framework`_.
+3. Make sure you've installed the `sites framework`_.
 
 .. _INSTALLED_APPS: http://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 .. _TEMPLATE_LOADERS: http://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
@@ -36,7 +39,7 @@ To install the sitemap app, follow these steps:
 Sitemaps
 --------
 
-By default a ``Sitemap`` statement is automatically added to the resulting 
+By default a ``Sitemap`` statement is automatically added to the resulting
 robots.txt by reverse matching the URL of the installed `Sitemap contrib app`_.
 This is especially useful if you allow every robot to access your whole site,
 since it then gets URLs explicitly instead of searching every link.
@@ -124,6 +127,14 @@ The default value is ``None`` (no caching).
 
 Changelog
 =========
+
+1.0 (01/16/2014)
+----------------
+
+- *BACKWARDS-INCOMPATIBLE* change: The default behaviour of this app has
+  changed to **allow all bots** from the previous opposite behavior.
+
+- Fixed some backward compatibility issues.
 
 0.9.2 (03/24/2013)
 ------------------
