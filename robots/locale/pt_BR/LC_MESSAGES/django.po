@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <hersonls@gmail.com>, 2011.
+# Herson Hersonls <hersonls@gmail.com>, 2011
+# viniciuscainelli <vinicius@viniciuscainelli.com>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: django-robots\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-08 12:09+0100\n"
-"PO-Revision-Date: 2011-12-07 13:14+0000\n"
-"Last-Translator: Jannis <jannis@leidel.info>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-11-20 09:28+0000\n"
+"Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/django-robots/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:11
 msgid "URL patterns"
@@ -40,12 +41,7 @@ msgid ""
 "start with the name of the pattern, e.g., '/admin' matches /admin.html too. "
 "Some major search engines allow an asterisk (*) as a wildcard and a dollar "
 "sign ($) to match the end of the URL, e.g., '/*.jpg$'."
-msgstr ""
-"Case-sensitive. A falta de uma barra também corresponde a arquivos que "
-"começam com o nome do padrão, por exemplo, '/admin' corresponde também a "
-"/admin.html. Alguns dos grandes sites de buscas permitem um asterisco (*) "
-"como curinga e um símbolo dólar ($) corresponder ao fim da URL, por exemplo,"
-" '/*.jpg$'."
+msgstr "Case-sensitive. A falta de uma barra também corresponde a arquivos que começam com o nome do padrão, por exemplo, '/admin' corresponde também a /admin.html. Alguns dos grandes sites de buscas permitem um asterisco (*) como curinga e um símbolo dólar ($) corresponder ao fim da URL, por exemplo, '/*.jpg$'."
 
 #: models.py:19 models.py:20
 msgid "url"
@@ -60,11 +56,7 @@ msgid ""
 "This should be a user agent string like 'Googlebot'. Enter an asterisk (*) "
 "for all user agents. For a full list look at the <a target=_blank "
 "href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
-msgstr ""
-"Este deve ser uma string com o agente de usuário, assim como 'Googlebot'. "
-"Insira um asterisco (*) para todos os agentes. Para uma lista completa "
-"consulte no <a target=_blank href='http://www.robotstxt.org/db.html'> banco "
-"de dados de Robôs Web."
+msgstr "Este deve ser uma string com o agente de usuário, assim como 'Googlebot'. Insira um asterisco (*) para todos os agentes. Para uma lista completa consulte no <a target=_blank href='http://www.robotstxt.org/db.html'> banco de dados de Robôs Web</a>."
 
 #: models.py:46 models.py:83
 msgid "allowed"
@@ -84,7 +76,7 @@ msgstr "As URLs que não são permitidos para serem acessados ​​por robôs."
 
 #: models.py:55
 msgid "sites"
-msgstr ""
+msgstr "sites"
 
 #: models.py:57
 msgid "crawl delay"
@@ -99,15 +91,7 @@ msgid ""
 "small values (0.5-1), and increase as needed to an acceptable value for your"
 " server. Larger delay values add more delay between successive crawl "
 "accesses and decrease the maximum crawl rate to your web server."
-msgstr ""
-"Entre 0.1 e 99.0. Este campo é suportado por alguns motores de busca e "
-"define o intervalo entre sucessivos acessos pelo rastreador em segundos. Se "
-"a taxa de rastreador é um problema para o seu servidor, você pode definir o "
-"atraso de até 5 ou 10 ou um valor confortável para o seu servidor, mas é "
-"sugerido começar com valores pequenos (0,5-1), e aumentar conforme "
-"necessário, para um valor aceitável para o seu servidor. Maiores valores de "
-"atraso adicionam mais demora entre sucessivos acessos de rastreamento e "
-"diminui a taxa máxima de rastreamento para o seu servidor web."
+msgstr "Entre 0.1 e 99.0. Este campo é suportado por alguns motores de busca e define o intervalo entre sucessivos acessos pelo rastreador em segundos. Se a taxa de rastreador é um problema para o seu servidor, você pode definir o atraso de até 5 ou 10 ou um valor confortável para o seu servidor, mas é sugerido começar com valores pequenos (0,5-1), e aumentar conforme necessário, para um valor aceitável para o seu servidor. Maiores valores de atraso adicionam mais demora entre sucessivos acessos de rastreamento e diminui a taxa máxima de rastreamento para o seu servidor web."
 
 #: models.py:75
 msgid "rule"
@@ -120,5 +104,3 @@ msgstr "regras"
 #: models.py:82 models.py:86
 msgid "and"
 msgstr "e"
-
-

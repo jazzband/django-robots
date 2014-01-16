@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Dimitris Glezos <glezos@transifex.com>, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: django-robots\n"
@@ -10,28 +11,28 @@ msgstr ""
 "POT-Creation-Date: 2011-02-08 12:09+0100\n"
 "PO-Revision-Date: 2013-11-20 09:28+0000\n"
 "Last-Translator: Jannis Leidel <jannis@leidel.info>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/django-robots/language/da/)\n"
+"Language-Team: Greek (http://www.transifex.com/projects/p/django-robots/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:11
 msgid "URL patterns"
-msgstr "URL mønstre"
+msgstr "Σχήματα URL"
 
 #: admin.py:12
 msgid "Advanced options"
-msgstr "Avancerede indstillinger"
+msgstr "Προχωρημένες επιλογές"
 
 #: forms.py:12
 msgid "Please specify at least one allowed or dissallowed URL."
-msgstr "Venligst specificer mindst én tilladt eller ikke tilladt URL."
+msgstr "Παρακαλείστε να διευκρινίσετε τουλάχιστον ένα URL το οποίο να επιτρέπεται ή να απορρίπτεται."
 
 #: models.py:11
 msgid "pattern"
-msgstr "mønster"
+msgstr "έκφραση"
 
 #: models.py:12
 msgid ""
@@ -39,7 +40,7 @@ msgid ""
 "start with the name of the pattern, e.g., '/admin' matches /admin.html too. "
 "Some major search engines allow an asterisk (*) as a wildcard and a dollar "
 "sign ($) to match the end of the URL, e.g., '/*.jpg$'."
-msgstr "Case-sensitive. En manglende slut-skråstreg matcher også filer der starter med navnet på mønstret, f.eks. '/admin' matcher også /admin.html. Nogle store søgemaskiner tillader brugen af asterisk (*) som et wildcard og et dollar tegn ($) til at mache slutningen af URL'en, f.eks., '/*.jpg$'."
+msgstr "Με διάκριση πεζών/κεφαλαίων. Η απουσία μιας καθέτου στο τέλος επιστρέφει αποτελέσματα τα οποία αρχίζουν με το όνομα της έκφρασης, π.χ. το '/admin' ταιριάζει και με το /admin.html. Μερικές μεγάλες μηχανές αναζήτησης επιτρέπουν ένα αστερίσκο (*) ως μπαλαντέρ και το σύμβολο του δολαρίου ($) για ανίχνευση του τέλους του URL, π.χ., '/*.jpg$'."
 
 #: models.py:19 models.py:20
 msgid "url"
@@ -47,30 +48,30 @@ msgstr "url"
 
 #: models.py:37
 msgid "robot"
-msgstr "robot"
+msgstr "ρομπότ"
 
 #: models.py:38
 msgid ""
 "This should be a user agent string like 'Googlebot'. Enter an asterisk (*) "
 "for all user agents. For a full list look at the <a target=_blank "
 "href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
-msgstr "Dette bør være en user agent streng ligesom 'Googlebot'. Skriv en asterisk (*) for at indikere alle user agents. For en komplet liste, kig på <a target=_blank href='http://www.robotstxt.org/db.html'> databasen af Web Robotter</a>."
+msgstr "Αυτό πρέπει να είναι μια συμβολοσειρά για ένα user agent όπως 'Googlebot'. Εισάγετε ένα αστερίσκο (*) για όλα τα user agents. Για έναν πλήρη κατάλογο ανατρέξτε στη <a target=_blank href='http://www.robotstxt.org/db.html'>βάση δεδομένων των Web Robots</a>."
 
 #: models.py:46 models.py:83
 msgid "allowed"
-msgstr "tilladt"
+msgstr "επιτρέπονται"
 
 #: models.py:47
 msgid "The URLs which are allowed to be accessed by bots."
-msgstr "URL'erne der er tilladt at tilgå af bots."
+msgstr "Τα URL στα οποία επιτρέπεται να έχουν πρόσβαση τα ρομπότ."
 
 #: models.py:51 models.py:87
 msgid "disallowed"
-msgstr "ikke tilladt"
+msgstr "να αρθεί"
 
 #: models.py:52
 msgid "The URLs which are not allowed to be accessed by bots."
-msgstr "URL'erne der ikke er tilladt at tilgå af bots."
+msgstr "Τα URL στα οποία δεν επιτρέπεται να έχουν πρόσβαση τα ρομπότ."
 
 #: models.py:55
 msgid "sites"
@@ -78,7 +79,7 @@ msgstr ""
 
 #: models.py:57
 msgid "crawl delay"
-msgstr "crawl-delay"
+msgstr "καθυστέρηση αναζήτησης"
 
 #: models.py:59
 msgid ""
@@ -89,16 +90,16 @@ msgid ""
 "small values (0.5-1), and increase as needed to an acceptable value for your"
 " server. Larger delay values add more delay between successive crawl "
 "accesses and decrease the maximum crawl rate to your web server."
-msgstr "Mellem 0.1 og 99.0. Dette felt er understøttet af nogle søgemaskiner og definerer et delay imellem crawler-adgange i sekunder. Hvis crawler-raten er et problem for din server, så kan du sætte delayet op til 5 eller 10 eller en anden behagelig værdi for din server. Men det anbefales at starte med lave værdier (0.5-1), og så hæve disse efter behov til et acceptabelt niveau for din server. Større delay-værdier tilføjer mere delay imellem crawl-adgange og mindsker den maksimale crawl-rate til din webserver."
+msgstr ""
 
 #: models.py:75
 msgid "rule"
-msgstr "regel"
+msgstr "κανόνας"
 
 #: models.py:76
 msgid "rules"
-msgstr "regler"
+msgstr "κανόνες"
 
 #: models.py:82 models.py:86
 msgid "and"
-msgstr "og"
+msgstr "και"
