@@ -31,6 +31,8 @@ To install the sitemap app, then follow these steps:
    is in your TEMPLATE_LOADERS_ setting. It's in there by default, so
    you'll only need to change this if you've changed that setting.
 3. Make sure you've installed the `sites framework`_.
+4. Run the ``syncdb`` or ``migrate`` management command (depening if you're
+   using South or not)
 
 .. _INSTALLED_APPS: http://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 .. _TEMPLATE_LOADERS: http://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
@@ -136,6 +138,12 @@ Changelog
 
 - Fixed some backward compatibility issues.
 
+- Updated existing translations (Danish, German, French,
+  Portugese (Brasil), Russian).
+
+- Added Greek, Spanish (Spain), Japanese, Dutch, Slovak and Ukrainian
+  translations.
+
 0.9.2 (03/24/2013)
 ------------------
 
@@ -165,10 +173,14 @@ Changelog
 
 - Added initial Sphinx docs.
 
-Support
-=======
+Bugs and feature requests
+=========================
 
-Please leave your `questions and problems`_ on the `designated Github site`_.
+As always your mileage may vary, so please don't hesitate to send feature
+requests and bug reports:
 
-.. _designated Github site: https://github.com/jezdez/django-robots
-.. _questions and problems: https://github.com/jezdez/django-robots/issues
+    https://github.com/jezdez/django-robots/issues
+
+Thanks! Feel free to leave a tip, too:
+
+    https://www.gittip.com/jezdez/
