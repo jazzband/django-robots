@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
-
+from six import u
 
 class Url(models.Model):
     """
@@ -22,7 +22,7 @@ class Url(models.Model):
         verbose_name_plural = _('url')
 
     def __unicode__(self):
-        return u"%s" % self.pattern
+        return u("%s") % self.pattern
 
     def save(self, *args, **kwargs):
         if not self.pattern.startswith('/'):
@@ -80,7 +80,7 @@ class Rule(models.Model):
         verbose_name_plural = _('rules')
 
     def __unicode__(self):
-        return u"%s" % self.robot
+        return u("%s") % self.robot
 
     def allowed_urls(self):
         return get_text_list(list(self.allowed.all()), _('and'))
