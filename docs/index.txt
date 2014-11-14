@@ -130,6 +130,11 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
+1.1 (11/14/2014)
+----------------
+
+- Added support for the new migration system in django 1.7.
+
 1.0 (01/16/2014)
 ----------------
 
