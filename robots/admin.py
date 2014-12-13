@@ -19,7 +19,7 @@ class RuleAdmin(admin.ModelAdmin):
     )
     list_filter = ('sites',)
     list_display = ('robot', 'allowed_urls', 'disallowed_urls')
-    search_fields = ('robot', 'urls')
+    search_fields = ('robot', 'allowed__pattern', 'disallowed__pattern')
 
 admin.site.register(Url)
 admin.site.register(Rule, RuleAdmin)
