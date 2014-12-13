@@ -1,9 +1,12 @@
 from django.db import models
 from django.contrib.sites.models import Site
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
 from six import u
 
+
+@python_2_unicode_compatible
 class Url(models.Model):
     """
     Defines a URL pattern for use with a robot exclusion rule. It's
@@ -21,7 +24,7 @@ class Url(models.Model):
         verbose_name = _('url')
         verbose_name_plural = _('url')
 
-    def __unicode__(self):
+    def __str__(self):
         return u("%s") % self.pattern
 
     def save(self, *args, **kwargs):
@@ -30,6 +33,7 @@ class Url(models.Model):
         super(Url, self).save(*args, **kwargs)
 
 
+@python_2_unicode_compatible
 class Rule(models.Model):
     """
     Defines an abstract rule which is used to respond to crawling web robots,
@@ -79,7 +83,7 @@ class Rule(models.Model):
         verbose_name = _('rule')
         verbose_name_plural = _('rules')
 
-    def __unicode__(self):
+    def __str__(self):
         return u("%s") % self.robot
 
     def allowed_urls(self):
