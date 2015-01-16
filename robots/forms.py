@@ -8,6 +8,7 @@ class RuleAdminForm(forms.ModelForm):
     class Meta:
         model = Rule
         fields = ['robot', 'allowed', 'disallowed', 'sites', 'crawl_delay']
+        exclude = []
 
 
     def clean(self):
