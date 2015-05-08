@@ -3,7 +3,8 @@
 {% for url in rule.allowed.all %}Allow: {{ url.pattern }}
 {% endfor %}{% for url in rule.disallowed.all %}Disallow: {{ url.pattern }}
 {% endfor %}{% if rule.crawl_delay %}Crawl-delay: {{ rule.crawl_delay }}
-{% endif %}{% if rule.free_text %}{{ rule.free_text }}{% endif %}{% endfor %}{% else %}User-agent: *
+{% endif %}{% if rule.free_text %}{{ rule.free_text }}{% endif %}
+{% endfor %}{% else %}User-agent: *
 Allow: /
 {% endif %}
 
