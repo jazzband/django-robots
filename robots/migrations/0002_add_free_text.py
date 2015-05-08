@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('0001_initial',),
+        ('robots', '0001_initial'),
     ]
 
     operations = [
