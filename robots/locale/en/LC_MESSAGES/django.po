@@ -8,31 +8,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-08 12:09+0100\n"
+"POT-Creation-Date: 2015-05-08 09:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:11
+#: admin.py:12
 msgid "URL patterns"
 msgstr ""
 
-#: admin.py:12
+#: admin.py:15
 msgid "Advanced options"
 msgstr ""
 
-#: forms.py:12
+#: forms.py:16
 msgid "Please specify at least one allowed or dissallowed URL."
 msgstr ""
 
-#: models.py:11
+#: models.py:15
 msgid "pattern"
 msgstr ""
 
-#: models.py:12
+#: models.py:16
 msgid ""
 "Case-sensitive. A missing trailing slash does also match to files which "
 "start with the name of the pattern, e.g., '/admin' matches /admin.html too. "
@@ -40,46 +41,46 @@ msgid ""
 "sign ($) to match the end of the URL, e.g., '/*.jpg$'."
 msgstr ""
 
-#: models.py:19 models.py:20
+#: models.py:24 models.py:25
 msgid "url"
 msgstr ""
 
-#: models.py:37
+#: models.py:44
 msgid "robot"
 msgstr ""
 
-#: models.py:38
+#: models.py:45
 msgid ""
 "This should be a user agent string like 'Googlebot'. Enter an asterisk (*) "
 "for all user agents. For a full list look at the <a target=_blank "
 "href='http://www.robotstxt.org/db.html'> database of Web Robots</a>."
 msgstr ""
 
-#: models.py:46 models.py:83
+#: models.py:53 models.py:95
 msgid "allowed"
 msgstr ""
 
-#: models.py:47
+#: models.py:54
 msgid "The URLs which are allowed to be accessed by bots."
 msgstr ""
 
-#: models.py:51 models.py:87
+#: models.py:58 models.py:99
 msgid "disallowed"
 msgstr ""
 
-#: models.py:52
+#: models.py:59
 msgid "The URLs which are not allowed to be accessed by bots."
 msgstr ""
 
-#: models.py:55
+#: models.py:62
 msgid "sites"
 msgstr ""
 
-#: models.py:57
+#: models.py:64
 msgid "crawl delay"
 msgstr ""
 
-#: models.py:59
+#: models.py:66
 msgid ""
 "Between 0.1 and 99.0. This field is supported by some search engines and "
 "defines the delay between successive crawler accesses in seconds. If the "
@@ -90,14 +91,22 @@ msgid ""
 "and decrease the maximum crawl rate to your web server."
 msgstr ""
 
-#: models.py:75
+#: models.py:83
+msgid "free text"
+msgstr ""
+
+#: models.py:84
+msgid "Free text or comments."
+msgstr "Non-standard rules or comments"
+
+#: models.py:87
 msgid "rule"
 msgstr ""
 
-#: models.py:76
+#: models.py:88
 msgid "rules"
 msgstr ""
 
-#: models.py:82 models.py:86
+#: models.py:94 models.py:98
 msgid "and"
 msgstr ""

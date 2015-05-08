@@ -79,6 +79,10 @@ class Rule(models.Model):
                                       "decrease the maximum crawl rate to "
                                       "your web server."))
 
+    free_text = models.TextField(blank=True, default='',
+                                 verbose_name=_('free text'),
+                                 help_text=_("Free text or comments."))
+
     class Meta:
         verbose_name = _('rule')
         verbose_name_plural = _('rules')

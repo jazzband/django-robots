@@ -7,8 +7,7 @@ from robots.models import Rule
 class RuleAdminForm(forms.ModelForm):
     class Meta:
         model = Rule
-        fields = ['robot', 'allowed', 'disallowed', 'sites', 'crawl_delay']
-
+        fields = ['robot', 'allowed', 'disallowed', 'sites', 'crawl_delay', 'free_text']
 
     def clean(self):
         if (not self.cleaned_data.get("disallowed", False) and

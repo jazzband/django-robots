@@ -92,6 +92,9 @@ and increase as needed to an acceptable value for your server. Larger delay
 values add more delay between successive crawl accesses and decrease the
 maximum crawl rate to your web server.
 
+Free text field allows you to add non-standard rules, like
+`host: example.com` for the Yandex user agent.
+
 The `sites framework`_ is used to enable multiple robots.txt per Django instance.
 If no rule exists it automatically allows every web robot access to every URL.
 
