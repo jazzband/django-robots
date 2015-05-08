@@ -14,7 +14,7 @@ class RuleAdmin(admin.ModelAdmin):
         }),
         (_('Advanced options'), {
             'classes': ('collapse',),
-            'fields': ('crawl_delay',),
+            'fields': ('crawl_delay', 'free_text'),
         }),
     )
     list_filter = ('sites',)
