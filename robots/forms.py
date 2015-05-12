@@ -9,7 +9,6 @@ class RuleAdminForm(forms.ModelForm):
         model = Rule
         fields = "__all__"
 
-
     def clean(self):
         if (not self.cleaned_data.get("disallowed", False) and
                 not self.cleaned_data.get("allowed", False)):

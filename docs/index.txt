@@ -130,6 +130,13 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
+1.1 (05/12/2015)
+----------------
+
+- Fixed compatibility to Django 1.7 and 1.8.
+
+- Moved South migrations into different subdirectory so South>=1.0 is needed.
+
 1.0 (01/16/2014)
 ----------------
 
