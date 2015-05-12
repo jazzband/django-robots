@@ -7,7 +7,7 @@ from robots.models import Rule
 class RuleAdminForm(forms.ModelForm):
     class Meta:
         model = Rule
-        fields = ['robot', 'allowed', 'disallowed', 'sites', 'crawl_delay']
+        fields = "__all__"
 
 
     def clean(self):
