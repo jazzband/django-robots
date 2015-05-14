@@ -1,8 +1,8 @@
-{% if rules %}{% for rule in rules %}{% ifchanged rule.robot %}{% if not forloop.first %}
+{% load l10n %}{% if rules %}{% for rule in rules %}{% ifchanged rule.robot %}{% if not forloop.first %}
 {% endif %}User-agent: {{ rule.robot }}{% endifchanged %}
 {% for url in rule.allowed.all %}Allow: {{ url.pattern }}
 {% endfor %}{% for url in rule.disallowed.all %}Disallow: {{ url.pattern }}
-{% endfor %}{% if rule.crawl_delay %}Crawl-delay: {{ rule.crawl_delay }}
+{% endfor %}{% if rule.crawl_delay %}Crawl-delay: {% localize off %}{{ rule.crawl_delay }}{% endlocalize %}
 {% endif %}{% endfor %}{% else %}User-agent: *
 Allow: /
 {% endif %}
