@@ -30,7 +30,7 @@ class RuleList(ListView):
                 pass
 
     def get_sitemap_urls(self):
-        sitemap_urls = settings.SITEMAP_URLS
+        sitemap_urls = list(settings.SITEMAP_URLS)
 
         if not sitemap_urls and settings.USE_SITEMAP:
             scheme = self.request.is_secure() and 'https' or 'http'
