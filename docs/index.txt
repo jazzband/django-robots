@@ -130,14 +130,14 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
-1.1 (05/12/2015)
+1.1 (2015-05-12)
 ----------------
 
 - Fixed compatibility to Django 1.7 and 1.8.
 
 - Moved South migrations into different subdirectory so South>=1.0 is needed.
 
-1.0 (01/16/2014)
+1.0 (2014-01-16)
 ----------------
 
 - *BACKWARDS-INCOMPATIBLE* change: The default behaviour of this app has
@@ -151,17 +151,17 @@ Changelog
 - Added Greek, Spanish (Spain), Japanese, Dutch, Slovak and Ukrainian
   translations.
 
-0.9.2 (03/24/2013)
+0.9.2 (2013-03-24)
 ------------------
 
 - Fixed compatibility with Django 1.5. Thanks, Russell Keith-Magee.
 
-0.9.1 (11/23/2012)
+0.9.1 (2012-11-23)
 ------------------
 
 - Fixed argument signature in new class based view. Thanks, mkai.
 
-0.9 (11/21/2012)
+0.9 (2012-11-21)
 ----------------
 
 - Deprecated ``ROBOTS_SITEMAP_URL`` setting. Use ``ROBOTS_SITEMAP_URLS``
