@@ -2,6 +2,10 @@
 Django Robots
 =============
 
+.. image:: https://jazzband.co/static/img/badge.svg
+   :target: https://jazzband.co/
+   :alt: Jazzband
+
 This is a basic Django application to manage robots.txt files following the
 `robots exclusion protocol`_, complementing the Django_ `Sitemap contrib app`_.
 

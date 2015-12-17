@@ -23,7 +23,7 @@ setup(
     description='Robots exclusion application for Django, complementing Sitemaps.',
     author='Jannis Leidel',
     author_email='jannis@leidel.info',
-    url='https://github.com/jezdez/django-robots/',
+    url='https://github.com/jazzband/django-robots/',
     packages=find_packages(),
     zip_safe=False,
     package_data={
