@@ -18,7 +18,10 @@ class RuleList(ListView):
     cache_timeout = settings.CACHE_TIMEOUT
 
     def get_current_site(self, request):
-        return Site.objects.get_current()
+        if settings.SITE_BY_REQUEST:
+            return Site.objects.get(domain=request.get_host())
+        else:
+            return Site.objects.get_current()
 
     def reverse_sitemap_url(self):
         try:
