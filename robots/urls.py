@@ -1,9 +1,8 @@
-try:
-    from django.conf.urls import patterns, url
-except ImportError:
-    from django.conf.urls.defaults import patterns, url
+from django.conf.urls import url
 
-urlpatterns = patterns(
-    'robots.views',
-    url(r'^$', 'rules_list', name='robots_rule_list'),
-)
+from robots.views import rules_list
+
+
+urlpatterns = [
+    url(r'^$', rules_list, name='robots_rule_list'),
+]
