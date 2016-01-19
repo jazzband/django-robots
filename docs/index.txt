@@ -103,7 +103,7 @@ existing web robots user agent strings.
 .. _database of web robots: http://www.robotstxt.org/db.html
 
 Host directive
-=====
+==============
 By default a ``Host`` statement is automatically added to the resulting
 robots.txt to avoid mirrors and select the main website properly.
 
