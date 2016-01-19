@@ -53,6 +53,7 @@ class RuleList(ListView):
     def get_context_data(self, **kwargs):
         context = super(RuleList, self).get_context_data(**kwargs)
         context['sitemap_urls'] = self.get_sitemap_urls()
+        context['host'] = self.current_site.domain if settings.USE_HOST else None
         return context
 
     def render_to_response(self, context, **kwargs):
