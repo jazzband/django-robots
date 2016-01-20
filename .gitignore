@@ -1,2 +1,6 @@
 *.egg-info
 docs/_build/
+*py[co]
+__pycache__
+.tox
+.coverage

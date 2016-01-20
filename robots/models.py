@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.sites.models import Site
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.six import u
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import get_text_list
-from six import u
 
 
 @python_2_unicode_compatible

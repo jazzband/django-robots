@@ -22,7 +22,7 @@ Use your favorite Python installer to install it from PyPI::
 
 Or get the source from the application site at::
 
-    http://github.com/jezdez/django-robots/
+    http://github.com/jazzband/django-robots/
 
 To install the sitemap app, then follow these steps:
 
@@ -102,6 +102,16 @@ existing web robots user agent strings.
 .. _'sites' framework: http://www.djangoproject.com/documentation/sites/
 .. _database of web robots: http://www.robotstxt.org/db.html
 
+Host directive
+==============
+By default a ``Host`` statement is automatically added to the resulting
+robots.txt to avoid mirrors and select the main website properly.
+
+To change the default behaviour to omit the inclusion of host directive,
+change the ``ROBOTS_USE_HOST`` setting in your Django settings file to::
+
+    ROBOTS_USE_HOST = False
+
 URLs
 ====
 
@@ -130,14 +140,14 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
-1.1 (05/12/2015)
+1.1 (2015-05-12)
 ----------------
 
 - Fixed compatibility to Django 1.7 and 1.8.
 
 - Moved South migrations into different subdirectory so South>=1.0 is needed.
 
-1.0 (01/16/2014)
+1.0 (2014-01-16)
 ----------------
 
 - *BACKWARDS-INCOMPATIBLE* change: The default behaviour of this app has
@@ -151,17 +161,17 @@ Changelog
 - Added Greek, Spanish (Spain), Japanese, Dutch, Slovak and Ukrainian
   translations.
 
-0.9.2 (03/24/2013)
+0.9.2 (2013-03-24)
 ------------------
 
 - Fixed compatibility with Django 1.5. Thanks, Russell Keith-Magee.
 
-0.9.1 (11/23/2012)
+0.9.1 (2012-11-23)
 ------------------
 
 - Fixed argument signature in new class based view. Thanks, mkai.
 
-0.9 (11/21/2012)
+0.9 (2012-11-21)
 ----------------
 
 - Deprecated ``ROBOTS_SITEMAP_URL`` setting. Use ``ROBOTS_SITEMAP_URLS``
@@ -186,6 +196,6 @@ Bugs and feature requests
 As always your mileage may vary, so please don't hesitate to send feature
 requests and bug reports:
 
-    https://github.com/jezdez/django-robots/issues
+    https://github.com/jazzband/django-robots/issues
 
 Thanks!

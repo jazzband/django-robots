@@ -18,7 +18,10 @@ class RuleList(ListView):
     cache_timeout = settings.CACHE_TIMEOUT
 
     def get_current_site(self, request):
-        return Site.objects.get_current()
+        if settings.SITE_BY_REQUEST:
+            return Site.objects.get(domain=request.get_host())
+        else:
+            return Site.objects.get_current()
 
     def reverse_sitemap_url(self):
         try:
@@ -30,7 +33,7 @@ class RuleList(ListView):
                 pass
 
     def get_sitemap_urls(self):
-        sitemap_urls = settings.SITEMAP_URLS
+        sitemap_urls = list(settings.SITEMAP_URLS)
 
         if not sitemap_urls and settings.USE_SITEMAP:
             scheme = self.request.is_secure() and 'https' or 'http'
@@ -50,6 +53,7 @@ class RuleList(ListView):
     def get_context_data(self, **kwargs):
         context = super(RuleList, self).get_context_data(**kwargs)
         context['sitemap_urls'] = self.get_sitemap_urls()
+        context['host'] = self.current_site.domain if settings.USE_HOST else None
         return context
 
     def render_to_response(self, context, **kwargs):

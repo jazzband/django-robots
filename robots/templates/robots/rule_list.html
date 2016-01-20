@@ -1,11 +1,11 @@
-{% if rules %}{% for rule in rules %}{% ifchanged rule.robot %}{% if not forloop.first %}
+{% load l10n %}{% if rules %}{% for rule in rules %}{% ifchanged rule.robot %}{% if not forloop.first %}
 {% endif %}User-agent: {{ rule.robot }}{% endifchanged %}
 {% for url in rule.allowed.all %}Allow: {{ url.pattern|safe }}
 {% endfor %}{% for url in rule.disallowed.all %}Disallow: {{ url.pattern|safe }}
-{% endfor %}{% if rule.crawl_delay %}Crawl-delay: {{ rule.crawl_delay }}
+{% endfor %}{% if rule.crawl_delay %}Crawl-delay: {% localize off %}{{ rule.crawl_delay|floatformat:'0' }}{% endlocalize %}
 {% endif %}{% endfor %}{% else %}User-agent: *
 Allow: /
 {% endif %}
-
+{% if host %}Host: {{ host }}{% endif %}
 {% for sitemap_url in sitemap_urls %}Sitemap: {{ sitemap_url }}
 {% endfor %}
