@@ -1,11 +1,10 @@
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.contrib.sites.models import Site
+from django.core.urlresolvers import NoReverseMatch, reverse
 from django.views.decorators.cache import cache_page
 from django.views.generic import ListView
 
-from django.contrib.sites.models import Site
-
-from robots.models import Rule
 from robots import settings
+from robots.models import Rule
 
 
 class RuleList(ListView):
@@ -57,8 +56,9 @@ class RuleList(ListView):
         return context
 
     def render_to_response(self, context, **kwargs):
-        return super(RuleList, self).render_to_response(context,
-            content_type='text/plain', **kwargs)
+        return super(RuleList, self).render_to_response(
+            context, content_type='text/plain', **kwargs
+        )
 
     def get_cache_timeout(self):
         return self.cache_timeout
