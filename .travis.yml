@@ -1,40 +1,26 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
-
 sudo: false
-
 python:
-  - 3.5
-  - 3.4
-  - 3.3
-  - 2.7
-
+- 3.5
+- 3.4
+- 3.3
+- 2.7
 env:
   matrix:
-  #- TOXENV='pep8'
-  #- TOXENV='isort'
   - DJANGO='django19'
   - DJANGO='django18'
   - DJANGO='django17'
   - DJANGO='django16'
-
-
-# command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-  - pip install -U tox>=1.8 codecov
-  - "if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then export PYVER=py27; fi"
-  - "if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then export PYVER=py33; fi"
-  - "if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then export PYVER=py34; fi"
-  - "if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then export PYVER=py35; fi"
-  - "if [[ ${DJANGO}z != 'z' ]]; then export TOXENV=$PYVER-$DJANGO; fi"
-
-# command to run tests, e.g. python setup.py test
+- pip install -U tox>=1.8 codecov
+- if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then export PYVER=py27; fi
+- if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then export PYVER=py33; fi
+- if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then export PYVER=py34; fi
+- if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then export PYVER=py35; fi
+- if [[ ${DJANGO}z != 'z' ]]; then export TOXENV=$PYVER-$DJANGO; fi
 script: COMMAND='coverage run' tox -e$TOXENV
-
 after_success:
-  - codecov
-
+- codecov
 matrix:
   exclude:
   - python: 2.7
@@ -55,3 +41,12 @@ matrix:
     env: DJANGO='django16'
   - python: 3.5
     env: DJANGO='django17'
+deploy:
+  provider: pypi
+  user: jazzband
+  password:
+    secure: lMYB+OtkDVNBRYALw1PPbBtXvBwTPZtQl2C71/K6LngrxsvA46lJ4l3tZOn0GVlKOvu6Qy+ktguwqPv6SJG6kMSidoy+SB3FKUZKJddYotard3TXbOjBeEmUKJ2OzNUXZWHaE8sevcS1kBckmbOMTYPxplw+uXPsKp+m3wk42zA=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: jazzband/django-robots
