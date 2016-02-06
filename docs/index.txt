@@ -13,6 +13,22 @@ tied together with a m2m relationship:
 
 .. _Django: http://www.djangoproject.com/
 
+
+Supported Django versions
+-------------------------
+
+* Django 1.6
+* Django 1.7
+* Django 1.8
+* Django 1.9
+
+Supported Python version
+------------------------
+
+* Python 2.6, 2.7
+* Python 3.3, 3.4, 3.5
+
+
 Installation
 ============
 
@@ -139,6 +155,19 @@ The default value is ``None`` (no caching).
 
 Changelog
 =========
+
+2.0 (unreleased)
+----------------
+
+- Dropped support for Django 1.5
+- Added support for Django 1.9
+- Improved code / metadata quality
+- Added Host directive
+- Added support to detect current site via http host var
+- Added filter_horizontal for for allowed and disallowed
+- Fixed error in which get_sitemap_urls modifies SITEMAP_URLS
+- Url patterns marked as safe in template
+- disabled localization of decimal fields in template
 
 1.1 (2015-05-12)
 ----------------
