@@ -52,3 +52,4 @@ deploy:
   on:
     tags: true
     repo: jazzband/django-robots
+    condition: "$TOXENV = py27-django19"
