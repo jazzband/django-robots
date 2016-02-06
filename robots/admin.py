@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from robots.models import Url, Rule
 from robots.forms import RuleAdminForm
+from robots.models import Rule, Url
 
 
 class RuleAdmin(admin.ModelAdmin):

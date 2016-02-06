@@ -1,11 +1,10 @@
-from django.core.urlresolvers import reverse, NoReverseMatch
+from django.contrib.sites.models import Site
+from django.core.urlresolvers import NoReverseMatch, reverse
 from django.views.decorators.cache import cache_page
 from django.views.generic import ListView
 
-from django.contrib.sites.models import Site
-
-from robots.models import Rule
 from robots import settings
+from robots.models import Rule
 
 
 class RuleList(ListView):
