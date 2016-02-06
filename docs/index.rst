@@ -153,7 +153,7 @@ settings file::
 This tells Django to cache the ``robots.txt`` for 24 hours (86400 seconds).
 The default value is ``None`` (no caching).
 
-.. include:: ../HISTORY.rst
+.. include:: HISTORY.rst
 
 Bugs and feature requests
 =========================
