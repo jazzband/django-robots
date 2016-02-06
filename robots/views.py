@@ -57,8 +57,9 @@ class RuleList(ListView):
         return context
 
     def render_to_response(self, context, **kwargs):
-        return super(RuleList, self).render_to_response(context,
-            content_type='text/plain', **kwargs)
+        return super(RuleList, self).render_to_response(
+            context, content_type='text/plain', **kwargs
+        )
 
     def get_cache_timeout(self):
         return self.cache_timeout
