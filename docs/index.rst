@@ -157,7 +157,7 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
-2.0 (unreleased)
+2.0 (2016-02-28)
 ----------------
 
 - Dropped support for Django 1.5
