@@ -4,7 +4,7 @@
 {% endfor %}{% for url in rule.disallowed.all %}Disallow: {{ url.pattern|safe }}
 {% endfor %}{% if rule.crawl_delay %}Crawl-delay: {% localize off %}{{ rule.crawl_delay|floatformat:'0' }}{% endlocalize %}
 {% endif %}{% endfor %}{% else %}User-agent: *
-Allow: /
+Disallow:
 {% endif %}
 {% if host %}Host: {{ host }}{% endif %}
 {% for sitemap_url in sitemap_urls %}Sitemap: {{ sitemap_url }}
