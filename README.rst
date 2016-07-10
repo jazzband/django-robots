@@ -12,7 +12,7 @@ This is a basic Django application to manage robots.txt files following the
 For installation instructions, see the documentation `install section`_;
 for instructions on how to use this application, and on
 what it provides, see the file "overview.txt" in the "docs/"
-directory or on ReadTheDocs: http://django-robots.readthedocs.org/
+directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 
 
 Supported Django versions
@@ -30,7 +30,7 @@ Supported Python version
 * Python 3.3, 3.4, 3.5
 
 
-.. _install section: http://django-robots.readthedocs.org/en/latest/#installation
+.. _install section: https://django-robots.readthedocs.io/en/latest/#installation
 .. _robots exclusion protocol: http://en.wikipedia.org/wiki/Robots_exclusion_standard
 .. _Django: http://www.djangoproject.com/
 .. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
