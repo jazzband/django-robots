@@ -96,3 +96,33 @@ class ViewTest(BaseTest):
         self.assertTrue('Sitemap: http://sub.example.com/sitemap.xml' in content)
         stanzas = content.split('\n\n')
         self._test_stanzas(stanzas)
+        
+    def test_use_scheme_in_host_setting(self):
+        request = self.get_request(path='/', user=AnonymousUser(), lang='en')
+
+        view_obj = RuleList()
+        view_obj.request = request
+        view_obj.current_site = Site.objects.get(pk=1)
+        view_obj.object_list = view_obj.get_queryset()
+
+        with self.settings(ROBOTS_USE_HOST=True):
+            with self.settings(ROBOTS_USE_SCHEME_IN_HOST=True):
+                context = view_obj.get_context_data(object_list=view_obj.object_list)
+                response = view_obj.render_to_response(context)
+                response.render()
+                content = force_text(response.content)
+                self.assertTrue('Host: http://example.com' in content)
+            with self.settings(ROBOTS_USE_SCHEME_IN_HOST=False):
+                context = view_obj.get_context_data(object_list=view_obj.object_list)
+                response = view_obj.render_to_response(context)
+                response.render()
+                content = force_text(response.content)
+                self.assertTrue('Host: example.com' in content)
+                
+        with self.settings(ROBOTS_USE_HOST=False):
+            context = view_obj.get_context_data(object_list=view_obj.object_list)
+            response = view_obj.render_to_response(context)
+            response.render()
+            content = force_text(response.content)
+            self.assertFalse('Host: example.com' in content)
+            
