@@ -15,7 +15,7 @@ class ViewTest(BaseTest):
     def setUp(self):
         super(BaseTest, self).setUp()
         site_1 = Site.objects.get(domain='example.com')
-        site_2 = Site.objects.create(domain='sub.example.com')
+        site_2 = Site.objects.create(domain='https://sub.example.com')
 
         url_admin = Url.objects.create(pattern='/admin')
         url_root = Url.objects.create(pattern='/')
@@ -93,7 +93,8 @@ class ViewTest(BaseTest):
         response = view_obj.render_to_response(context)
         response.render()
         content = force_text(response.content)
-        self.assertTrue('Sitemap: http://sub.example.com/sitemap.xml' in content)
+        self.assertTrue('Sitemap: https://sub.example.com/sitemap.xml' in content)
+        self.assertTrue('Host: https://sub.example.com' in content)
         stanzas = content.split('\n\n')
         self._test_stanzas(stanzas)
         
