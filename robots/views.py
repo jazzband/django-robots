@@ -56,7 +56,7 @@ class RuleList(ListView):
                 scheme = self.request.is_secure() and 'https' or 'http'
                 if settings.USE_SCHEME_IN_HOST:
                     context['host'] = "%s://%s" % (scheme, self.current_site.domain) 
-                else
+                else:
                     context['host'] = self.current_site.domain
         else:
                 context['host'] = None
