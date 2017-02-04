@@ -22,5 +22,6 @@ class RuleAdmin(admin.ModelAdmin):
     search_fields = ('robot', 'allowed__pattern', 'disallowed__pattern')
     filter_horizontal = ('allowed', 'disallowed')
 
+
 admin.site.register(Url)
 admin.site.register(Rule, RuleAdmin)
