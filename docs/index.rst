@@ -2,31 +2,33 @@
 Robots exclusion application for Django
 =======================================
 
+
 This is a basic Django application to manage robots.txt files following the
 `robots exclusion protocol`_, complementing the Django_ `Sitemap contrib app`_.
 
-The robots exclusion application consists of two database models which are
-tied together with a m2m relationship:
-
-* Rules_
-* URLs_
-
-.. _Django: http://www.djangoproject.com/
+For installation instructions, see the documentation `install section`_;
+for instructions on how to use this application, and on
+what it provides, see the file "overview.txt" in the "docs/"
+directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 
 
 Supported Django versions
 -------------------------
 
-* Django 1.6
-* Django 1.7
 * Django 1.8
 * Django 1.9
+* Django 1.10
+* Django 1.11
 
 Supported Python version
 ------------------------
 
-* Python 2.6, 2.7
-* Python 3.3, 3.4, 3.5
+* Python 2.7
+* Python 3.3, 3.4, 3.5, 3.6
+
+
+.. _install section: https://django-robots.readthedocs.io/en/latest/#installation
+.. _Django: http://www.djangoproject.com/
 
 
 Installation
@@ -44,14 +46,14 @@ To install the sitemap app, then follow these steps:
 
 1. Add ``'robots'`` to your INSTALLED_APPS_ setting.
 2. Make sure ``'django.template.loaders.app_directories.Loader'``
-   is in your TEMPLATE_LOADERS_ setting. It's in there by default, so
+   is in your TEMPLATES setting. It's in there by default, so
    you'll only need to change this if you've changed that setting.
 3. Make sure you've installed the `sites framework`_.
 4. Run the ``syncdb`` or ``migrate`` management command (depening if you're
    using South or not)
 
 .. _INSTALLED_APPS: http://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-.. _TEMPLATE_LOADERS: http://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+.. _TEMPLATES: https://docs.djangoproject.com/en/dev/ref/settings/#templates
 .. _sites framework: http://docs.djangoproject.com/en/dev/ref/contrib/sites/
 
 Sitemaps
@@ -156,6 +158,14 @@ The default value is ``None`` (no caching).
 
 Changelog
 =========
+
+3.0 (unreleased)
+----------------
+
+- Dropped support for Django < 1.8
+- Added support for Django 1.10 / 1.11
+- Improved admin changeform
+- Fixed an error which resulted in doubling the scheme for sitemap
 
 2.0 (2016-02-28)
 ----------------

@@ -1,8 +1,8 @@
+from django.contrib.sitemaps import views as sitemap_views
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.views.decorators.cache import cache_page
 from django.views.generic import ListView
-from django.contrib.sitemaps import views as sitemap_views
 
 from robots import settings
 from robots.models import Rule
