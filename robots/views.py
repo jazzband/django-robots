@@ -54,7 +54,10 @@ class RuleList(ListView):
         context['sitemap_urls'] = self.get_sitemap_urls()
         if settings.USE_HOST:
                 scheme = self.request.is_secure() and 'https' or 'http'
-                context['host'] = "%s://%s" % (scheme, self.current_site.domain) if settings.USE_SCHEME_IN_HOST else self.current_site.domain
+                if settings.USE_SCHEME_IN_HOST:
+                    context['host'] = "%s://%s" % (scheme, self.current_site.domain) 
+                else
+                    context['host'] = self.current_site.domain
         else:
                 context['host'] = None
         return context
