@@ -111,9 +111,7 @@ class ViewTest(BaseTest):
                 response = view_obj.render_to_response(context)
                 response.render()
                 content = force_text(response.content)
-                scheme = request.is_secure() and 'https' or 'http'
-                host = 'Host: %s://example.com' %(scheme)
-                self.assertTrue(host in content)
+                self.assertTrue('http://example.com' in content)
             with self.settings(USE_SCHEME_IN_HOST=False):
                 response = view_obj.render_to_response(context)
                 response.render()
