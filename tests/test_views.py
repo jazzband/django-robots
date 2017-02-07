@@ -122,7 +122,7 @@ class ViewTest(BaseTest):
                 
         with self.settings(USE_HOST=False):
             response = view_obj.render_to_response(context)
-            esponse.render()
+            response.render()
             content = force_text(response.content)
             self.assertFalse('Host: example.com' in content)
             
