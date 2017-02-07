@@ -106,8 +106,23 @@ class ViewTest(BaseTest):
         view_obj.object_list = view_obj.get_queryset()
         context = view_obj.get_context_data(object_list=view_obj.object_list)
 
-        with self.settings(USE_SCHEME_IN_HOST=True):
+        with self.settings(USE_HOST=True):  
+            with self.settings(USE_SCHEME_IN_HOST=True):
+                response = view_obj.render_to_response(context)
+                esponse.render()
+                content = force_text(response.content)
+                scheme = request.is_secure() and 'https' or 'http'
+                host = 'Host: %s://example.com' %(scheme)
+                self.assertTrue(host in content)
+            with self.settings(USE_SCHEME_IN_HOST=False):
+                response = view_obj.render_to_response(context)
+                esponse.render()
+                content = force_text(response.content)
+                self.assertTrue('Host: example.com' in content)
+                
+        with self.settings(USE_HOST=False):
             response = view_obj.render_to_response(context)
-            response.render()
+            esponse.render()
             content = force_text(response.content)
-            self.assertTrue(True, 'setting is in')
+            self.assertFalse('Host: example.com' in content)
+            
