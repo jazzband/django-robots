@@ -110,4 +110,4 @@ class ViewTest(BaseTest):
             response = view_obj.render_to_response(context)
             response.render()
             content = force_text(response.content)
-            self.assertTrue(True, 'Default USE_SCHEME_IN_HOST)
+            self.assertTrue(True, 'Default USE_SCHEME_IN_HOST')
