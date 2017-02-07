@@ -110,4 +110,4 @@ class ViewTest(BaseTest):
             response = view_obj.render_to_response(context)
             response.render()
             content = force_text(response.content)
-            self.assertTrue('Host: example.com' in content)
+            self.assertTrue('Sitemap: http://example.com/sitemap.xml' in content)
