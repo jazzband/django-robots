@@ -106,8 +106,8 @@ class ViewTest(BaseTest):
         view_obj.object_list = view_obj.get_queryset()
         context = view_obj.get_context_data(object_list=view_obj.object_list)
 
-        with self.settings(USE_SCHEME_IN_HOST=False):
+        with self.settings(USE_SCHEME_IN_HOST=True):
             response = view_obj.render_to_response(context)
             response.render()
             content = force_text(response.content)
-            self.assertTrue(True, 'Default USE_SCHEME_IN_HOST')
+            self.assertTrue('Host: example.com' in content)
