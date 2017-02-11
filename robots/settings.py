@@ -10,6 +10,7 @@ class Settings(object):
         'CACHE_TIMEOUT': ('ROBOTS_CACHE_TIMEOUT', None),
         'SITE_BY_REQUEST': ('ROBOTS_SITE_BY_REQUEST', False),
         'USE_SCHEME_IN_HOST': ('ROBOTS_USE_SCHEME_IN_HOST', False),
+        'SITEMAP_VIEW_NAME': ('ROBOTS_SITEMAP_VIEW_NAME', False),
     }
 
     def __getattr__(self, attribute):

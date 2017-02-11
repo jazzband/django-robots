@@ -25,7 +25,10 @@ class RuleList(ListView):
 
     def reverse_sitemap_url(self):
         try:
-            return reverse(sitemap_views.index)
+            if settings.SITEMAP_VIEW_NAME:
+                return reverse(settings.SITEMAP_VIEW_NAME)
+            else:
+                return reverse(sitemap_views.index)
         except NoReverseMatch:
             try:
                 return reverse(sitemap_views.sitemap)

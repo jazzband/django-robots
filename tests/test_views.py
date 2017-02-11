@@ -125,4 +125,23 @@ class ViewTest(BaseTest):
             response.render()
             content = force_text(response.content)
             self.assertFalse('Host: example.com' in content)
-            
+
+    def test_cached_sitemap(self):
+        request = self.get_request(path='/', user=AnonymousUser(), lang='en')
+
+        view_obj = RuleList()
+        view_obj.request = request
+        view_obj.current_site = Site.objects.get(pk=1)
+        view_obj.object_list = view_obj.get_queryset()
+        context = view_obj.get_context_data(object_list=view_obj.object_list)
+        response = view_obj.render_to_response(context)
+        response.render()
+        content = force_text(response.content)
+        self.assertTrue('Sitemap: http://example.com/sitemap.xml' in content)
+
+        with self.settings(ROBOTS_SITEMAP_VIEW_NAME='cached-sitemap'):
+            context = view_obj.get_context_data(object_list=view_obj.object_list)
+            response = view_obj.render_to_response(context)
+            response.render()
+            content = force_text(response.content)
+            self.assertTrue('Sitemap: http://example.com/other/sitemap.xml' in content)
