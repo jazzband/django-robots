@@ -128,6 +128,11 @@ change the ``ROBOTS_USE_HOST`` setting in your Django settings file to::
 
     ROBOTS_USE_HOST = False
 
+if you want to prefix the domain with the current request protocol
+(**http** or **https** as in ``Host: https://www.mysite.com``) add this setting::
+
+    ROBOTS_USE_SCHEME_IN_HOST = True
+
 URLs
 ====
 

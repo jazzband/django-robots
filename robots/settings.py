@@ -1,7 +1,5 @@
 import sys
 
-from django.conf import settings
-
 
 class Settings(object):
     defaults = {
@@ -11,9 +9,11 @@ class Settings(object):
         'USE_HOST': ('ROBOTS_USE_HOST', True),
         'CACHE_TIMEOUT': ('ROBOTS_CACHE_TIMEOUT', None),
         'SITE_BY_REQUEST': ('ROBOTS_SITE_BY_REQUEST', False),
+        'USE_SCHEME_IN_HOST': ('ROBOTS_USE_SCHEME_IN_HOST', False),
     }
 
     def __getattr__(self, attribute):
+        from django.conf import settings
         if attribute in self.defaults:
             return getattr(settings, *self.defaults[attribute])
 
