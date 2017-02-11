@@ -1,3 +1,4 @@
+from django.contrib.sitemaps import views as sitemap_views
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.views.decorators.cache import cache_page
@@ -24,10 +25,10 @@ class RuleList(ListView):
 
     def reverse_sitemap_url(self):
         try:
-            return reverse('django.contrib.sitemaps.views.index')
+            return reverse(sitemap_views.index)
         except NoReverseMatch:
             try:
-                return reverse('django.contrib.sitemaps.views.sitemap')
+                return reverse(sitemap_views.sitemap)
             except NoReverseMatch:
                 pass
 

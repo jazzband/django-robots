@@ -26,6 +26,10 @@ DEFAULT_SETTINGS = dict(
         'django.middleware.locale.LocaleMiddleware',
         'django.middleware.common.CommonMiddleware',
     ],
+    TEMPLATES=[{
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+    }]
 )
 
 

@@ -1,6 +1,7 @@
 language: python
 sudo: false
 python:
+- 3.6
 - 3.5
 - 3.4
 - 3.3
@@ -9,16 +10,17 @@ env:
   matrix:
   - TOXENV='pep8'
   - TOXENV='isort'
+  - DJANGO='django111'
+  - DJANGO='django110'
   - DJANGO='django19'
   - DJANGO='django18'
-  - DJANGO='django17'
-  - DJANGO='django16'
 install:
 - pip install -U tox>=1.8 codecov
 - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then export PYVER=py27; fi
 - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then export PYVER=py33; fi
 - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then export PYVER=py34; fi
 - if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then export PYVER=py35; fi
+- if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then export PYVER=py36; fi
 - if [[ ${DJANGO}z != 'z' ]]; then export TOXENV=$PYVER-$DJANGO; fi
 script: COMMAND='coverage run' tox -e$TOXENV
 after_success:
@@ -32,6 +34,10 @@ matrix:
   - python: 3.3
     env: DJANGO='django19'
   - python: 3.3
+    env: DJANGO='django110'
+  - python: 3.3
+    env: DJANGO='django111'
+  - python: 3.3
     env: TOXENV='pep8'
   - python: 3.3
     env: TOXENV='isort'
@@ -40,8 +46,16 @@ matrix:
   - python: 3.4
     env: TOXENV='isort'
   - python: 3.5
+    env: TOXENV='pep8'
+  - python: 3.5
+    env: TOXENV='isort'
+  - python: 3.5
     env: DJANGO='django16'
   - python: 3.5
+    env: DJANGO='django17'
+  - python: 3.6
+    env: DJANGO='django16'
+  - python: 3.6
     env: DJANGO='django17'
 deploy:
   provider: pypi
