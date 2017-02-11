@@ -17,3 +17,6 @@ class Settings(object):
     def __getattr__(self, attribute):
         if attribute in self.defaults:
             return getattr(settings, *self.defaults[attribute])
+
+
+sys.modules[__name__] = Settings()
