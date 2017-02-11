@@ -171,6 +171,7 @@ Changelog
 - Added support for Django 1.10 / 1.11
 - Improved admin changeform
 - Fixed an error which resulted in doubling the scheme for sitemap
+- Added support for protocol prefix to Host directive
 
 2.0 (2016-02-28)
 ----------------
