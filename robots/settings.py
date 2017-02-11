@@ -1,15 +1,19 @@
+import sys
+
 from django.conf import settings
 
-#: A list of one or more sitemaps to inform robots about:
-SITEMAP_URLS = []
-SITEMAP_URLS.extend(getattr(settings, 'ROBOTS_SITEMAP_URLS', []))
 
-USE_SITEMAP = getattr(settings, 'ROBOTS_USE_SITEMAP', True)
+class Settings(object):
+    defaults = {
+        #: A list of one or more sitemaps to inform robots about:
+        'SITEMAP_URLS': ('ROBOTS_SITEMAP_URLS', []),
+        'USE_SITEMAP': ('ROBOTS_USE_SITEMAP', True),
+        'USE_HOST': ('ROBOTS_USE_HOST', True),
+        'CACHE_TIMEOUT': ('ROBOTS_CACHE_TIMEOUT', None),
+        'SITE_BY_REQUEST': ('ROBOTS_SITE_BY_REQUEST', False),
+        'USE_SCHEME_IN_HOST': ('ROBOTS_USE_SCHEME_IN_HOST', False),
+    }
 
-USE_HOST = getattr(settings, 'ROBOTS_USE_HOST', True)
-
-CACHE_TIMEOUT = getattr(settings, 'ROBOTS_CACHE_TIMEOUT', None)
-
-SITE_BY_REQUEST = getattr(settings, 'ROBOTS_SITE_BY_REQUEST', False)
-
-USE_SCHEME_IN_HOST = getattr(settings, 'ROBOTS_USE_SCHEME_IN_HOST', False)
+    def __getattr__(self, attribute):
+        if attribute in self.defaults:
+            return getattr(settings, *self.defaults[attribute])
