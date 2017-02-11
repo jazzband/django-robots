@@ -102,7 +102,7 @@ class ViewTest(BaseTest):
 
         view_obj = RuleList()
         view_obj.request = request
-        view_obj.current_site = Site.objects.get(pk=2)
+        view_obj.current_site = Site.objects.get(pk=1)
         view_obj.object_list = view_obj.get_queryset()
         context = view_obj.get_context_data(object_list=view_obj.object_list)
 
