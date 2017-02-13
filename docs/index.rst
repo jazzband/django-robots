@@ -76,6 +76,21 @@ automatically discovered, change the ``ROBOTS_SITEMAP_URLS`` setting to::
         'http://www.example.com/sitemap.xml',
     ]
 
+If the sitemap is wrapped in a decorator, dotted path reverse to discover
+the sitemap URL does not work.
+To overcome this, provide a name to the sitemap instance in ``urls.py``::
+
+    urlpatterns = [
+        ...
+        url(r'^sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': []}, name='cached-sitemap'),
+        ...
+    ]
+
+and inform django-robots about the view name by adding the followin setting::
+
+    ROBOTS_SITEMAP_VIEW_NAME = 'cached-sitemap'
+
+
 .. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
 
 Initialization
@@ -172,6 +187,7 @@ Changelog
 - Improved admin changeform
 - Fixed an error which resulted in doubling the scheme for sitemap
 - Added support for protocol prefix to Host directive
+- Fixed support for cached sitemaps
 
 2.0 (2016-02-28)
 ----------------
