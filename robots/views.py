@@ -35,16 +35,21 @@ class RuleList(ListView):
             except NoReverseMatch:
                 pass
 
+    def get_domain(self):
+        scheme = self.request.is_secure() and 'https' or 'http'
+        if not self.current_site.domain.startswith(('http', 'https')):
+            return "%s://%s" % (scheme, self.current_site.domain)
+        return self.current_site.domain
+
     def get_sitemap_urls(self):
         sitemap_urls = list(settings.SITEMAP_URLS)
 
         if not sitemap_urls and settings.USE_SITEMAP:
-            scheme = self.request.is_secure() and 'https' or 'http'
             sitemap_url = self.reverse_sitemap_url()
 
             if sitemap_url is not None:
                 if not sitemap_url.startswith(('http', 'https')):
-                    sitemap_url = "%s://%s%s" % (scheme, self.current_site.domain, sitemap_url)
+                    sitemap_url = "%s%s" % (self.get_domain(), sitemap_url)
                 if sitemap_url not in sitemap_urls:
                     sitemap_urls.append(sitemap_url)
 
@@ -57,9 +62,8 @@ class RuleList(ListView):
         context = super(RuleList, self).get_context_data(**kwargs)
         context['sitemap_urls'] = self.get_sitemap_urls()
         if settings.USE_HOST:
-            scheme = self.request.is_secure() and 'https' or 'http'
             if settings.USE_SCHEME_IN_HOST:
-                context['host'] = "%s://%s" % (scheme, self.current_site.domain)
+                context['host'] = self.get_domain()
             else:
                 context['host'] = self.current_site.domain
         else:
