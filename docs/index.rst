@@ -82,7 +82,7 @@ To overcome this, provide a name to the sitemap instance in ``urls.py``::
 
     urlpatterns = [
         ...
-        url(r'^sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': []}, name='cached-sitemap'),
+        url(r'^sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': [...]}, name='cached-sitemap'),
         ...
     ]
 
@@ -92,6 +92,8 @@ and inform django-robots about the view name by adding the followin setting::
 
 
 .. _Sitemap contrib app: http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/
+
+Use ``ROBOTS_SITEMAP_VIEW_NAME`` also if you use custom sitemap views (e.g.: wagtail custom sitemaps).
 
 Initialization
 ==============
@@ -185,8 +187,9 @@ Changelog
 - Dropped support for Django < 1.8
 - Added support for Django 1.10 / 1.11
 - Improved admin changeform
-- Fixed an error which resulted in doubling the scheme for sitemap
 - Added support for protocol prefix to Host directive
+- Added support for sitemap named views (for non standard sitemap views)
+- Fixed an error which resulted in doubling the scheme for sitemap
 - Fixed support for cached sitemaps
 
 2.0 (2016-02-28)
