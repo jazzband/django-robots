@@ -49,8 +49,7 @@ To install the sitemap app, then follow these steps:
    is in your TEMPLATES setting. It's in there by default, so
    you'll only need to change this if you've changed that setting.
 3. Make sure you've installed the `sites framework`_.
-4. Run the ``syncdb`` or ``migrate`` management command (depening if you're
-   using South or not)
+4. Run the ``migrate`` management command
 
 .. _INSTALLED_APPS: http://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 .. _TEMPLATES: https://docs.djangoproject.com/en/dev/ref/settings/#templates
