@@ -180,7 +180,7 @@ The default value is ``None`` (no caching).
 Changelog
 =========
 
-3.0 (unreleased)
+3.0 (2017-02-28)
 ----------------
 
 - Dropped support for Django < 1.8
