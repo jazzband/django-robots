@@ -2,7 +2,6 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 import django
-
 import django.contrib.sitemaps.views
 import django.views.i18n
 import django.views.static
