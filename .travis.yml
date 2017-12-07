@@ -27,6 +27,8 @@ matrix:
     env: TOXENV='pep8'
   - python: 2.7
     env: TOXENV='isort'
+  - python: 2.7
+    env: DJANGO='django200'
   - python: 3.4
     env: TOXENV='pep8'
   - python: 3.4
