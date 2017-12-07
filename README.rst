@@ -17,6 +17,7 @@ directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 Supported Django versions
 -------------------------
 
+* Django 2.0
 * Django 1.11
 
 Older Django versions, 1.6 to 1.10, use ``django-robots==3.0``.
