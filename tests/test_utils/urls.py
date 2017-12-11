@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, print_function, unicode_literals
 
-import django.contrib.sitemaps.views
 import django.views.i18n
 import django.views.static
 from django.conf import settings
@@ -13,9 +12,21 @@ from django.views.decorators.cache import cache_page
 urlpatterns = [
     url(r'^media/(?P<path>.*)$', django.views.static.serve,  # NOQA
         {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'^jsi18n/(?P<packages>\S+?)/$', django.views.i18n.javascript_catalog),  # NOQA
-    url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^/', include('robots.urls')),  # NOQA
     url(r'^sitemap.xml$', sitemap_view, {'sitemaps': []}),
     url(r'^other/sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': []}, name='cached-sitemap'),
 ]
+
+if django.VERSION >= (2, 0):
+    from django.views.i18n import JavaScriptCatalog
+
+    urlpatterns.extend([
+        url(r'^jsi18n/(?P<packages>\S+?)/$', JavaScriptCatalog.as_view()),
+        url(r'^admin/', admin.site.urls),  # NOQA
+    ])
+
+else:
+    urlpatterns.extend([
+        url(r'^jsi18n/(?P<packages>\S+?)/$', django.views.i18n.javascript_catalog),  # NOQA
+        url(r'^admin/', include(admin.site.urls)),  # NOQA
+    ])
