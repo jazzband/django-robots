@@ -7,10 +7,17 @@ from django.test import RequestFactory, TestCase
 from django.utils.six import StringIO
 
 
+def callable_or_bool(attr):
+    if callable(attr):
+        return attr()
+    return attr
+
+
 class BaseTest(TestCase):
     """
     Base class with utility function
     """
+
     @classmethod
     def setUpClass(cls):
         super(BaseTest, cls).setUpClass()
@@ -28,7 +35,7 @@ class BaseTest(TestCase):
         if secure:
             request.environ['SERVER_PORT'] = str('443')
             request.environ['wsgi.url_scheme'] = str('https')
-        if user.is_authenticated():
+        if callable_or_bool(user.is_authenticated):
             request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
         request.cookies = SimpleCookie()
         request.errors = StringIO()
