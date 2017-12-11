@@ -165,4 +165,9 @@ requests and bug reports:
 
     https://github.com/jazzband/django-robots/issues
 
-Thanks!
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   history
