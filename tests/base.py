@@ -28,7 +28,7 @@ class BaseTest(TestCase):
         if secure:
             request.environ['SERVER_PORT'] = str('443')
             request.environ['wsgi.url_scheme'] = str('https')
-        if user.is_authenticated():
+        if user.is_authenticated:
             request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
         request.cookies = SimpleCookie()
         request.errors = StringIO()

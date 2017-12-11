@@ -15,16 +15,16 @@ directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 Supported Django versions
 -------------------------
 
-* Django 1.8
-* Django 1.9
-* Django 1.10
+* Django 2.0
 * Django 1.11
+
+Older Django versions, 1.6 to 1.10, use ``django-robots==3.0``.
 
 Supported Python version
 ------------------------
 
 * Python 2.7
-* Python 3.3, 3.4, 3.5, 3.6
+* Python 3.4, 3.5, 3.6
 
 
 .. _install section: https://django-robots.readthedocs.io/en/latest/#installation
