@@ -164,10 +164,3 @@ As always your mileage may vary, so please don't hesitate to send feature
 requests and bug reports:
 
     https://github.com/jazzband/django-robots/issues
-
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-   history

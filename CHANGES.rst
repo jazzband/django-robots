@@ -12,7 +12,6 @@ master (unreleased)
 - Drop support for Django 1.10 and below. For older Django versions,
   use django-robots 3.0.0 and below
 - Fix docs to include README in index instead of duplicating
-<<<<<<< HEAD
 
 3.0 (2017-02-28)
 ----------------
