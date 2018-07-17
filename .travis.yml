@@ -40,9 +40,10 @@ matrix:
 deploy:
   provider: pypi
   user: jazzband
-  distributions: "sdist bdist_wheel"
+  server: https://jazzband.co/projects/django-robots/upload
+  distributions: sdist bdist_wheel
   password:
-    secure: Hd0czf7xlpvyDpdM3PINaHk99jcCYa4roj/DsD1UZilBY2zGdqNdo3lcQKIjWUcoX25l+Hs9L6eb95DpT7yYYXELDbJSh0izzHJpmH9VR5gBY2hlweGwUeuu0PQ7o5HBezTXylE6JnbL56ugNrYmqNczF5Ncro/ZsHr4BCToI0M=
+    secure: BrV3ApadhVXuskMzLPR/9jakE+kpqa1nLNva80uJ8jccUHkLYjrTelVGRPpnR8P6Wc4+aUaet1DVBrllI8o2DEydowrRDLcYA/qJ2vVfVHVCeLCDCZmQTMXnMPieyR7gSPxPKKwGwH1ER73s5FoQDu3OyJNfZrYB6Jd0llh5XIQ=
   on:
     tags: true
     repo: jazzband/django-robots
