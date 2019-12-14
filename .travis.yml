@@ -12,7 +12,7 @@ env:
   - DJANGO='django111'
   - DJANGO='django200'
 install:
-- pip install -U tox>=1.8 codecov
+- pip install -U tox>=1.8 codecov six>=1.13.0
 - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then export PYVER=py27; fi
 - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then export PYVER=py34; fi
 - if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then export PYVER=py35; fi
