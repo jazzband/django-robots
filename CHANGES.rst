@@ -4,6 +4,12 @@ CHANGES
 master (unreleased)
 -------------------
 
+3.2.0(2020-01-03)
+-------------------
+- Support for Django 3.0
+- Updated the requirements for dropped support.
+
+
 3.1.0 (2017-12-11)
 ------------------
 
