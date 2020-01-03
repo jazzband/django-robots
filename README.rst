@@ -34,7 +34,7 @@ Supported Python version
 ------------------------
 
 * Python 2.7 (Django 1.11 only)
-* Python 3.4, 3.5, 3.6
+* Python 3.4, 3.5, 3.6, 3.7
 
 .. _install section: https://django-robots.readthedocs.io/en/latest/#installation
 .. _robots exclusion protocol: http://en.wikipedia.org/wiki/Robots_exclusion_standard
