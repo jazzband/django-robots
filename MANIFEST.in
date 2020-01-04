@@ -1,6 +1,0 @@
-include LICENSE.txt
-include MANIFEST.in
-include README.rst
-recursive-include docs *
-recursive-include robots/templates *
-recursive-include robots/locale *
