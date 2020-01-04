@@ -16,10 +16,18 @@ else:
     from django.conf.urls import include, url
 
 urlpatterns = [
-    url(r'^media/(?P<path>.*)$', django.views.static.serve,  # NOQA
-        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'^admin/', admin.site.urls),  # NOQA
-    url(r'^/', include('robots.urls')),  # NOQA
-    url(r'^sitemap.xml$', sitemap_view, {'sitemaps': []}),
-    url(r'^other/sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': []}, name='cached-sitemap'),
+    url(
+        r"^media/(?P<path>.*)$",
+        django.views.static.serve,  # NOQA
+        {"document_root": settings.MEDIA_ROOT, "show_indexes": True},
+    ),
+    url(r"^admin/", admin.site.urls),  # NOQA
+    url(r"^/", include("robots.urls")),  # NOQA
+    url(r"^sitemap.xml$", sitemap_view, {"sitemaps": []}),
+    url(
+        r"^other/sitemap.xml$",
+        cache_page(60)(sitemap_view),
+        {"sitemaps": []},
+        name="cached-sitemap",
+    ),
 ]

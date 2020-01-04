@@ -21,4 +21,5 @@ try:
     from django.db import migrations  # noqa
 except ImportError:
     from django.core.exceptions import ImproperlyConfigured
+
     raise ImproperlyConfigured(SOUTH_ERROR_MESSAGE)
