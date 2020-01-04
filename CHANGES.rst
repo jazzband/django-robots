@@ -4,11 +4,13 @@ CHANGES
 master (unreleased)
 -------------------
 
-3.2.0(2020-01-03)
--------------------
-- Support for Django 3.0 and Python 3.7.
-- Updated the requirements for dropped support of six in django 3.
+4.0.0(2020-01-04)
+-----------------
 
+- Support for Django 2.1, 2.2, 3.0 and Python 3.7 and 3.8.
+- Updated the requirements for dropped support of six in Django 3.
+- Restructure test setup to use setuptools-scm and more modern Python
+  patterns.
 
 3.1.0 (2017-12-11)
 ------------------

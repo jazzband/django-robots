@@ -1,56 +1,16 @@
 language: python
-sudo: false
+dist: xenial
+cache: pip
 python:
+- 3.8
 - 3.7
 - 3.6
 - 3.5
-- 3.4
 - 2.7
-env:
-  matrix:
-  - TOXENV='pep8'
-  - TOXENV='isort'
-  - DJANGO='django111'
-  - DJANGO='django200'
-  - DJANGO='django300'
-install:
-- pip install -U tox>=1.8 codecov six>=1.13.0
-- if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then export PYVER=py27; fi
-- if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then export PYVER=py34; fi
-- if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then export PYVER=py35; fi
-- if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then export PYVER=py36; fi
-- if [[ $TRAVIS_PYTHON_VERSION == '3.7' ]]; then export PYVER=py37; fi
-- if [[ ${DJANGO}z != 'z' ]]; then export TOXENV=$PYVER-$DJANGO; fi
-script: COMMAND='coverage run' tox -e$TOXENV
+install: pip install tox-travis codecov
+script: tox
 after_success:
 - codecov
-matrix:
-  exclude:
-  - python: 2.7
-    env: TOXENV='pep8'
-  - python: 2.7
-    env: TOXENV='isort'
-  - python: 2.7
-    env: DJANGO='django200'
-  - python: 2.7
-    env: DJANGO='django300'
-  - python: 3.4
-    env: TOXENV='pep8'
-  - python: 3.4
-    env: TOXENV='isort'
-  - python: 3.4
-    env: DJANGO='django300'
-  - python: 3.5
-    env: TOXENV='pep8'
-  - python: 3.5
-    env: TOXENV='isort'
-  - python: 3.5
-    env: DJANGO='django300'
-  - python: 3.6
-    env: TOXENV='pep8'
-  - python: 3.6
-    env: TOXENV='isort'
-  
 deploy:
   provider: pypi
   user: jazzband
@@ -61,4 +21,4 @@ deploy:
   on:
     tags: true
     repo: jazzband/django-robots
-    condition: "$TOXENV = py27-django111"
+    python: 3.7
