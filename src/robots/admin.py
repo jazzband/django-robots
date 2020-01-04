@@ -9,10 +9,10 @@ class RuleAdmin(admin.ModelAdmin):
     form = RuleAdminForm
     fieldsets = (
         (None, {"fields": ("robot", "sites")}),
-        (_("URL patterns"), {"fields": ("allowed", "disallowed"),}),
+        (_("URL patterns"), {"fields": ("allowed", "disallowed")}),
         (
             _("Advanced options"),
-            {"classes": ("collapse",), "fields": ("crawl_delay",),},
+            {"classes": ("collapse",), "fields": ("crawl_delay",)},
         ),
     )
     list_filter = ("sites",)

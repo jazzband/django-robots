@@ -11,7 +11,7 @@ setup(
     name='django-robots',
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
-    long_description=read('docs', 'index.rst'),
+    long_description=read("README.rst"),
     long_description_content_type='text/x-rst',
     description='Robots exclusion application for Django, complementing Sitemaps.',
     author='Jannis Leidel',
