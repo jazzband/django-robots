@@ -6,7 +6,7 @@ master (unreleased)
 
 3.2.0(2020-01-03)
 -------------------
-- Support for Django 3.0
+- Support for Django 3.0 and Python 3.7.
 - Updated the requirements for dropped support of six in django 3.
 
 
