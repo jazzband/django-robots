@@ -4,7 +4,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 from django.contrib.auth import SESSION_KEY
 from django.http import SimpleCookie
 from django.test import RequestFactory, TestCase
-from django.utils.six import StringIO
+from six import StringIO
 
 
 class BaseTest(TestCase):
