@@ -19,10 +19,12 @@ def find_version(*file_paths):
 setup(
     name='django-robots',
     long_description=read('docs', 'index.rst'),
+    long_description_content_type='text/markdown',
     version=find_version('robots', '__init__.py'),
     description='Robots exclusion application for Django, complementing Sitemaps.',
     author='Jannis Leidel',
     author_email='jannis@leidel.info',
+    python_requires='>1.1.1',
     url='https://github.com/jazzband/django-robots/',
     packages=find_packages(),
     zip_safe=False,
