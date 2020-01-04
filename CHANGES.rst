@@ -4,7 +4,7 @@ CHANGES
 master (unreleased)
 -------------------
 
-4.0.0(2020-01-04)
+4.0 (2020-01-04)
 -----------------
 
 - Support for Django 2.1, 2.2, 3.0 and Python 3.7 and 3.8.
