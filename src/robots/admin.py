@@ -1,5 +1,10 @@
+import sys
+
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
+if sys.version_info[0] == 2:
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import gettext_lazy as _
 from robots.forms import RuleAdminForm
 from robots.models import Rule, Url
 
