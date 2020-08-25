@@ -1,8 +1,14 @@
+import sys
+
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.text import get_text_list
-from django.utils.translation import ugettext_lazy as _
 from six import python_2_unicode_compatible, u
+
+if sys.version_info[0] == 2:
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import gettext_lazy as _
 
 
 @python_2_unicode_compatible
