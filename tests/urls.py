@@ -11,7 +11,8 @@ from django.contrib.sitemaps.views import sitemap as sitemap_view
 from django.views.decorators.cache import cache_page
 
 if django.VERSION[:2] >= (2, 0):
-    from django.urls import include, re_path as url
+    from django.urls import include
+    from django.urls import re_path as url
 else:
     from django.conf.urls import include, url
 

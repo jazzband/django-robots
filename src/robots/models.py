@@ -3,6 +3,7 @@ import sys
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.text import get_text_list
+
 from six import python_2_unicode_compatible, u
 
 if sys.version_info[0] == 2:

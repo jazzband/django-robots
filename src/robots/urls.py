@@ -1,4 +1,5 @@
 from django.conf.urls import url
+
 from robots.views import rules_list
 
 urlpatterns = [

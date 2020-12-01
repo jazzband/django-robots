@@ -1,6 +1,7 @@
 import sys
 
 from django.contrib import admin
+
 from robots.forms import RuleAdminForm
 from robots.models import Rule, Url
 
