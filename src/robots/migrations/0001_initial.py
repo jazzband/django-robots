@@ -47,7 +47,10 @@ class Migration(migrations.Migration):
                     models.ManyToManyField(to="sites.Site", verbose_name="sites"),
                 ),
             ],
-            options={"verbose_name_plural": "rules", "verbose_name": "rule",},
+            options={
+                "verbose_name_plural": "rules",
+                "verbose_name": "rule",
+            },
             bases=(models.Model,),
         ),
         migrations.CreateModel(
@@ -71,7 +74,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name_plural": "url", "verbose_name": "url",},
+            options={
+                "verbose_name_plural": "url",
+                "verbose_name": "url",
+            },
             bases=(models.Model,),
         ),
         migrations.AddField(

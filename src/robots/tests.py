@@ -7,6 +7,7 @@ from django.contrib.sites.models import Site
 from django.http import SimpleCookie
 from django.test import RequestFactory, TestCase
 from django.utils.encoding import force_text
+
 from robots.models import Rule, Url
 from robots.views import RuleList
 from six import StringIO

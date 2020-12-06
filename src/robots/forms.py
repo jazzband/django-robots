@@ -1,6 +1,7 @@
 import sys
 
 from django import forms
+
 from robots.models import Rule
 
 if sys.version_info[0] == 2:
