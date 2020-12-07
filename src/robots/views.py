@@ -65,7 +65,7 @@ class RuleList(ListView):
         return Rule.objects.filter(sites=self.current_site)
 
     def get_context_data(self, **kwargs):
-        context = super(RuleList, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context["sitemap_urls"] = self.get_sitemap_urls()
         if settings.USE_HOST:
             if settings.USE_SCHEME_IN_HOST:
@@ -77,9 +77,7 @@ class RuleList(ListView):
         return context
 
     def render_to_response(self, context, **kwargs):
-        return super(RuleList, self).render_to_response(
-            context, content_type="text/plain", **kwargs
-        )
+        return super().render_to_response(context, content_type="text/plain", **kwargs)
 
     def get_cache_timeout(self):
         return self.cache_timeout
@@ -87,7 +85,7 @@ class RuleList(ListView):
     def dispatch(self, request, *args, **kwargs):
         cache_timeout = self.get_cache_timeout()
         self.current_site = self.get_current_site(request)
-        super_dispatch = super(RuleList, self).dispatch
+        super_dispatch = super().dispatch
         if not cache_timeout:
             return super_dispatch(request, *args, **kwargs)
         key_prefix = self.current_site.domain

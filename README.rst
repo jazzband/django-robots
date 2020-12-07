@@ -35,7 +35,6 @@ for Django 3 and above, use ``django-robots>=4.0.0``.
 Supported Python version
 ------------------------
 
-* Python 2.7 (Django 1.11 only)
 * Python 3.5, 3.6, 3.7, 3.8
 
 .. _install section: https://django-robots.readthedocs.io/en/latest/#installation

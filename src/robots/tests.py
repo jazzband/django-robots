@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, print_function, unicode_literals
+from io import StringIO
 
 from django.contrib.auth import SESSION_KEY
 from django.contrib.auth.models import AnonymousUser
@@ -10,13 +9,12 @@ from django.utils.encoding import force_text
 
 from robots.models import Rule, Url
 from robots.views import RuleList
-from six import StringIO
 
 
 class ViewTest(TestCase):
     @classmethod
     def setUpClass(cls):
-        super(ViewTest, cls).setUpClass()
+        super().setUpClass()
         cls.request_factory = RequestFactory()
 
     def get_request(self, path, user, lang, secure=False):
@@ -30,8 +28,8 @@ class ViewTest(TestCase):
         request._cached_user = user
         request.session = {}
         if secure:
-            request.environ["SERVER_PORT"] = str("443")
-            request.environ["wsgi.url_scheme"] = str("https")
+            request.environ["SERVER_PORT"] = "443"
+            request.environ["wsgi.url_scheme"] = "https"
         if user.is_authenticated:
             request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
         request.cookies = SimpleCookie()
@@ -42,7 +40,7 @@ class ViewTest(TestCase):
         return request
 
     def setUp(self):
-        super(ViewTest, self).setUp()
+        super().setUp()
         site_1 = Site.objects.get(domain="example.com")
         site_2 = Site.objects.create(domain="https://sub.example.com")
 
