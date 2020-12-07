@@ -1,7 +1,7 @@
 import sys
 
 
-class Settings(object):
+class Settings:
     defaults = {
         #: A list of one or more sitemaps to inform robots about:
         "SITEMAP_URLS": ("ROBOTS_SITEMAP_URLS", []),
