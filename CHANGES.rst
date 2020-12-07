@@ -3,7 +3,7 @@ CHANGES
 
 master (unreleased)
 -------------------
-- Dropped support for Python 2.7
+- Dropped support for Python 2.7 and 3.5
 
 4.0 (2020-01-04)
 -----------------
