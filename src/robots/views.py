@@ -1,16 +1,11 @@
-import django
 from django.contrib.sitemaps import views as sitemap_views
 from django.contrib.sites.models import Site
+from django.urls import NoReverseMatch, reverse
 from django.views.decorators.cache import cache_page
 from django.views.generic import ListView
 
 from robots import settings
 from robots.models import Rule
-
-if django.VERSION[:2] >= (2, 0):
-    from django.urls import NoReverseMatch, reverse
-else:
-    from django.core.urlresolvers import NoReverseMatch, reverse
 
 
 class RuleList(ListView):

@@ -5,7 +5,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import Site
 from django.http import SimpleCookie
 from django.test import RequestFactory, TestCase
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from robots.models import Rule, Url
 from robots.views import RuleList
@@ -100,7 +100,7 @@ class ViewTest(TestCase):
 
         response = view_obj.render_to_response(context)
         response.render()
-        content = force_text(response.content)
+        content = force_str(response.content)
         self.assertTrue("Sitemap: http://example.com/sitemap.xml" in content)
         stanzas = content.split("\n\n")
         self._test_stanzas(stanzas)
@@ -119,7 +119,7 @@ class ViewTest(TestCase):
 
         response = view_obj.render_to_response(context)
         response.render()
-        content = force_text(response.content)
+        content = force_str(response.content)
         self.assertTrue("Sitemap: https://sub.example.com/sitemap.xml" in content)
         self.assertTrue("Host: https://sub.example.com" in content)
         stanzas = content.split("\n\n")
@@ -138,20 +138,20 @@ class ViewTest(TestCase):
                 context = view_obj.get_context_data(object_list=view_obj.object_list)
                 response = view_obj.render_to_response(context)
                 response.render()
-                content = force_text(response.content)
+                content = force_str(response.content)
                 self.assertTrue("Host: http://example.com" in content)
             with self.settings(ROBOTS_USE_SCHEME_IN_HOST=False):
                 context = view_obj.get_context_data(object_list=view_obj.object_list)
                 response = view_obj.render_to_response(context)
                 response.render()
-                content = force_text(response.content)
+                content = force_str(response.content)
                 self.assertTrue("Host: example.com" in content)
 
         with self.settings(ROBOTS_USE_HOST=False):
             context = view_obj.get_context_data(object_list=view_obj.object_list)
             response = view_obj.render_to_response(context)
             response.render()
-            content = force_text(response.content)
+            content = force_str(response.content)
             self.assertFalse("Host: example.com" in content)
 
     def test_cached_sitemap(self):
@@ -164,12 +164,12 @@ class ViewTest(TestCase):
         context = view_obj.get_context_data(object_list=view_obj.object_list)
         response = view_obj.render_to_response(context)
         response.render()
-        content = force_text(response.content)
+        content = force_str(response.content)
         self.assertTrue("Sitemap: http://example.com/sitemap.xml" in content)
 
         with self.settings(ROBOTS_SITEMAP_VIEW_NAME="cached-sitemap"):
             context = view_obj.get_context_data(object_list=view_obj.object_list)
             response = view_obj.render_to_response(context)
             response.render()
-            content = force_text(response.content)
+            content = force_str(response.content)
             self.assertTrue("Sitemap: http://example.com/other/sitemap.xml" in content)

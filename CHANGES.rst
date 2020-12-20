@@ -4,6 +4,9 @@ CHANGES
 master (unreleased)
 -------------------
 - Dropped support for Python 2.7 and 3.5
+- Added support for Python 3.9
+- Dropped support for Django versions 2.1 and below
+- Added suppport for Django 3.1
 
 4.0 (2020-01-04)
 -----------------
