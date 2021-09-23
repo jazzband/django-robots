@@ -22,9 +22,9 @@ directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 
 Supported Django versions
 -------------------------
-
+* Django 4.0
+* Django 3.2
 * Django 3.1
-* Django 3.0
 * Django 2.2
 
 For older Django versions (1.6-1.10) use ``django-robots==3.0``.
