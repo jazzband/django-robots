@@ -22,6 +22,7 @@ directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 
 Supported Django versions
 -------------------------
+
 * Django 4.0
 * Django 3.2
 * Django 3.1
