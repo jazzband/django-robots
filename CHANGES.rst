@@ -6,7 +6,10 @@ master (unreleased)
 - Dropped support for Python 2.7 and 3.5
 - Added support for Python 3.9
 - Dropped support for Django versions 2.1 and below
+- Dropped support for Django 3.0
 - Added suppport for Django 3.1
+- Added suppport for Django 3.2
+- Added support for Django 4.0
 
 4.0 (2020-01-04)
 -----------------
