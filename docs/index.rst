@@ -62,7 +62,7 @@ To overcome this, provide a name to the sitemap instance in ``urls.py``::
 
     urlpatterns = [
         ...
-        re_url(r'^sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': [...]}, name='cached-sitemap'),
+        re_path(r'^sitemap.xml$', cache_page(60)(sitemap_view), {'sitemaps': [...]}, name='cached-sitemap'),
         ...
     ]
 
@@ -81,7 +81,7 @@ Initialization
 To activate robots.txt generation on your Django site, add this line to your
 URLconf_::
 
-    re_url(r'^robots\.txt', include('robots.urls')),
+    re_path(r'^robots\.txt', include('robots.urls')),
 
 This tells Django to build a robots.txt when a robot accesses ``/robots.txt``.
 Then, please sync your database to create the necessary tables and create
