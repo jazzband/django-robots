@@ -34,7 +34,7 @@ for Django 2 and above, use ``django-robots>=4.0.0``.
 Supported Python version
 ------------------------
 
-* Python 3.6, 3.7, 3.8, 3.9, 3.10
+* Python 3.7, 3.8, 3.9, 3.10
 
 .. _install section: https://django-robots.readthedocs.io/en/latest/#installation
 .. _robots exclusion protocol: http://en.wikipedia.org/wiki/Robots_exclusion_standard
