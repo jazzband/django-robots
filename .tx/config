@@ -5,4 +5,3 @@ host = https://www.transifex.com
 file_filter = src/robots/locale/<lang>/LC_MESSAGES/django.po
 source_file = src/robots/locale/en/LC_MESSAGES/django.po
 source_lang = en
-
