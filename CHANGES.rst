@@ -3,13 +3,17 @@ CHANGES
 
 master (unreleased)
 -------------------
-- Dropped support for Python 2.7 and 3.5
+- Dropped support for Python 2.7, 3.5, and 3.6
 - Added support for Python 3.9
+- Added support for Python 3.10 (#113), thank you @Andrew-Chen-Wang
 - Dropped support for Django versions 2.1 and below
 - Dropped support for Django 3.0
 - Added suppport for Django 3.1
 - Added suppport for Django 3.2
-- Added support for Django 4.0
+- Added support for Django 4.0 (#112), thank you @umarmughal824
+- Improve documentation for Django 4.0 (#119), thank you @sergioisidoro
+- Sync files with @jazzband/.github
+- Add *.pre-commit-config.yaml* and run autofixes (#122)
 
 4.0 (2020-01-04)
 -----------------
