@@ -5,7 +5,7 @@ master (unreleased)
 -------------------
 _This is where upcoming changes will be._
 
-5.0 (2021-01-08)
+5.0 (2022-01-08)
 ----------------
 - Dropped support for Python 2.7, 3.5, and 3.6
 - Added support for Python 3.9
