@@ -42,8 +42,8 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"django-robots"
-copyright = u"2008-, Jannis Leidel"
+project = "django-robots"
+copyright = "2008-, Jannis Leidel"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -187,8 +187,8 @@ latex_documents = [
     (
         "index",
         "django-robots.tex",
-        u"django-robots Documentation",
-        u"Jannis Leidel",
+        "django-robots Documentation",
+        "Jannis Leidel",
         "manual",
     ),
 ]
@@ -219,7 +219,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ("index", "django-robots", u"django-robots Documentation", [u"Jannis Leidel"], 1)
+    ("index", "django-robots", "django-robots Documentation", ["Jannis Leidel"], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -235,8 +235,8 @@ texinfo_documents = [
     (
         "index",
         "django-robots",
-        u"django-robots Documentation",
-        u"Jannis Leidel",
+        "django-robots Documentation",
+        "Jannis Leidel",
         "django-robots",
         "One line description of project.",
         "Miscellaneous",
