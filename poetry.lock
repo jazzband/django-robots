@@ -911,6 +911,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "types-setuptools"
+version = "65.5.0.0"
+description = "Typing stubs for setuptools"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.4.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -964,7 +972,7 @@ test = []
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "6232bd3067ef015c0a74fc660c962db98c15417d336236ae1586c8f50e187f90"
+content-hash = "4f6875addba748489e5a53711aef19f8cd143ccc7c5a2160d3e6ac84d46d05dc"
 
 [metadata.files]
 alabaster = [
@@ -1419,6 +1427,10 @@ types-pytz = [
 types-PyYAML = [
     {file = "types-PyYAML-6.0.12.tar.gz", hash = "sha256:f6f350418125872f3f0409d96a62a5a5ceb45231af5cc07ee0034ec48a3c82fa"},
     {file = "types_PyYAML-6.0.12-py3-none-any.whl", hash = "sha256:29228db9f82df4f1b7febee06bbfb601677882e98a3da98132e31c6874163e15"},
+]
+types-setuptools = [
+    {file = "types-setuptools-65.5.0.0.tar.gz", hash = "sha256:2338bc809c925579c3bb5656a77d5713eafe51e384dcaca7b33f70b8e9d02885"},
+    {file = "types_setuptools-65.5.0.0-py3-none-any.whl", hash = "sha256:39d48a30c4cfc50326ef8b651ddd764510f7db6dd06b4b5cc52f46e501b38a62"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.4.0-py3-none-any.whl", hash = "sha256:16fa4864408f655d35ec496218b85f79b3437c829e93320c7c9215ccfd92489e"},
