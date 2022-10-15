@@ -3,7 +3,7 @@ CHANGES
 
 master (unreleased)
 -------------------
-_This is where upcoming changes will be._
+*This is where upcoming changes will be.*
 
 - Remove django-south migrations folder (#138)
 
