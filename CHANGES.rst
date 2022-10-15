@@ -27,6 +27,7 @@ If you ran ``./manage.py makemigrations`` to bypass the #112 issue, you may need
 this manually if a custom migration you made for robots was applied in ``django_migrations``.
 
 Resources:
+
 - https://docs.djangoproject.com/en/4.1/releases/3.2/#customizing-type-of-auto-created-primary-keys
 - https://docs.djangoproject.com/en/3.2/ref/settings/#std-setting-DEFAULT_AUTO_FIELD
 
