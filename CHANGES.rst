@@ -5,6 +5,9 @@ master (unreleased)
 -------------------
 *This is where upcoming changes will be.*
 
+6.0 (unreleased)
+----------------
+
 Breaking change: Missing ``DEFAULT_AUTO_FIELD``
 """""""""""""""""""""""""""""""""""""""""""""""
 This sets a ``DEFAULT_AUTO_FIELD`` to ``BigAutoField`` for robots in ``AppConfig``. Previously,
