@@ -1,0 +1,24 @@
+session_name: django-robots
+start_directory: ./ # load session relative to config location (project root).
+shell_command_before:
+- '[ -f .venv/bin/activate ] && source .venv/bin/activate && reset'
+windows:
+- window_name: django-robots
+  focus: True
+  layout: main-horizontal
+  options:
+    main-pane-height: 35
+  panes:
+  - focus: true
+  - pane
+  - make watch_test
+- window_name: docs
+  layout: main-horizontal
+  options:
+    main-pane-height: 35
+  start_directory: docs/
+  panes:
+  - focus: true
+  - pane
+  - pane
+  - make start

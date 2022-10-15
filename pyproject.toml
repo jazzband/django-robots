@@ -1,0 +1,153 @@
+[tool.poetry]
+name = "django-robots"
+version = "5.0.0"
+description = "Robots exclusion application for Django, complementing Sitemaps."
+
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Environment :: Web Environment',
+  'Framework :: Django',
+  'Framework :: Django :: 2.2',
+  'Framework :: Django :: 3.1',
+  'Framework :: Django :: 3.2',
+  'Framework :: Django :: 4.0',
+  'Framework :: Django :: 4.1',
+  'Intended Audience :: Developers',
+  'License :: OSI Approved :: MIT License',
+  'Operating System :: OS Independent',
+  'Programming Language :: Python',
+  'Programming Language :: Python :: 3',
+  'Programming Language :: Python :: 3.7',
+  'Programming Language :: Python :: 3.8',
+  'Programming Language :: Python :: 3.9',
+  'Programming Language :: Python :: 3.10',
+  'Programming Language :: Python :: Implementation :: CPython',
+  'Programming Language :: Python :: Implementation :: PyPy',
+  'Topic :: Utilities',
+]
+
+license = "MIT"
+
+authors = [
+  "Jannis Leidel <jannis@leidel.info>",
+  "Tony Narlock <tony@git-pull.com>",
+]
+
+readme = 'README.rst'
+packages = [
+  { include = "*", from = "src" },
+]
+include = [
+  { path = "locale", format = "sdist" },
+  { path = "templates", format = "sdist" },
+  { path = "tests", format = "sdist" },
+]
+keywords = ["django", "robots", "text"]
+
+homepage = "https://github.com/jazzband/django-robots"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/jazzband/django-robots/issues"
+Repository = "https://github.com/jazzband/django-robots"
+Changes = "https://github.com/jazzband/django-robots/blob/master/CHANGES.rst"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Django = ">=2.2"
+
+[tool.poetry.dev-dependencies]
+### Docs ###
+sphinx = "*"
+furo = "*"
+sphinx-autobuild = "*"
+sphinx-autodoc-typehints = "*"
+sphinx-inline-tabs = { version = "*", python = "^3.7" }
+sphinxext-opengraph = "*"
+sphinx-copybutton = "*"
+sphinxext-rediraffe = "*"
+
+### Testing ###
+pytest = "*"
+pytest-rerunfailures = "*"
+pytest-django = "*"
+pytest-watcher = "*"
+django-extensions = "*"
+
+### Coverage ###
+codecov = "*"
+coverage = "*"
+pytest-cov = "*"
+
+### Format ###
+black = "*"
+isort = "*"
+
+### Lint ###
+flake8 = [
+  { version = "*", python = "^3.7" },
+  { version = ">=5", python = "^3.8" },
+]
+flake8-bugbear = "*"
+flake8-comprehensions = "*"
+mypy = "*"
+django-stubs = "*"
+
+[tool.poetry.extras]
+docs = [
+  "sphinx",
+  "sphinx-autodoc-typehints",
+  "sphinx-autobuild",
+  "sphinx-copybutton",
+  "sphinxext-opengraph",
+  "sphinx-inline-tabs",
+  "sphinxext-rediraffe",
+  "furo",
+]
+test = [
+  "pytest",
+  "pytest-rerunfailures",
+  "pytest-django",
+  "pytest-watcher",
+  "django-extensions",
+]
+coverage = ["codecov", "coverage", "pytest-cov"]
+format = ["black", "isort"]
+lint = [
+  "flake8",
+  "flake8-bugbear",
+  "flake8-comprehensions",
+  "mypy",
+  "django-stubs",
+]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "tests.settings"
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = [
+  "*/_compat.py",
+  "docs/conf.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+exclude_lines = [
+  "pragma: no cover",
+  "def __repr__",
+  "raise NotImplementedError",
+  "return NotImplemented",
+  "def parse_args",
+  "if TYPE_CHECKING:",
+  "if t.TYPE_CHECKING:",
+  "@overload( |$)",
+]
+
+[build-system]
+requires = ["poetry_core>=1.0.0", "poetry>=1.1.12"]
+build-backend = "poetry.core.masonry.api"
