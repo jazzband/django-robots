@@ -157,6 +157,30 @@ settings file::
 This tells Django to cache the ``robots.txt`` for 24 hours (86400 seconds).
 The default value is ``None`` (no caching).
 
+Developing
+==========
+
+To run tests, create a virtualenv:
+
+    virtualenv --python 3.10 .venv
+
+Source it:
+
+    . .venv/bin/activate
+
+    # or if you use source
+    source .venv/bin/activate
+
+Install:
+
+    pip install -e .
+    pip install -r tests/requirements.txt
+    pip install django
+
+Run the tests:
+
+    env PYTHONPATH=. DJANGO_SETTINGS_MODULE=tests.settings django-admin test robots -v2
+
 Bugs and feature requests
 =========================
 

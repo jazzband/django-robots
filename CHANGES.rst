@@ -3,8 +3,35 @@ CHANGES
 
 master (unreleased)
 -------------------
-_This is where upcoming changes will be._
+*This is where upcoming changes will be.*
 
+6.0 (unreleased)
+----------------
+
+Breaking change: Missing ``DEFAULT_AUTO_FIELD``
+"""""""""""""""""""""""""""""""""""""""""""""""
+This sets a ``DEFAULT_AUTO_FIELD`` to ``BigAutoField`` for robots in ``AppConfig``. Previously,
+there was no app configuration or setting for this. (#134, thank you @jan-szejko-steelseries)
+
+Robots 5.0 included a ``BigAutoField`` migration file for django 3.2 support (see #112),
+however, this caused an extra migration to be created to set ``django.db.models.AutoField``
+for certain users (see #124).
+
+**Breaking: Migration issues**
+
+New django sites should work fine.
+
+*Existing sites that manually created migrations for robots 5.0:*
+
+If you ran ``./manage.py makemigrations`` to bypass the #112 issue, you may need to resolve
+this manually if a custom migration you made for robots was applied in ``django_migrations``.
+
+Resources:
+- https://docs.djangoproject.com/en/4.1/releases/3.2/#customizing-type-of-auto-created-primary-keys
+- https://docs.djangoproject.com/en/3.2/ref/settings/#std-setting-DEFAULT_AUTO_FIELD
+
+Maintenance
+"""""""""""
 - Remove django-south migrations folder (#138)
 
 5.0 (2022-01-08)
