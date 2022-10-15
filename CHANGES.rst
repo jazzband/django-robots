@@ -6,6 +6,7 @@ master (unreleased)
 _This is where upcoming changes will be._
 
 - Remove django-south migrations folder (#138)
+- Refactor settings for better (forthcoming) pytest compatibility (#140)
 
 5.0 (2022-01-08)
 ----------------
