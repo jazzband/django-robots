@@ -5,6 +5,8 @@ master (unreleased)
 -------------------
 _This is where upcoming changes will be._
 
+- Remove django-south migrations folder (#138)
+
 5.0 (2022-01-08)
 ----------------
 - Dropped support for Python 2.7, 3.5, and 3.6
