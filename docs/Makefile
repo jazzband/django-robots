@@ -1,9 +1,12 @@
 # Makefile for Sphinx documentation
 #
+SHELL := /bin/bash
+WATCH_FILES= find .. -type f -not -path '*/\.*' | grep -i '.*[.]\(rst\|md\)\$\|.*[.]py\$\|CHANGES\|TODO\|.*conf\.py' 2> /dev/null
+HTTP_PORT     = 8034
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
+SPHINXBUILD   = poetry run sphinx-build
 PAPER         =
 BUILDDIR      = _build
 
@@ -29,17 +32,20 @@ help:
 	@echo "  epub       to make an epub"
 	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
 	@echo "  latexpdf   to make LaTeX files and run them through pdflatex"
+	@echo "  latexpdfja to make LaTeX files and run them through platex/dvipdfmx"
 	@echo "  text       to make text files"
 	@echo "  man        to make manual pages"
 	@echo "  texinfo    to make Texinfo files"
 	@echo "  info       to make Texinfo files and run them through makeinfo"
 	@echo "  gettext    to make PO message catalogs"
 	@echo "  changes    to make an overview of all changed/added/deprecated items"
+	@echo "  xml        to make Docutils-native XML files"
+	@echo "  pseudoxml  to make pseudoxml-XML files for display purposes"
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 
 clean:
-	-rm -rf $(BUILDDIR)/*
+	rm -rf $(BUILDDIR)/*
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
@@ -77,17 +83,17 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/django-robots.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/complexity.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/django-robots.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/complexity.qhc"
 
 devhelp:
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/django-robots"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/django-robots"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/complexity"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/complexity"
 	@echo "# devhelp"
 
 epub:
@@ -106,6 +112,12 @@ latexpdf:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
+	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+
+latexpdfja:
+	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	@echo "Running LaTeX files through platex and dvipdfmx..."
+	$(MAKE) -C $(BUILDDIR)/latex all-pdf-ja
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
 text:
@@ -151,3 +163,46 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
+
+xml:
+	$(SPHINXBUILD) -b xml $(ALLSPHINXOPTS) $(BUILDDIR)/xml
+	@echo
+	@echo "Build finished. The XML files are in $(BUILDDIR)/xml."
+
+pseudoxml:
+	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
+	@echo
+	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+
+redirects:
+	$(SPHINXBUILD) -b rediraffewritediff $(ALLSPHINXOPTS) $(BUILDDIR)/redirects
+	@echo
+	@echo "Build finished. The redirects are in rediraffe_redirects."
+
+checkbuild:
+	rm -rf $(BUILDDIR)
+	$(SPHINXBUILD) -n -q ./ $(BUILDDIR)
+
+watch:
+	if command -v entr > /dev/null; then ${WATCH_FILES} | entr -c $(MAKE) html; else $(MAKE) html; fi
+
+serve:
+	@echo '================================================================='
+	@echo
+	@echo 'docs server running at http://localhost:${HTTP_PORT}'
+	@echo
+	@echo '================================================================='
+	@$(MAKE) serve_py3
+
+serve_py3:
+	python -m http.server ${HTTP_PORT} --directory _build/html
+
+dev:
+	$(MAKE) -j watch serve
+
+start:
+	poetry run sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) --port ${HTTP_PORT} $(O)
+
+design:
+	# This adds additional watch directories (for _static file changes) and disable incremental builds
+	poetry run sphinx-autobuild "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) --port ${HTTP_PORT} --watch "." -a $(O)
