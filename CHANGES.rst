@@ -56,8 +56,8 @@ Maintenance
 - Added support for Python 3.10 (#113), thank you @Andrew-Chen-Wang
 - Dropped support for Django versions 2.1 and below
 - Dropped support for Django 3.0
-- Added suppport for Django 3.1
-- Added suppport for Django 3.2
+- Added support for Django 3.1
+- Added support for Django 3.2
 - Added support for Django 4.0 (#112), thank you @umarmughal824
 - Improve documentation for Django 4.0 (#119), thank you @sergioisidoro
 - Sync files with @jazzband/.github
@@ -120,7 +120,7 @@ Maintenance
 - Fixed some backward compatibility issues.
 
 - Updated existing translations (Danish, German, French,
-  Portugese (Brasil), Russian).
+  Portuguese (Brasil), Russian).
 
 - Added Greek, Spanish (Spain), Japanese, Dutch, Slovak and Ukrainian
   translations.
@@ -145,7 +145,7 @@ Maintenance
   requires Django >= 1.3.
 
 - Stop returning 404 pages if there are no Rules setup on the site. Instead
-  dissallow access for all robots.
+  disallow access for all robots.
 
 - Added an initial South migration. If you're using South you have to "fake"
   the initial database migration::
