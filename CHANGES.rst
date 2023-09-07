@@ -5,6 +5,9 @@ master (unreleased)
 -------------------
 *This is where upcoming changes will be.*
 
+6.1 (2023-09-07)
+----------------
+
 Compatibility
 """""""""""""
 
