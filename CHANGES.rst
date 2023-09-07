@@ -5,6 +5,20 @@ master (unreleased)
 -------------------
 *This is where upcoming changes will be.*
 
+Compatibility
+"""""""""""""
+
+- Fix warning make in regards to ``pkg_resources`` in Python 3.11+, (#146,
+  thank you @blag)
+
+Maintenance
+"""""""""""
+
+CI updates:
+
+- Python: Support Python 3.11 and 3.12 in test matrix (#146, thank you @blag)
+- Django: Support Django 4.1 and 4.2 in test matrix (#146, thank you @blag)
+
 6.0 (2023-09-07)
 ----------------
 
