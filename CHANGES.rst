@@ -17,6 +17,13 @@ Compatibility
 Maintenance
 """""""""""
 
+- Fix typos via `typos`_
+
+  - Special thanks to typo fix from @apoorvaeternity (Apoorva Pandey) in
+    #145
+
+  .. _typos: https://github.com/crate-ci/typos
+
 CI updates:
 
 - Python: Support Python 3.11 and 3.12 in test matrix (#146, thank you @blag)
