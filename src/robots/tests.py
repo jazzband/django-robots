@@ -190,7 +190,7 @@ class UrlModelTests(TestCase):
         self.assertEqual(url.pattern, "/foo")
 
     def test_pattern_too_long(self):
-        """ Patern 256 chars long should not throw field too long error """
+        """Patern 256 chars long should not throw field too long error"""
         with self.assertRaises(ValidationError):
             r = Url(pattern="a" * 255)
             r.full_clean()
