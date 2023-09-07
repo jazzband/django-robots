@@ -5,7 +5,7 @@ master (unreleased)
 -------------------
 *This is where upcoming changes will be.*
 
-6.0 (unreleased)
+6.0 (2023-09-07)
 ----------------
 
 Breaking change: Missing ``DEFAULT_AUTO_FIELD``
