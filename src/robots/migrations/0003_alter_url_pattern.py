@@ -15,7 +15,6 @@ class Migration(migrations.Migration):
             model_name="url",
             name="pattern",
             field=models.CharField(
-                default="",
                 help_text="Case-sensitive. A missing trailing slash does also match to files which start with the name of the pattern, e.g., '/admin' matches /admin.html too. Some major search engines allow an asterisk (*) as a wildcard and a dollar sign ($) to match the end of the URL, e.g., '/*.jpg$'.",
                 max_length=255,
                 validators=[django.core.validators.MaxLengthValidator(254)],

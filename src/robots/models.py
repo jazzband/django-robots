@@ -22,7 +22,6 @@ class Url(models.Model):
             " (*) as a wildcard and a dollar sign ($) to "
             "match the end of the URL, e.g., '/*.jpg$'."
         ),
-        default="",
         validators=[MaxLengthValidator(254)],
     )
 
