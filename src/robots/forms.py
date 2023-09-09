@@ -14,6 +14,6 @@ class RuleAdminForm(forms.ModelForm):
             "allowed", False
         ):
             raise forms.ValidationError(
-                _("Please specify at least one allowed or dissallowed URL.")
+                _("Please specify at least one allowed or disallowed URL.")
             )
         return self.cleaned_data

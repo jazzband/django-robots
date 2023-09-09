@@ -66,7 +66,7 @@ To overcome this, provide a name to the sitemap instance in ``urls.py``::
         ...
     ]
 
-and inform django-robots about the view name by adding the followin setting::
+and inform django-robots about the view name by adding the following setting::
 
     ROBOTS_SITEMAP_VIEW_NAME = 'cached-sitemap'
 

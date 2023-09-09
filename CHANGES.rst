@@ -5,7 +5,31 @@ master (unreleased)
 -------------------
 *This is where upcoming changes will be.*
 
-6.0 (unreleased)
+6.1 (2023-09-07)
+----------------
+
+Compatibility
+"""""""""""""
+
+- Fix warning make in regards to ``pkg_resources`` in Python 3.11+, (#146,
+  thank you @blag)
+
+Maintenance
+"""""""""""
+
+- Fix typos via `typos`_
+
+  - Special thanks to typo fix from @apoorvaeternity (Apoorva Pandey) in
+    #145
+
+  .. _typos: https://github.com/crate-ci/typos
+
+CI updates:
+
+- Python: Support Python 3.11 and 3.12 in test matrix (#146, thank you @blag)
+- Django: Support Django 4.1 and 4.2 in test matrix (#146, thank you @blag)
+
+6.0 (2023-09-07)
 ----------------
 
 Breaking change: Missing ``DEFAULT_AUTO_FIELD``
@@ -42,8 +66,8 @@ Maintenance
 - Added support for Python 3.10 (#113), thank you @Andrew-Chen-Wang
 - Dropped support for Django versions 2.1 and below
 - Dropped support for Django 3.0
-- Added suppport for Django 3.1
-- Added suppport for Django 3.2
+- Added support for Django 3.1
+- Added support for Django 3.2
 - Added support for Django 4.0 (#112), thank you @umarmughal824
 - Improve documentation for Django 4.0 (#119), thank you @sergioisidoro
 - Sync files with @jazzband/.github
@@ -106,7 +130,7 @@ Maintenance
 - Fixed some backward compatibility issues.
 
 - Updated existing translations (Danish, German, French,
-  Portugese (Brasil), Russian).
+  Portuguese (Brasil), Russian).
 
 - Added Greek, Spanish (Spain), Japanese, Dutch, Slovak and Ukrainian
   translations.
@@ -131,7 +155,7 @@ Maintenance
   requires Django >= 1.3.
 
 - Stop returning 404 pages if there are no Rules setup on the site. Instead
-  dissallow access for all robots.
+  disallow access for all robots.
 
 - Added an initial South migration. If you're using South you have to "fake"
   the initial database migration::
