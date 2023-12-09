@@ -12,14 +12,14 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="rule",
             name="id",
-            field=models.BigAutoField(
+            field=models.AutoField(
                 auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
             ),
         ),
         migrations.AlterField(
             model_name="url",
             name="id",
-            field=models.BigAutoField(
+            field=models.AutoField(
                 auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
             ),
         ),
