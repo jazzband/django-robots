@@ -5,6 +5,14 @@ master (unreleased)
 -------------------
 *This is where upcoming changes will be.*
 
+Breaking change: ``Url.pattern`` now uses ``MaxLengthValidator``
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+- ``Url.pattern`` now uses ``MaxLengthValidator`` to account for trailing
+  slash. Thank you @PetrDlouhy in #133 for #132.
+
+  See also: https://docs.djangoproject.com/en/4.2/ref/validators/#maxlengthvalidator
+
 6.1 (2023-09-07)
 ----------------
 
