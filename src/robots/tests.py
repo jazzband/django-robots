@@ -3,6 +3,7 @@ from io import StringIO
 from django.contrib.auth import SESSION_KEY
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import Site
+from django.core.exceptions import ValidationError
 from django.http import SimpleCookie
 from django.test import RequestFactory, TestCase
 from django.utils.encoding import force_str
@@ -173,3 +174,24 @@ class ViewTest(TestCase):
             response.render()
             content = force_str(response.content)
             self.assertTrue("Sitemap: http://example.com/other/sitemap.xml" in content)
+
+
+class UrlModelTests(TestCase):
+    def test_str(self):
+        url = Url.objects.create(pattern="/")
+        self.assertEqual(str(url), "/")
+
+    def test_pattern(self):
+        url = Url.objects.create(pattern="foo")
+        self.assertEqual(url.pattern, "/foo")
+
+    def test_pattern_slash(self):
+        url = Url.objects.create(pattern="/foo")
+        self.assertEqual(url.pattern, "/foo")
+
+    def test_pattern_too_long(self):
+        """Patern 256 chars long should not throw field too long error"""
+        with self.assertRaises(ValidationError):
+            r = Url(pattern="a" * 255)
+            r.full_clean()
+            r.save()
