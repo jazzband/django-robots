@@ -3,7 +3,7 @@
 # vim: set nospell:
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
@@ -12,18 +12,18 @@ repos:
       - id: check-added-large-files
       - id: debug-statements
   - repo: https://github.com/pycqa/isort
-    rev: "5.12.0"
+    rev: "9.0.1"
     hooks:
       - id: isort
   - repo: https://github.com/PyCQA/flake8
-    rev: "6.1.0"
+    rev: "7.3.0"
     hooks:
       - id: flake8
         additional_dependencies:
           - flake8-comprehensions
           - flake8-bugbear
         exclude: docs\/.*
-  - repo: https://github.com/psf/black
-    rev: "23.11.0"
+  - repo: https://github.com/psf/black-pre-commit-mirror
+    rev: "26.5.1"
     hooks:
       - id: black
