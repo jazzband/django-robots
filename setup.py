@@ -16,7 +16,7 @@ setup(
     description="Robots exclusion application for Django, complementing Sitemaps.",
     author="Jannis Leidel",
     author_email="jannis@leidel.info",
-    python_requires=">=3.7",
+    python_requires=">=3.11",
     url="https://github.com/jazzband/django-robots/",
     packages=find_packages("src"),
     package_dir={"": "src"},

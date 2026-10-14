@@ -23,10 +23,7 @@ directory or on ReadTheDocs: https://django-robots.readthedocs.io/
 Supported Django versions
 -------------------------
 
-* Django 4.0
-* Django 3.2
-* Django 3.1
-* Django 2.2
+* Django 5.2+
 
 For older Django versions (1.6-1.10) use ``django-robots==3.0``.
 for Django 2 and above, use ``django-robots>=4.0.0``.
@@ -34,7 +31,7 @@ for Django 2 and above, use ``django-robots>=4.0.0``.
 Supported Python version
 ------------------------
 
-* Python 3.7, 3.8, 3.9, 3.10
+* Python 3.11+
 
 .. _install section: https://django-robots.readthedocs.io/en/latest/#installation
 .. _robots exclusion protocol: http://en.wikipedia.org/wiki/Robots_exclusion_standard
