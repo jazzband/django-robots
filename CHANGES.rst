@@ -13,6 +13,11 @@ Breaking change: ``Url.pattern`` now uses ``MaxLengthValidator``
 
   See also: https://docs.djangoproject.com/en/4.2/ref/validators/#maxlengthvalidator
 
+Maintenance
+"""""""""""
+
+- Switched to trusted publisher release process with Django Commons
+
 6.1 (2023-09-07)
 ----------------
 
