@@ -21,7 +21,7 @@ Use your favorite Python installer to install it from PyPI::
 
 Or get the source from the application site at::
 
-    http://github.com/jazzband/django-robots/
+    http://github.com/django-commons/django-robots/
 
 To install the sitemap app, then follow these steps:
 
@@ -187,4 +187,4 @@ Bugs and feature requests
 As always your mileage may vary, so please don't hesitate to send feature
 requests and bug reports:
 
-    https://github.com/jazzband/django-robots/issues
+    https://github.com/django-commons/django-robots/issues

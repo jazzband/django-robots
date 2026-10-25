@@ -17,6 +17,7 @@ Maintenance
 """""""""""
 
 - Switched to trusted publisher release process with Django Commons
+- Switch from Jazzband org to Django Commons
 
 6.1 (2023-09-07)
 ----------------
