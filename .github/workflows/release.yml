@@ -15,21 +15,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: 3.14
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
 
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip
-          python -m pip install -U setuptools twine wheel
+      - name: Install python
+        run: uv python install 3.14
 
       - name: Build package
         run: |
-          python setup.py --version
-          python setup.py sdist --format=gztar bdist_wheel
-          twine check dist/*
+          uv build
+          uv run twine check dist/*
 
       - name: Upload packages to Jazzband
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')

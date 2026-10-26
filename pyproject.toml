@@ -57,6 +57,10 @@ robots = [
 ]
 
 [dependency-groups]
+ci = [
+    { include-group = "dev" },
+    "tox-gh-actions>=3.5.0",
+]
 dev = [
     "black>=26.10.1",
     "flake8>=7.4.1",

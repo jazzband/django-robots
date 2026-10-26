@@ -22,13 +22,9 @@ jobs:
     - name: Set up Python ${{ matrix.python-version }}
       run: uv python install ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        uv pip install tox-gh-actions
-
     - name: Tox tests
       run: |
-        uv run tox -v
+        uv run --group=ci tox -v
 
     - name: Upload coverage
       uses: codecov/codecov-action@v7

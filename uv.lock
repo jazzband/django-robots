@@ -416,6 +416,19 @@ dependencies = [
 ]
 
 [package.dev-dependencies]
+ci = [
+    { name = "black" },
+    { name = "flake8" },
+    { name = "flake8-black" },
+    { name = "isort" },
+    { name = "sphinx", version = "9.0.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "sphinx", version = "9.1.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.12.*'" },
+    { name = "sphinx", version = "9.2.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.13'" },
+    { name = "sphinx-rtd-theme" },
+    { name = "tox" },
+    { name = "tox-gh-actions" },
+    { name = "twine" },
+]
 dev = [
     { name = "black" },
     { name = "flake8" },
@@ -433,6 +446,17 @@ dev = [
 requires-dist = [{ name = "django", specifier = ">=5.2" }]
 
 [package.metadata.requires-dev]
+ci = [
+    { name = "black", specifier = ">=26.10.1" },
+    { name = "flake8", specifier = ">=7.4.1" },
+    { name = "flake8-black", specifier = ">=0.4.0" },
+    { name = "isort", specifier = ">=9.0.2" },
+    { name = "sphinx", specifier = ">=9.0.4" },
+    { name = "sphinx-rtd-theme", specifier = ">=3.1.0" },
+    { name = "tox", specifier = ">=4.67.1" },
+    { name = "tox-gh-actions", specifier = ">=3.5.0" },
+    { name = "twine", specifier = ">=7.0.0" },
+]
 dev = [
     { name = "black", specifier = ">=26.10.1" },
     { name = "flake8", specifier = ">=7.4.1" },
@@ -1307,6 +1331,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/63/6e/677274ae411fa13f5c2ea5c633a6abfa0886e949bd2ef53c7e564a0b0b2e/tox-4.67.1.tar.gz", hash = "sha256:a68602f64421b199016127364ee47347b958391d19c2b2e53fe95673a8fe98e9", size = 347211, upload-time = "2026-10-18T07:34:04.348Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0c/ac/cfba9de0f43b58d199f47c441efd1b670b55c480f3ec18bc1345f752c3d8/tox-4.67.1-py3-none-any.whl", hash = "sha256:23d614cb703e1f7bd39e00c046d4c261b63fb9986e185134c6be2f93531d9726", size = 238078, upload-time = "2026-10-18T07:34:02.728Z" },
+]
+
+[[package]]
+name = "tox-gh-actions"
+version = "3.5.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "tox" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9c/11/6c3f818887c37a144a4b48bfc440150f006bdac7a68d92de1046680f578f/tox_gh_actions-3.5.0.tar.gz", hash = "sha256:cc8e148c4513042e5019973e5672594c3df241b035e7fb550f6f778588110051", size = 18815, upload-time = "2025-10-22T14:12:24.846Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fd/9e/8d50f3b3fc4af8c73154f64d4a2293bfa2d517a19000e70ef2d614254084/tox_gh_actions-3.5.0-py3-none-any.whl", hash = "sha256:070790114c92f4c94337047515ca5e077ceb269a5cb9366e0a0b3440a024eca1", size = 9910, upload-time = "2025-10-22T14:12:23.405Z" },
 ]
 
 [[package]]
