@@ -1,0 +1,73 @@
+[project]
+name = "django-robots"
+dynamic = ["version"]
+description = "Robots exclusion application for Django, complementing Sitemaps."
+readme = { file = "README.rst", content-type = "text/x-rst" }
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+license-files = ["LICENSE.txt"]
+authors = [
+    { name = "Matt Seymour (Maintainer)", email = "mattaseymour@gmail.com" },
+    { name = "Jannis Leidel (Original author)", email = "jannis@leidel.info" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Framework :: Django",
+    "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
+    "Framework :: Django :: 6.1",
+]
+dependencies = [
+    "django>=5.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/jazzband/django-robots/"
+Documentation = "https://django-robots.readthedocs.io/en/latest/"
+
+[build-system]
+requires = ["setuptools>=84", "setuptools-scm>=10"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+package-dir = { "" = "src" }
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+robots = [
+    "locale/*/LC_MESSAGES/*",
+    "templates/robots/*.html",
+]
+
+[dependency-groups]
+ci = [
+    { include-group = "dev" },
+    "tox-gh-actions>=3.5.0",
+]
+dev = [
+    "black>=26.10.1",
+    "flake8>=7.4.1",
+    "flake8-black>=0.4.0",
+    "isort>=9.0.2",
+    "sphinx>=9.0.4",
+    "sphinx-rtd-theme>=3.1.0",
+    "tox>=4.67.1",
+    "twine>=7.0.0",
+]
