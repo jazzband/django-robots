@@ -117,6 +117,22 @@ existing web robots user agent strings.
 .. _'sites' framework: http://www.djangoproject.com/documentation/sites/
 .. _database of web robots: http://www.robotstxt.org/db.html
 
+Selecting the current site
+==========================
+
+By default, ``ROBOTS_SITE_BY_REQUEST`` is ``False`` and django-robots uses
+``Site.objects.get_current()`` to select the site configured by ``SITE_ID``.
+To serve different rules for different domains from the same Django instance,
+add this setting::
+
+    ROBOTS_SITE_BY_REQUEST = True
+
+With this enabled, django-robots selects a ``Site`` whose ``domain`` exactly
+matches ``request.get_host()``, rather than using ``SITE_ID``.
+Create a ``Site`` entry for each host and associate the appropriate ``Rule``
+objects with it. If the request host includes a port, include that port in the
+``Site.domain`` value as well.
+
 Host directive
 ==============
 By default a ``Host`` statement is automatically added to the resulting
