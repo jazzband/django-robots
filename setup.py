@@ -17,7 +17,7 @@ setup(
     author="Jannis Leidel",
     author_email="jannis@leidel.info",
     python_requires=">=3.11",
-    url="https://github.com/jazzband/django-robots/",
+    url="https://github.com/django-commons/django-robots/",
     packages=find_packages("src"),
     package_dir={"": "src"},
     include_package_data=True,

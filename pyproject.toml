@@ -35,7 +35,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jazzband/django-robots/"
+Homepage = "https://github.com/django-commons/django-robots/"
 Documentation = "https://django-robots.readthedocs.io/en/latest/"
 
 [build-system]

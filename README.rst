@@ -2,13 +2,10 @@
 Django Robots
 =============
 
-.. image:: https://jazzband.co/static/img/badge.svg
-   :target: https://jazzband.co/
-   :alt: Jazzband
-.. image:: https://github.com/jazzband/django-robots/workflows/Test/badge.svg
-   :target: https://github.com/jazzband/django-robots/actions
-.. image:: https://codecov.io/gh/jazzband/django-robots/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/jazzband/django-robots
+.. image:: https://github.com/django-commons/django-robots/workflows/Test/badge.svg
+   :target: https://github.com/django-commons/django-robots/actions
+.. image:: https://codecov.io/gh/django-commons/django-robots/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/django-commons/django-robots
 .. image:: https://img.shields.io/pypi/v/django-robots.svg
    :target: https://pypi.python.org/pypi/django-robots
 
